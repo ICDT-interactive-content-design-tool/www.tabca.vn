@@ -1,0 +1,106 @@
+.ondrop-here {
+    border-width: 1px;
+    border-color: #eee;
+    border-radius: inherit;
+}
+
+.ondrop-here.actived {
+    border-style: dashed !important;
+    border-color: #000 !important;
+
+    &,
+    & * {
+        cursor: url(../../assets/images/svg/icon/drop.png) 0 16, default !important;
+    }
+}
+
+.ondrop-here.focused {
+    border-style: dashed !important;
+    border-color: #5F6CE1 !important;
+}
+
+.ondrag-item {
+    width: 100%;
+    height: 100%;
+}
+
+.ondrag-item h1:last-child,
+.ondrag-item h2:last-child,
+.ondrag-item h3:last-child,
+.ondrag-item h4:last-child,
+.ondrag-item h5:last-child,
+.ondrag-item h6:last-child,
+.ondrag-item p:last-child {
+    margin: 0;
+}
+
+.ondrag-hint {
+    font-size: 9px;
+}
+
+.ondrag-hint * {
+    font-size: inherit !important;
+}
+
+.media1 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 75%;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.media2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.media3 {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.media4 {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 0;
+}
+
+.media-hint {
+    width: 90px;
+    height: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+.media-hint img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-name {
+    color: #999;
+    padding: 4px 6px;
+    font-size: 9px;
+    line-height: 1;
+}
+
+.hide-selection.ondrop-here {
+    border-color: transparent !important;
+}
+
+.hide-selection input {
+    border-color: transparent !important;
+}

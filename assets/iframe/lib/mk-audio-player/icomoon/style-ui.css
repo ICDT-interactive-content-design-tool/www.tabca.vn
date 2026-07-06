@@ -1,0 +1,103 @@
+
+/*iconmoon btn*/
+.iconmoon-btn {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 0;
+    cursor: pointer;
+}
+
+    .iconmoon-btn.iconmoon-btn-border {
+        box-shadow: 0 0 0 1px #eee;
+    }
+
+    .iconmoon-btn.iconmoon-btn-hover:hover {
+        background-color: rgba(0,0,0,0.1);
+    }
+
+    .iconmoon-btn.iconmoon-btn-34 {
+        width: 34px;
+        height: 34px;
+    }
+
+        .iconmoon-btn.iconmoon-btn-34 .iconmoon {
+            font-size: 15px;
+        }
+
+    .iconmoon-btn.iconmoon-btn-44 {
+        width: 44px;
+        height: 44px;
+    }
+
+        .iconmoon-btn.iconmoon-btn-44 .iconmoon {
+            font-size: 18px;
+        }
+
+    .iconmoon-btn.iconmoon-btn-50 {
+        width: 50px;
+        height: 50px;
+    }
+
+        .iconmoon-btn.iconmoon-btn-50 .iconmoon {
+            font-size: 32px;
+        }
+
+    .iconmoon-btn .iconmoon-active-show,
+    .iconmoon-btn.active .iconmoon-active-hide {
+        display: none;
+    }
+
+    .iconmoon-btn .iconmoon-active-hide,
+    .iconmoon-btn.active .iconmoon-active-show {
+        display: inline;
+    }
+
+/*color*/
+.iconmoon-white {
+    color: #fff;
+}
+
+.iconmoon-gray {
+    color: #777;
+}
+
+.iconmoon-primary {
+    color: #7b92fe;
+}
+
+.iconmoon-success {
+    color: #008000;
+}
+
+.iconmoon-warning {
+    color: #ff4500;
+}
+
+.iconmoon-danger {
+    color: #f00;
+}
+
+/*hover*/
+.iconmoon-hover:hover {
+    color: #7b92fe;
+}
+
+.iconmoon-hover-white:hover {
+    color: #fff;
+}
+
+.iconmoon-hover-primary:hover {
+    color: #3d5ae2;
+}
+
+.iconmoon-hover-success:hover {
+    color: #008000;
+}
+
+.iconmoon-hover-warning:hover {
+    color: #ff4500;
+}
+
+.iconmoon-hover-danger:hover {
+    color: #f00;
+}

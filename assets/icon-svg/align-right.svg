@@ -1,0 +1,6 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <line y1="-1" x2="16" y2="-1" transform="matrix(0 -1 -1 0 13 16)" stroke-width="2"/>
+    <line y1="-2" x2="11" y2="-2" transform="matrix(-1 0 0 1 11 6)" stroke-width="4"/>
+    <line y1="-2" x2="7" y2="-2" transform="matrix(-1 0 0 1 11 12)" stroke-width="4"/>
+</svg>

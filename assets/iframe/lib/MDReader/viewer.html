@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="vi">
+	<head>
+		<meta charset="utf-8" />
+		<title>Markdown Viewer - Trợ lý AI</title>
+		<meta name="description" content="Markdown Viewer - Trợ lý AI" />
+
+		<base href="/" />
+
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="viewport"
+			content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+
+		<!-- GitHub Markdown CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.7.0/github-markdown-light.min.css"
+			media="(prefers-color-scheme: light)" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.7.0/github-markdown-dark.min.css"
+			media="(prefers-color-scheme: dark)" />
+
+		<!-- Highlight.js CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css"
+			media="(prefers-color-scheme: light)" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+			media="(prefers-color-scheme: dark)" />
+
+		<!-- Marked.js for Markdown parsing -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+
+		<!-- Highlight.js for syntax highlighting -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/python.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/java.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/csharp.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/go.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/php.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/sql.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+
+		<!-- MathJax for LaTeX math rendering -->
+		<script>
+			window.MathJax = {
+				tex: {
+					inlineMath: [
+						['$', '$'],
+						['\\(', '\\)'],
+					],
+					displayMath: [
+						['$$', '$$'],
+						['\\[', '\\]'],
+					],
+					processEscapes: true,
+					processEnvironments: true,
+				},
+				options: {
+					ignoreHtmlClass: 'no-mathjax',
+					processHtmlClass: 'mathjax',
+				},
+			};
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+		<style>
+			body {
+				margin: 0;
+				padding: 1rem;
+				font-family:
+					-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica,
+					Arial, sans-serif;
+				line-height: 1.5;
+				background: #ffffff;
+				color: #24292f;
+			}
+
+			.markdown-body {
+				position: relative;
+			}
+
+			.error-message {
+				color: #d1242f;
+				background: #fff8f8;
+				border: 1px solid #f0c3c3;
+				padding: 16px;
+				border-radius: 6px;
+				margin: 16px 0;
+			}
+
+			.loading-message {
+				color: #656d76;
+				text-align: center;
+				padding: 32px;
+				font-style: italic;
+			}
+
+			/* Dark mode styles */
+			@media (prefers-color-scheme: dark) {
+				body {
+					background: #0d1117;
+					color: #f0f6fc;
+				}
+
+				.error-message {
+					color: #f85149;
+					background: #161b22;
+					border-color: #30363d;
+				}
+
+				.loading-message {
+					color: #8b949e;
+				}
+			}
+
+			/* Copy button styles */
+			.code-block-container {
+				position: relative;
+			}
+
+			.copy-button {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				background: #f6f8fa;
+				border: 1px solid #d0d7de;
+				border-radius: 6px;
+				padding: 5px 8px;
+				font-size: 12px;
+				cursor: pointer;
+				color: #24292f;
+				transition: all 0.2s;
+				display: flex;
+				align-items: center;
+				gap: 4px;
+				z-index: 10;
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			.code-block-container:hover .copy-button {
+				opacity: 1;
+				pointer-events: auto;
+			}
+
+			.copy-button:hover {
+				background: #f3f4f6;
+				border-color: #afb8c1;
+			}
+
+			.copy-button:active {
+				background: #edeff2;
+			}
+
+			.copy-button.copied {
+				color: #1a7f37;
+				border-color: #1a7f37;
+				background: #dafbe1;
+			}
+
+			.copy-icon {
+				width: 14px;
+				height: 14px;
+				display: inline-block;
+			}
+
+			/* Dark mode copy button */
+			@media (prefers-color-scheme: dark) {
+				.copy-button {
+					background: #21262d;
+					border-color: #30363d;
+					color: #f0f6fc;
+				}
+
+				.copy-button:hover {
+					background: #30363d;
+					border-color: #8b949e;
+				}
+
+				.copy-button:active {
+					background: #282e33;
+				}
+
+				.copy-button.copied {
+					color: #3fb950;
+					border-color: #3fb950;
+					background: #0d2117;
+				}
+			}
+
+			/* Responsive design */
+			@media (max-width: 767px) {
+				.markdown-body {
+					position: relative;
+				}
+
+				.copy-button {
+					opacity: 1;
+					pointer-events: auto;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="markdown-body" id="markdownViewer">
+			<div class="loading-message">Đang tải file Markdown...</div>
+		</div>
+
+		<script>
+			// Wait for all scripts to load before initializing
+			document.addEventListener('DOMContentLoaded', function () {
+				// Wait a bit more to ensure all language modules are loaded
+				setTimeout(initializeMarkdownViewer, 100);
+			});
+
+			function initializeMarkdownViewer() {
+				// Initialize highlight.js
+				if (typeof hljs !== 'undefined') {
+					hljs.configure({
+						classPrefix: 'hljs-',
+					});
+				}
+
+				// Configure marked.js options with proper highlight function
+				if (typeof marked !== 'undefined') {
+					marked.setOptions({
+						highlight: function (code, lang) {
+							if (typeof hljs === 'undefined') {
+								return code;
+							}
+
+							// Handle language aliases
+							const languageMap = {
+								js: 'javascript',
+								ts: 'typescript',
+								py: 'python',
+								'c#': 'csharp',
+								cs: 'csharp',
+								html: 'xml',
+								htm: 'xml',
+							};
+
+							const normalizedLang =
+								lang ?
+									languageMap[lang.toLowerCase()] || lang.toLowerCase()
+								:	null;
+
+							if (normalizedLang && hljs.getLanguage(normalizedLang)) {
+								try {
+									return hljs.highlight(code, {
+										language: normalizedLang,
+										ignoreIllegals: true,
+									}).value;
+								} catch (err) {
+									console.warn(
+										'Highlight.js error for language',
+										normalizedLang,
+										':',
+										err
+									);
+								}
+							}
+
+							// Fallback to auto-detection
+							try {
+								return hljs.highlightAuto(code).value;
+							} catch (err) {
+								console.warn('Highlight.js auto-detection error:', err);
+								return code;
+							}
+						},
+						langPrefix: 'hljs language-',
+						breaks: true,
+						gfm: true,
+						sanitize: false,
+					});
+				}
+
+				function getParamUrl(name) {
+					return (
+						decodeURIComponent(
+							(new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(
+								location.search
+							) || ['', ''])[1].replace(/\+/g, '%20')
+						) || null
+					);
+				}
+
+				function showError(message) {
+					document.getElementById('markdownViewer').innerHTML =
+						'<div class="error-message">' +
+						'<h3>Lỗi khi tải file Markdown:</h3>' +
+						'<p><strong>Chi tiết:</strong> ' +
+						message +
+						'</p>' +
+						'<p>Vui lòng kiểm tra:</p>' +
+						'<ul>' +
+						'<li>URL file có đúng không</li>' +
+						'<li>File có tồn tại và có quyền truy cập không</li>' +
+						'<li>Server có hỗ trợ CORS không</li>' +
+						'</ul>' +
+						'</div>';
+				}
+
+				function addCopyButtons() {
+					// Add copy buttons to all code blocks
+					document.querySelectorAll('pre').forEach((pre) => {
+						// Skip if already has copy button
+						if (pre.parentElement.classList.contains('code-block-container')) {
+							return;
+						}
+
+						// Create container wrapper
+						const container = document.createElement('div');
+						container.className = 'code-block-container';
+
+						// Replace pre with container
+						pre.parentNode.insertBefore(container, pre);
+						container.appendChild(pre);
+
+						// Create copy button
+						const copyButton = document.createElement('button');
+						copyButton.className = 'copy-button';
+						copyButton.innerHTML = `
+							<svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
+								<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
+								<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+							</svg>
+							Copy
+						`;
+
+						// Add click handler
+						copyButton.addEventListener('click', async () => {
+							const code = pre.querySelector('code');
+							const text = code ? code.textContent : pre.textContent;
+
+							try {
+								await navigator.clipboard.writeText(text);
+
+								// Show success state
+								copyButton.classList.add('copied');
+								copyButton.innerHTML = `
+									<svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
+										<path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+									</svg>
+									Copied!
+								`;
+
+								// Reset after 2 seconds
+								setTimeout(() => {
+									copyButton.classList.remove('copied');
+									copyButton.innerHTML = `
+										<svg class="copy-icon" viewBox="0 0 16 16" fill="currentColor">
+											<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path>
+											<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+										</svg>
+										Copy
+									`;
+								}, 2000);
+							} catch (err) {
+								console.error('Failed to copy text: ', err);
+
+								// Fallback for older browsers
+								const textArea = document.createElement('textarea');
+								textArea.value = text;
+								document.body.appendChild(textArea);
+								textArea.select();
+								try {
+									document.execCommand('copy');
+									copyButton.textContent = 'Copied!';
+									setTimeout(() => {
+										copyButton.textContent = 'Copy';
+									}, 2000);
+								} catch (fallbackErr) {
+									console.error('Fallback copy failed: ', fallbackErr);
+								}
+								document.body.removeChild(textArea);
+							}
+						});
+
+						container.appendChild(copyButton);
+					});
+				}
+
+				function renderMarkdown(text) {
+					if (typeof marked === 'undefined') {
+						document.getElementById('markdownViewer').innerHTML =
+							'<div class="error-message"><h3>Lỗi:</h3><p>Marked.js chưa được tải</p></div>';
+						return;
+					}
+
+					try {
+						// Parse Markdown to HTML
+						const html = marked.parse(text);
+
+						// Render the HTML
+						document.getElementById('markdownViewer').innerHTML = html;
+
+						// Highlight code blocks that weren't processed by marked
+						if (typeof hljs !== 'undefined') {
+							document.querySelectorAll('pre code').forEach((block) => {
+								if (!block.classList.contains('hljs')) {
+									hljs.highlightElement(block);
+								}
+							});
+						}
+
+						// Add copy buttons to code blocks
+						addCopyButtons();
+
+						// Re-run MathJax if math expressions are present
+						if (
+							window.MathJax &&
+							(text.includes('$') || text.includes('\\('))
+						) {
+							MathJax.typesetPromise([
+								document.getElementById('markdownViewer'),
+							]).catch((err) => console.warn('MathJax error:', err));
+						}
+					} catch (error) {
+						console.error('Error parsing markdown:', error);
+						showError('Lỗi parse markdown: ' + error.message);
+					}
+				}
+
+				let url = getParamUrl('file');
+				if (url) {
+					fetch(url)
+						.then((res) => {
+							if (!res.ok) {
+								throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+							}
+							return res.arrayBuffer();
+						})
+						.then((buffer) => {
+							// Handle UTF-8 encoding properly
+							let text = '';
+							try {
+								text = new TextDecoder('utf-8').decode(buffer);
+							} catch (e) {
+								try {
+									text = new TextDecoder('windows-1258').decode(buffer);
+								} catch (e2) {
+									text = new TextDecoder('latin1').decode(buffer);
+								}
+							}
+
+							renderMarkdown(text);
+						})
+						.catch((error) => {
+							console.error('Error loading markdown file:', error);
+							showError(error.message);
+						});
+				} else {
+					document.getElementById('markdownViewer').innerHTML =
+						'<div class="error-message">' +
+						'<h3>Thiếu tham số file</h3>' +
+						'<p>Vui lòng thêm tham số <code>?file=URL_TO_MARKDOWN_FILE</code> vào URL</p>' +
+						'</div>';
+				}
+			}
+		</script>
+	</body>
+</html>

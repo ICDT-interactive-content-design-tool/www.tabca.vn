@@ -1,0 +1,44 @@
+/*scroll in chrome*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track-piece {}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+::-webkit-resizer {
+    display: none;
+}
+
+/*end scroll in chrome*/
+
+/*no select text*/
+.user-select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*no select text*/

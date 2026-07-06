@@ -1,0 +1,27 @@
+/*!
+* Tabca v1.0.0 (https://tabca.vn)
+* Copyright 2024, Created by Middle Kien. All rights reserved.
+*
+* Tabca commercial licenses may be obtained at https://tabca.vn
+*
+* If you do not own a commercial license, this file shall be governed by the trial license terms.
+* Roboto Mono
+*/
+/*normal*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Regular'),local('RobotoMono-Regular'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Regular.ttf') format('truetype');font-weight:normal;font-style:normal;font-display:swap;}
+/*italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Italic'),local('RobotoMono-Italic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Italic.ttf') format('truetype');font-weight:normal;font-style:italic;font-display:swap;}
+/*bold*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Bold'),local('RobotoMono-Bold'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Bold.ttf') format('truetype');font-weight:bold;font-style:normal;font-display:swap;}
+/*bold italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Bold Italic'),local('RobotoMono-BoldItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-BoldItalic.ttf') format('truetype');font-weight:bold;font-style:italic;font-display:swap;}
+/*100*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Thin'),local('RobotoMono-Thin'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Thin.ttf') format('truetype');font-weight:100;font-style:normal;font-display:swap;}
+/*100 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Thin Italic'),local('RobotoMono-ThinItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-ThinItalic.ttf') format('truetype');font-weight:100;font-style:italic;font-display:swap;}
+/*200*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono ExtraLight'),local('RobotoMono-ExtraLight'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-ExtraLight.ttf') format('truetype');font-weight:200;font-style:normal;font-display:swap;}
+/*200 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono ExtraLight Italic'),local('RobotoMono-ExtraLightItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-ExtraLightItalic.ttf') format('truetype');font-weight:200;font-style:italic;font-display:swap;}
+/*300*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Light'),local('RobotoMono-Light'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Light.ttf') format('truetype');font-weight:300;font-style:normal;font-display:swap;}
+/*300 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Light Italic'),local('RobotoMono-LightItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-LightItalic.ttf') format('truetype');font-weight:300;font-style:italic;font-display:swap;}
+/*400*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Regular'),local('RobotoMono-Regular'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+/*400 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Italic'),local('RobotoMono-Italic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+/*500*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Medium'),local('RobotoMono-Medium'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap;}
+/*500 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Medium Italic'),local('RobotoMono-MediumItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-MediumItalic.ttf') format('truetype');font-weight:500;font-style:italic;font-display:swap;}
+/*600*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono SemiBold'),local('RobotoMono-SemiBold'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap;}
+/*600 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono SemiBold Italic'),local('RobotoMono-SemiBoldItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-SemiBoldItalic.ttf') format('truetype');font-weight:600;font-style:italic;font-display:swap;}
+/*700*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Bold'),local('RobotoMono-Bold'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+/*700 italic*/@font-face {font-family:'Roboto Mono';src:local('Roboto Mono Bold Italic'),local('RobotoMono-BoldItalic'),url('https://www.tabca.vn/fonts/RobotoMono/RobotoMono-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}

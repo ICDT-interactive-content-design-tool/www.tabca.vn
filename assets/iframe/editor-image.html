@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Editor SelectBoards2JoinData</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <!--fonts-->
+    <link rel="stylesheet" href="fonts/SegoeUI/stylesheet.css?v=HPK2_RwM9Q14JuQPJ5bJ-cSSTg9aYRP4yw0vUPT_5iw" />
+
+    <link rel="stylesheet" href="lib/bootstrap.v3.3.7/dist/css/bootstrap.min.css?v=Wj2MBXhUhdNu5clNRoHlsdnkuUxb6LW9ew8xaP_xvZo" />
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw" />
+
+    <!--library kendoui-->
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.common-bootstrap.min.css?v=BMHtfZwaKdutzzbCqWCvYtaedSdpv4ZvcxruqWXiBjg" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.min.css?v=-w9f10ZdJMYcy5eTxPHRYVxr_mtqYF-BO7WdfPXDU6Y" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.mobile.min.css?v=G-WpoaPpGRYN2EYBEJSVG2y273Df5KNMEp5gsmj0qhs" />
+
+    <!--library font icomoon-->
+    <link rel="stylesheet" href="lib/icomoon/style.css?v=2EIOhFDJXMlwcub3OMcA5b7tav--bDDzKy4EKGvc-wE" />
+    <link rel="stylesheet" href="lib/icomoon/style-ui.css?v=lqyCkwkH4Gm4uYw-pFLeRzJslgb8ysrBbpEQREdtmL4" />
+
+    <!--site-->
+    <link rel="stylesheet" href="dist/css/site.min.css?v=JreJKWcri5J3yWUHNjPEN_sZjuLAyknFoo6yhHxUjC0" />
+
+    <!--module-->
+    <link href="lib/cropperjs/cropper.min.css" asp-append-version="true" rel="stylesheet" />
+    <style>
+        .btn-group {
+            margin-bottom: 5px;
+        }
+
+        .cropper-point.point-se {
+            width: 5px;
+            height: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        (function () {
+            var body = document.querySelector('body');
+            body.style.minHeight = document.documentElement.clientHeight + 'px';
+
+            window.addEventListener('resize', function () {
+                body.style.minHeight = document.documentElement.clientHeight + 'px';
+            });
+        })();
+    </script>
+
+    <div id="imageBox" style="position:fixed;top:5px;left:0;right:0;bottom:85px;z-index:1;">
+        <div class="ondrop-box ondrop-image" style="width:100%;height:100%;">
+            <div class="ondrop-here" style="width:100%;height:100%;position:relative;">
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+                    <img id="img-cropper" src="images/HinhBaiHoc1.png" style="max-width:100%;max-height:100%;min-width:180px;width:auto;height:auto;animation: all 2 ease;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="actionBox" style="position:fixed;bottom:0;left:0;right:0;z-index:2;">
+        <div class="text-center">
+            <div class="btn-group">
+                <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+                    <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
+                    <span class="iconmoon iconmoon-import"></span>
+                </label>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                    <span class="iconmoon iconmoon-RotateLeft"></span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                    <span class="iconmoon iconmoon-RotateRight"></span>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="scaleX" title="Flip Horizontal">
+                    <span class="iconmoon iconmoon-FlipVertical"></span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="scaleY" title="Flip Vertical">
+                    <span class="iconmoon iconmoon-FlipHorizontal"></span>
+                </button>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
+                    <span class="iconmoon iconmoon-Move"></span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
+                    <span class="fa fa-crop"></span>
+                </button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="crop" title="Apply">
+                    <span class="iconmoon iconmoon-LightCheck"></span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
+                    <span class="iconmoon iconmoon-loading"></span>
+                </button>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="1.7777777777777777" title="Ratio 16:9">
+                    <span>16:9</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="1.5" title="Ratio 3:2">
+                    <span>3:2</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="1.3333333333333333" title="Ratio 4:3">
+                    <span>4:3</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="1" title="Ratio 1:1">
+                    <span>1:1</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="0.75" title="Ratio 3:4">
+                    <span>3:4</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="0.6666666666666666" title="Ratio 2:3">
+                    <span>2:3</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="0.5625" title="Ratio 6:19">
+                    <span>9:16</span>
+                </button>
+                <button type="button" class="btn btn-info" data-method="aspectRatio" data-option="NaN" title="Ratio free">
+                    <span>Free</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--library default-->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4"></script>
+    <script type="text/javascript" src="lib/bootstrap.v3.3.7/dist/js/bootstrap.min.js?v=NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z_WQ"></script>
+
+    <!--library kendoui-->
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/kendo.all.min.js?v=6orvZm9ksAjHavGnKP6spITdmxbTUNPilImpIFPvr2o"></script>
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/cultures/kendo.culture.vi-VN.min.js?v=oCPoaPBqbnxt6CvDRpIZk8zjRDHaFi-Zd0fvrEQT-g8"></script>
+
+    <!--site js-->
+    <script type="text/javascript" src="dist/js/site.min.js?v=WxsNDRtCDqEFSbu3LYVhi5xUFO9D6bF88L57zgxItLM"></script>
+
+    <!--module-->
+    <script src="lib/cropperjs/cropper.min.js" asp-append-version="true"></script>
+    <!-- <script src="dist/js/editor.image.cropper.min.js" asp-append-version="true"></script> -->
+    <script src="lib/cropperjs/main.js"></script>
+    <script src="js/iframe/editor-image.js"></script>
+</body>
+
+</html>

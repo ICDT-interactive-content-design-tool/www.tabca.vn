@@ -1,0 +1,38 @@
+.popup-media-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.popup-media-viewer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.popup-media-viewer .btn-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border-radius: 4px;
+    line-height: 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 1px -1px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.popup-media-viewer .btn-close:hover {
+    background-color: #eb445a;
+}
+
+.popup-media-viewer .btn-close img {
+    width: 32px;
+    height: 32px;
+}

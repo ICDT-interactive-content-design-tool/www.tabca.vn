@@ -1,0 +1,8 @@
+<svg width="9" height="9" viewBox="0 0 9 9"
+    xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_1995_2618)">
+        <path d="M9 1H5C2.79 1 1 2.79 1 5V9H0V5C0 2.239 2.239 0 5 0H9V1Z" />
+        <line x1="4.65428" y1="7.8814" x2="8.26643" y2="4.42418" stroke="black"/>
+        <line x1="6.64645" y1="5.76774" x2="5.23223" y2="4.35352" stroke="black"/>
+    </g>
+</svg>

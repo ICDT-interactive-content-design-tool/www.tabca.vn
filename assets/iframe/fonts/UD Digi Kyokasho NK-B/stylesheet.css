@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'UDDigiKyokashoN-B';
+    src: local('UD Digi Kyokasho N-B'), local('UDDigiKyokashoN-B'),
+        url('UDDigiKyokashoN-B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UDDigiKyokashoNK-B';
+    src: local('UD Digi Kyokasho NK-B'), local('UDDigiKyokashoNK-B'),
+        url('UDDigiKyokashoNK-B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UDDigiKyokashoNP-B';
+    src: local('UD Digi Kyokasho NP-B'), local('UDDigiKyokashoNP-B'),
+        url('UDDigiKyokashoNP-B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UD Digi Kyokasho N-B';
+    src: local('UD Digi Kyokasho N-B'), local('UDDigiKyokashoN-B'),
+        url('UDDigiKyokashoN-B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UD Digi Kyokasho NK-B';
+    src: local('UD Digi Kyokasho NK-B'), local('UDDigiKyokashoNK-B'),
+        url('UDDigiKyokashoNK-B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UD Digi Kyokasho NP-B';
+    src: local('UD Digi Kyokasho NP-B'), local('UDDigiKyokashoNP-B'),
+        url('UDDigiKyokashoNP-B.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

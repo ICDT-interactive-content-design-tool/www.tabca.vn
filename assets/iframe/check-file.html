@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title>CheckFile</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <style>
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            object-fit: contain;
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            margin: 0;
+        }
+
+        video,
+        audio {
+            width: 100%;
+            display: block;
+            margin: auto;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', function () {
+
+            function getParamUrl(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || ["", ""])[1].replace(/\+/g, '%20')) || null;
+            }
+
+            var url = getParamUrl('url'),
+                type = getParamUrl('type');
+
+            switch (type) {
+                case '901':
+                case 'image': {
+                    window.document.body.outerHTML = `<img src="${url}"/>`;
+                    break;
+                }
+                case '902':
+                case 'audio': {
+                    window.document.body.outerHTML = `<audio src="${url}" controls></audio>`;
+                    break;
+                }
+                case '903':
+                case 'video': {
+                    window.document.body.outerHTML = `<video src="${url}" controls></video>`;
+                    break;
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

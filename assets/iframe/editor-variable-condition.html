@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Editor variable condition</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <!--fonts-->
+    <link rel="stylesheet" href="fonts/SegoeUI/stylesheet.css?v=HPK2_RwM9Q14JuQPJ5bJ-cSSTg9aYRP4yw0vUPT_5iw" />
+
+    <link rel="stylesheet" href="lib/bootstrap.v3.3.7/dist/css/bootstrap.min.css?v=Wj2MBXhUhdNu5clNRoHlsdnkuUxb6LW9ew8xaP_xvZo" />
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw" />
+
+    <!--library kendoui-->
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.common-bootstrap.min.css?v=BMHtfZwaKdutzzbCqWCvYtaedSdpv4ZvcxruqWXiBjg" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.min.css?v=-w9f10ZdJMYcy5eTxPHRYVxr_mtqYF-BO7WdfPXDU6Y" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.mobile.min.css?v=G-WpoaPpGRYN2EYBEJSVG2y273Df5KNMEp5gsmj0qhs" />
+
+    <!--library font icomoon-->
+    <link rel="stylesheet" href="lib/icomoon/style.css?v=2EIOhFDJXMlwcub3OMcA5b7tav--bDDzKy4EKGvc-wE" />
+    <link rel="stylesheet" href="lib/icomoon/style-ui.css?v=lqyCkwkH4Gm4uYw-pFLeRzJslgb8ysrBbpEQREdtmL4" />
+
+    <!--site-->
+    <link rel="stylesheet" href="dist/css/site.min.css?v=JreJKWcri5J3yWUHNjPEN_sZjuLAyknFoo6yhHxUjC0" />
+
+    <link rel="stylesheet" href="../css/svg.css?v=o-o318T0bRyw4t270bnhC_um2JgkFpmuBBhJiy1EgnU" />
+    <link rel="stylesheet" href="css/iframe/editor-variable-condition.css?v=o-o318T0bRyw4t270bnhC_um2JgkFpmuBBhJiy1EgnU" />
+
+    <style>
+        table > tbody > tr > td:first-child{
+            white-space: nowrap;
+        }
+    </style>
+
+    <script>
+        const ROOT_URL = "";
+    </script>
+</head>
+
+<body>
+    <script>
+        (function () {
+            var body = document.querySelector('body');
+            body.style.minHeight = document.documentElement.clientHeight + 'px';
+
+            window.addEventListener('resize', function () {
+                body.style.minHeight = document.documentElement.clientHeight + 'px';
+            });
+        })();
+    </script>
+
+    <div style="padding:15px">
+        <div class="alert alert-warning" style="padding-left:52px;position:relative;">
+            <div style="position:absolute;left:10px;top:10px;line-height: 0;"><i class="iconmoon iconmoon-information" style="font-size:30px;"></i></div>
+            <p>* Khi giá trị của biến thay đổi, điều kiện sẽ tự động được kích hoạt</p>
+            <p>* Nắm vào số thứ tự công thức và kéo để xắp xếp lại thứ tự kích hoạt</p>
+            <p>* Với loại biến ký tự, nội dung không phân biệt chữ Hoa - chữ Thường, phần công thức có thể đặt nhiều
+                "Giá trị" ngăn cách bởi dấu ; (chấm phẩm)</p>
+        </div>
+        <div class="condition-data">
+            <div class="container-fluid" style="margin-bottom:10px;">
+                <div class="row text-center" style="background-color:#999;color:#fff;font-weight:600;">
+                    <div class="col-xs-4" style="background-color:#5864ab;padding:5px 0;">NẾU</div>
+                    <div class="col-xs-4" style="background-color:#617fbd;padding:5px 0;border: 1px solid #fff;border-width: 0 1px;">THÌ
+                    </div>
+                    <div class="col-xs-4" style="background-color:#b9a94e;padding:5px 0;">NGƯỢC LẠI</div>
+                </div>
+            </div>
+            <ul id="sortable" class="condition-container ui-sortable"></ul>
+        </div>
+        <div class="condition-template d-none hidden hide">
+            <ul>
+                <li class="condition-box ui-state-default">
+                    <div class="condition-info">
+                        <div class="btn-menu-condition-box text-center">
+                            <button class="btn btn-xs btn-menu-condition" data-toggle="dropdown">
+                                <i class="iconmoon iconmoon-MenuThemHanhDong"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-item">
+                                    <a href="#" class="btn-copy-condition">Nhân đôi</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#" class="btn-insert-condition">Chèn chèn công thức</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-item">
+                                    <a href="#" class="btn-delete-condition">Xóa</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="btn-expand-condition-box text-center">
+                            <button class="btn btn-xs btn-expand-condition collapse-btn collapsed" data-toggle="collapse" href="#collapseExample">
+                                <i data-collapsed="true" class="iconmoon iconmoon-Down1"></i>
+                                <i data-collapsed="false" class="iconmoon iconmoon-Up1"></i>
+                            </button>
+                        </div>
+                        <span class="stt" style="display:inline-block;min-width:24px;text-align:right;color:#a78028;font-weight:600;">0</span>.<span class="name" style="margin-left:10px;"></span>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                        <div class="condition-content">
+                            <div class="condition-sub-box" type="if">
+                                <div class="btn-add-condition-sub-box">
+                                    <button class="btn btn-xs btn-default btn-add-condition-sub"><i class="iconmoon iconmoon-Plus"></i> Thêm điều kiện</button>
+                                </div>
+                                <div class="condition-sub-content">
+                                    <div class="btn-delete-condition-sub-box text-center">
+                                        <button class="btn btn-xs btn-delete-condition-sub"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    <table class="table table-borderless">
+                                        <colgroup>
+                                            <col width="24%" />
+                                            <col />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td>Loại</td>
+                                                <td>
+                                                    <div class="v-if-type"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable">
+                                                <td>Biến</td>
+                                                <td>
+                                                    <div class="v-if-variable"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variables">
+                                                <td>Biến</td>
+                                                <td>
+                                                    <div class="v-if-variables"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable,variables">
+                                                <td>Công thức</td>
+                                                <td>
+                                                    <div class="v-if-condition"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable,variables">
+                                                <td>Giá trị</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6" style="margin-bottom: 5px;">
+                                                            <div class="v-if-valuetype"></div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <div class="v-if-value"></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="condition-sub-box" type="then">
+                                <div class="btn-add-condition-sub-box">
+                                    <button class="btn btn-xs btn-default btn-add-condition-sub"><i class="iconmoon iconmoon-Plus"></i> Thêm công việc</button>
+                                </div>
+                                <div class="condition-sub-content">
+                                    <div class="btn-delete-condition-sub-box text-center">
+                                        <button class="btn btn-xs btn-delete-condition-sub"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    <table class="table table-borderless">
+                                        <colgroup>
+                                            <col width="24%" />
+                                            <col />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td>Loại</td>
+                                                <td>
+                                                    <div class="v-then-type"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable">
+                                                <td>Biến</td>
+                                                <td>
+                                                    <div class="v-then-variable"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variables">
+                                                <td>Biến</td>
+                                                <td>
+                                                    <div class="v-then-variables"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable,variables">
+                                                <td>Công thức</td>
+                                                <td>
+                                                    <div class="v-then-operator"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable,variables">
+                                                <td>Giá trị</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6" style="margin-bottom: 5px;">
+                                                            <div class="v-then-valuetype"></div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <div class="v-then-valueformula"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="v-then-value"></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr for="slide,node">
+                                                <td>Trang</td>
+                                                <td>
+                                                    <div class="v-then-slide"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="node">
+                                                <td>Đối tượng</td>
+                                                <td>
+                                                    <div class="v-then-node"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="condition-sub-box" type="else">
+                                <div class="btn-add-condition-sub-box">
+                                    <button class="btn btn-xs btn-default btn-add-condition-sub"><i class="iconmoon iconmoon-Plus"></i> Thêm công việc</button>
+                                </div>
+                                <div class="condition-sub-content">
+                                    <div class="btn-delete-condition-sub-box text-center">
+                                        <button class="btn btn-xs btn-delete-condition-sub"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    <table class="table table-borderless">
+                                        <colgroup>
+                                            <col width="24%" />
+                                            <col />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td>Loại</td>
+                                                <td>
+                                                    <div class="v-else-type"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable">
+                                                <td>Biến</td>
+                                                <td>
+                                                    <div class="v-else-variable"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variables">
+                                                <td>Biến</td>
+                                                <td>
+                                                    <div class="v-else-variables"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable,variables">
+                                                <td>Công thức</td>
+                                                <td>
+                                                    <div class="v-else-operator"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="variable,variables">
+                                                <td>Giá trị</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-md-6" style="margin-bottom: 5px;">
+                                                            <div class="v-else-valuetype"></div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-6">
+                                                            <div class="v-else-valueformula"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="v-else-value"></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr for="slide,node">
+                                                <td>Trang</td>
+                                                <td>
+                                                    <div class="v-else-slide"></div>
+                                                </td>
+                                            </tr>
+                                            <tr for="node">
+                                                <td>Đối tượng</td>
+                                                <td>
+                                                    <div class="v-else-node"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-xs btn-default btn-add-condition"><i class="iconmoon iconmoon-Plus"></i> Thêm công
+                thức</button>
+        </div>
+    </div>
+
+    <!--library default-->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4"></script>
+    <script type="text/javascript" src="lib/bootstrap.v3.3.7/dist/js/bootstrap.min.js?v=NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z_WQ"></script>
+
+    <!--library kendoui-->
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/kendo.all.min.js?v=6orvZm9ksAjHavGnKP6spITdmxbTUNPilImpIFPvr2o"></script>
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/cultures/kendo.culture.vi-VN.min.js?v=oCPoaPBqbnxt6CvDRpIZk8zjRDHaFi-Zd0fvrEQT-g8"></script>
+
+    <!--site js-->
+    <script type="text/javascript" src="dist/js/site.min.js?v=WxsNDRtCDqEFSbu3LYVhi5xUFO9D6bF88L57zgxItLM"></script>
+
+    <script src="lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="js/board/fn/support-function.js"></script>
+    <script src="js/board/svg/svg-node-info.js"></script>
+    <script src="js/board/svg/svg-node-index.js"></script>
+    <script>
+        $(function () {
+            $(function () {
+                $("#sortable").sortable({
+                    placeholder: "ui-state-highlight",
+                    handle: '.condition-info',
+                    //over: function (event, ui) {
+                    //    $('.condition-data .condition-content').slideUp();
+                    //},
+                    //start: function (event, ui) {
+                    //    console.log(ui);
+                    //    ui.item.find('.condition-info').css('cursor', 'grab');
+                    //},
+                    //stop: function (event, ui) {
+                    //    $('.condition-data .condition-content').slideDown();
+                    //},
+                });
+                $("#sortable").disableSelection();
+            });
+        });
+    </script>
+    <script>
+        var ParentViewerId = null,
+            EditorContent = null;
+
+        function setParentViewerId(id) {
+            ParentViewerId = id;
+        }
+    </script>
+    <script src="js/iframe/editor-variable-condition.js?v=tXfkuo3xUAPuwiY3IOaLFvOoiDeqyyK_xmVBX-1ONcI"></script>
+</body>
+
+</html>

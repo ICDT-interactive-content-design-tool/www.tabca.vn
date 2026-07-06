@@ -1,0 +1,6 @@
+{
+    "shema_html": "{{'translateKey'|translate}}",
+    "shema_ts": "(translateService: TranslateService) => { translate.stream('translateKey').subscribe((text: string) => { });}",
+    "translateKey": "translateValue",
+    "sort": "https://codeshack.io/json-sorter/"
+}

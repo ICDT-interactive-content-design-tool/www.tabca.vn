@@ -1,0 +1,218 @@
+[
+    {
+        "title": "Thao tác nhanh",
+        "contents": [
+            {
+                "title": "Di chuyển màn hình",
+                "keyboards": [
+                    "Space",
+                    "Drag"
+                ],
+                "highlight": true
+            },
+            {
+                "title": "Thu phóng màn hình",
+                "keyboards": [
+                    "Ctrl",
+                    "Scroll"
+                ]
+            },
+            {
+                "title": "Khung vừa với màn hình",
+                "keyboards": [
+                    "Shift",
+                    "1"
+                ]
+            },
+            {
+                "title": "Chọn tất cả đối tượng",
+                "keyboards": [
+                    "Ctrl",
+                    "A"
+                ]
+            },
+            {
+                "title": "Chọn nhiều đối tượng",
+                "keyboards": [
+                    "Shift",
+                    "Click"
+                ]
+            },
+            {
+                "title": "Di chuyển cố định ngang/dọc",
+                "keyboards": [
+                    "Shift",
+                    "Move"
+                ]
+            },
+            {
+                "title": "Thay đổi kích thước giữ tỷ lệ",
+                "keyboards": [
+                    "Shift",
+                    "Resize"
+                ]
+            },
+            {
+                "title": "Thay đổi kích thước giữ trọng tâm",
+                "keyboards": [
+                    "Alt",
+                    "Resize"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Phím tắt cơ bản",
+        "contents": [
+            {
+                "title": "Chọn tất cả",
+                "keyboards": [
+                    "Ctrl",
+                    "A"
+                ]
+            },
+            {
+                "title": "Sao chép",
+                "keyboards": [
+                    "Ctrl",
+                    "C"
+                ],
+                "highlight": true
+            },
+            {
+                "title": "Dán",
+                "keyboards": [
+                    "Ctrl",
+                    "V"
+                ],
+                "highlight": true
+            },
+            {
+                "title": "Dán (giữ nguyên vị trí)",
+                "keyboards": [
+                    "Ctrl",
+                    "Shift",
+                    "V"
+                ]
+            },
+            {
+                "title": "Xóa",
+                "keyboards": [
+                    "Del"
+                ]
+            },
+            {
+                "title": "Đặt lên trên",
+                "keyboards": [
+                    "Ctrl",
+                    "]"
+                ]
+            },
+            {
+                "title": "Đặt xuống dưới",
+                "keyboards": [
+                    "Ctrl",
+                    "["
+                ]
+            },
+            {
+                "title": "Đặt lên trên cùng",
+                "keyboards": [
+                    "Ctrl",
+                    "Shift",
+                    "]"
+                ]
+            },
+            {
+                "title": "Đặt xuống dưới cùng",
+                "keyboards": [
+                    "Ctrl",
+                    "Shift",
+                    "["
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Thu phóng",
+        "contents": [
+            {
+                "title": "Vừa với màn hình",
+                "keyboards": [
+                    "Shift",
+                    "1"
+                ],
+                "highlight": true
+            },
+            {
+                "title": "Phóng to",
+                "keyboards": [
+                    "Ctrl",
+                    "+"
+                ]
+            },
+            {
+                "title": "Thu nhỏ",
+                "keyboards": [
+                    "Ctrl",
+                    "-"
+                ]
+            },
+            {
+                "title": "Khôi phục mặc định 100%",
+                "keyboards": [
+                    "Ctrl",
+                    "0"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Bài giảng",
+        "contents": [
+            {
+                "title": "Bài giảng mới",
+                "keyboards": [
+                    "Ctrl",
+                    "N"
+                ]
+            },
+            {
+                "title": "Lưu dữ liệu",
+                "keyboards": [
+                    "Ctrl",
+                    "S"
+                ]
+            },
+            {
+                "title": "Lưu thành bản sao",
+                "keyboards": [
+                    "Ctrl",
+                    "Shift",
+                    "S"
+                ]
+            },
+            {
+                "title": "Mở kho bài giảng",
+                "keyboards": [
+                    "Ctrl",
+                    "O"
+                ]
+            },
+            {
+                "title": "Mở thông tin bài giảng",
+                "keyboards": [
+                    "Ctrl",
+                    "I"
+                ]
+            },
+            {
+                "title": "Mở thiết lập nâng cao",
+                "keyboards": [
+                    "Ctrl",
+                    "Y"
+                ]
+            }
+        ]
+    }
+]

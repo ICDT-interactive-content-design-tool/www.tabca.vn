@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Video player with subtitles - Copyright 2019 by ntkien</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--end favicon-->
+    <!--videojs-->
+    <link href="video-js.css" rel="stylesheet">
+    <!--css-->
+    <link href="player.css" rel="stylesheet" />
+    <style>
+        .video-js {
+            width: 100%;
+            height: 100%;
+        }
+
+            .video-js .vjs-big-play-button {
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            .video-js .vjs-text-track-display > div > div > div {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+        .rowcontent {
+            font-family: 'Segoe UI';
+        }
+
+            .rowcontent.active {
+                background-color: #ddd;
+            }
+    </style>
+
+    <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+    <script src="videojs-ie8.js"></script>
+    <script src='video.js'></script>
+    <script src='player.js'></script>
+    <script>
+        let getParamUrl = function (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || ["", ""])[1].replace(/\+/g, '%20')) || null;
+        };
+
+        if (!getParamUrl('demo')) {
+            location.search = '?demo=1';
+        }
+    </script>
+</head>
+<body>
+    <div id="player" style="position:fixed;top:0;left:0;right:0;bottom:0;visibility:hidden;">
+        <div id="videobox" style="width:100%;position:absolute;top:0;left:0;bottom:0;animation:width 0.3 ease;">
+            <video id="videoid" crossorigin="Anonymous" style="background:transparent;"></video>
+        </div>
+        <div id="trackbox" style="width:0%;position:absolute;top:0;right:0;bottom:0;animation:width 0.3 ease;box-sizing:border-box;background-color:#fafafa;display:none;">
+            <div id="trackid" style="max-height:100%;box-sizing:border-box;overflow:auto;"></div>
+        </div>
+    </div>
+</body>
+</html>

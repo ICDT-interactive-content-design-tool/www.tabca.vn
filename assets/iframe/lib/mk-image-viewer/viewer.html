@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Image</title>
+    <style>
+        body{background-color: #fff;}
+        #box-image1 { background-position: center center; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC); }
+    </style>
+</head>
+<body>
+
+    <div style="position:fixed;top:0;left:0;right:0;bottom:0;">
+        <div style="display:table;width:100%;height:100%;">
+            <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;" id="box-image">
+                <img />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            var imgSrc = decodeURIComponent((new RegExp('[?|&]url=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || ["", ""])[1].replace(/\+/g, '%20')) || null;
+            if (!imgSrc) {
+                return;
+            }
+
+            //box
+            var img = document.querySelector('img');
+
+            var fixSize = function () {
+                let window_w = window.innerWidth,
+                    window_h = window.innerHeight,
+                    img_w = img.naturalWidth,
+                    img_h = img.naturalHeight;
+
+                if (window_w / window_h > img_w / img_h) {
+                    img.style.maxWidth = 'none';
+                    img.style.maxHeight = window_h + 'px';
+                }
+                else {
+                    img.style.maxWidth = window_w + 'px';
+                    img.style.maxHeight = 'none';
+                }
+            };
+
+            img.onload = function () {
+                fixSize();
+            };
+            img.src = imgSrc;
+
+            window.addEventListener('resize', function () {
+                fixSize();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Editor variable</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <!--fonts-->
+    <link rel="stylesheet" href="fonts/SegoeUI/stylesheet.css?v=HPK2_RwM9Q14JuQPJ5bJ-cSSTg9aYRP4yw0vUPT_5iw" />
+
+    <link rel="stylesheet"
+        href="lib/bootstrap.v3.3.7/dist/css/bootstrap.min.css?v=Wj2MBXhUhdNu5clNRoHlsdnkuUxb6LW9ew8xaP_xvZo" />
+    <link rel="stylesheet"
+        href="lib/font-awesome-4.7.0/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw" />
+
+    <!--library kendoui-->
+    <link rel="stylesheet"
+        href="lib/kendoui.2022.1.301/styles/kendo.common-bootstrap.min.css?v=BMHtfZwaKdutzzbCqWCvYtaedSdpv4ZvcxruqWXiBjg" />
+    <link rel="stylesheet"
+        href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.min.css?v=-w9f10ZdJMYcy5eTxPHRYVxr_mtqYF-BO7WdfPXDU6Y" />
+    <link rel="stylesheet"
+        href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.mobile.min.css?v=G-WpoaPpGRYN2EYBEJSVG2y273Df5KNMEp5gsmj0qhs" />
+
+    <!--library font icomoon-->
+    <link rel="stylesheet" href="lib/icomoon/style.css?v=2EIOhFDJXMlwcub3OMcA5b7tav--bDDzKy4EKGvc-wE" />
+    <link rel="stylesheet" href="lib/icomoon/style-ui.css?v=lqyCkwkH4Gm4uYw-pFLeRzJslgb8ysrBbpEQREdtmL4" />
+
+    <!--site-->
+    <link rel="stylesheet" href="dist/css/site.min.css?v=JreJKWcri5J3yWUHNjPEN_sZjuLAyknFoo6yhHxUjC0" />
+
+    <link rel="stylesheet" href="css/iframe/editor-variable.css?v=o-o318T0bRyw4t270bnhC_um2JgkFpmuBBhJiy1EgnU" />
+</head>
+
+<body>
+    <script>
+        (function () {
+            var body = document.querySelector('body');
+            body.style.minHeight = document.documentElement.clientHeight + 'px';
+
+            window.addEventListener('resize', function () {
+                body.style.minHeight = document.documentElement.clientHeight + 'px';
+            });
+        })();
+    </script>
+
+    <div style="padding:15px;">
+        <h4 style="margin-top:0;">
+            <span style="display:inline-block;border-bottom:2px solid #7b92fe;padding-right:34px;padding-bottom:2px;">
+                <span>Biến của Hệ thống</span>
+            </span>
+        </h4>
+        <table class="table table-hover table-data table-data-system">
+            <colgroup>
+                <col width="5%" />
+                <col width="25%" />
+                <col width="20%" />
+                <col width="30%" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align:center;">#</th>
+                    <th>Tên biến</th>
+                    <th>Kiểu dữ liệu</th>
+                    <th>Giá trị ban đầu</th>
+                    <th>Mô tả</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h4 style="margin-top:0;">
+            <span style="display:inline-block;border-bottom:2px solid #7b92fe;padding-right:34px;padding-bottom:2px;">
+                <span>Biến của Bạn</span>
+            </span>
+        </h4>
+        <table class="table table-hover table-data table-data-custom">
+            <colgroup>
+                <col width="5%" />
+                <col width="25%" />
+                <col width="20%" />
+                <col width="30%" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th style="text-align:center;">#</th>
+                    <th>Tên biến</th>
+                    <th>Kiểu dữ liệu</th>
+                    <th>Giá trị ban đầu</th>
+                    <th>Mô tả</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <table class="table table-template" style="display:none;">
+            <tbody>
+                <tr>
+                    <td style="vertical-align:middle;text-align:right;">
+                        <span class="v-stt"></span>
+                    </td>
+                    <td>
+                        <input type="hidden" class="form-control v-id" />
+                        <input type="text" class="form-control v-key" placeholder="Tên biến" />
+                    </td>
+                    <td>
+                        <select class="form-control v-type">
+                            <option value="string" selected>Ký tự</option>
+                            <option value="number">Số</option>
+                            <option value="boolean">Đúng sai</option>
+                            <option value="audio-src">Dữ liệu ghi âm</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control v-value" placeholder="Giá trị ban đầu" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control v-note" placeholder="Mô tả" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button class="btn btn-xs btn-link btn-add">Thêm biến</button>
+        </div>
+    </div>
+
+    <!--library default-->
+    <script type="text/javascript"
+        src="lib/jquery/dist/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4"></script>
+    <script type="text/javascript"
+        src="lib/bootstrap.v3.3.7/dist/js/bootstrap.min.js?v=NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z_WQ"></script>
+
+    <!--library kendoui-->
+    <script type="text/javascript"
+        src="lib/kendoui.2022.1.301/js/kendo.all.min.js?v=6orvZm9ksAjHavGnKP6spITdmxbTUNPilImpIFPvr2o"></script>
+    <script type="text/javascript"
+        src="lib/kendoui.2022.1.301/js/cultures/kendo.culture.vi-VN.min.js?v=oCPoaPBqbnxt6CvDRpIZk8zjRDHaFi-Zd0fvrEQT-g8"></script>
+
+    <!--site js-->
+    <script type="text/javascript" src="dist/js/site.min.js?v=WxsNDRtCDqEFSbu3LYVhi5xUFO9D6bF88L57zgxItLM"></script>
+
+    <script>
+        window.addEventListener('load', function () {
+            $(document).on('change', 'table.table-data-custom tbody tr td input.v-key', function () {
+                var randomId = Math.floor(Math.random() * 999999);
+                this.setAttribute('session', randomId);
+
+                $(this).val($(this).val().replace(/[^a-zA-Z0-9_]/gm, ''));
+
+                var key = $(this).val();
+                if (key != '') {
+                    if ($(`table.table-data tbody tr td input.v-key:not([session="${randomId}"])`).map(function (i, m) { return $(m).val(); }).get().filter(function (f) { return f == key; }).length) {
+                        alert('Từ khóa đã tồn tại');
+                        $(this).val(null);
+                    }
+                }
+            });
+
+            $('.btn-add').click(function () {
+                $('table.table-template tbody tr').clone().appendTo($('table.table-data-custom tbody'));
+            });
+        });
+    </script>
+    <script>
+        var ParentViewerId = null,
+            EditorContent = null;
+
+        function setParentViewerId(id) {
+            ParentViewerId = id;
+        }
+
+        function saveClick() {
+            parent.$('#' + ParentViewerId).parents('.editor-iframe-box').find('.btn-save').click();
+        }
+
+        function valueEditor(data) {
+
+            if (data != undefined) {
+
+                //he thong
+                data.filter(function (f) { return f.system; })
+                    .forEach(function (item, idx) {
+                        var newItem = $('table.table-template tbody tr').clone().appendTo($('table.table-data-system tbody'));
+
+                        var isreadonly = item.readonly ? true : false;
+                        var issystem = item.system ? true : false;
+
+                        newItem.find('td .v-stt').text(idx + 1);
+                        newItem.find('td .v-id').val(item.id || null);
+                        newItem.find('td .v-key').val(item.key || '').prop('readonly', isreadonly).prop('disabled', isreadonly);
+                        newItem.find('td .v-value').val(item.value ?? null).prop('readonly', isreadonly).prop('disabled', isreadonly);
+                        newItem.find('td .v-type').val(item.type || null).prop('readonly', isreadonly || issystem).prop('disabled', isreadonly || issystem);
+                        newItem.find('td .v-note').val(item.note || null).prop('readonly', isreadonly).prop('disabled', isreadonly);
+
+                        newItem.find('td .v-key').val(item.key || '').data('readonly', isreadonly);
+                        newItem.find('td .v-key').val(item.key || '').data('system', issystem);
+
+                        //
+                        switch (item.type) {
+                            case 'number': {
+                                newItem.find('td .v-value').attr('type', 'number');
+                                newItem.find('td .v-value').val(formatData(item.value, item.type));
+                                break;
+                            }
+                            case 'string': {
+                                newItem.find('td .v-value').attr('type', 'text');
+                                newItem.find('td .v-value').val(formatData(item.value, item.type));
+                                break;
+                            }
+                            case 'boolean': {
+                                newItem.find('td .v-value').attr('type', 'checkbox');
+                                newItem.find('td .v-value').prop('checked', formatData(item.value, item.type));
+                                break;
+                            }
+                        }
+                    });
+
+                //nguoi dung dinh nghia
+                data.filter(function (f) { return !f.system; })
+                    .forEach(function (item, idx) {
+                        var newItem = $('table.table-template tbody tr').clone().appendTo($('table.table-data-custom tbody'));
+
+                        var isreadonly = item.readonly ? true : false;
+                        var issystem = item.system ? true : false;
+
+                        newItem.find('td .v-stt').text(idx + 1);
+                        newItem.find('td .v-id').val(item.id || null);
+                        newItem.find('td .v-key').val(item.key || '').prop('readonly', isreadonly).prop('disabled', isreadonly);
+                        newItem.find('td .v-value').val(item.value ?? null).prop('readonly', isreadonly).prop('disabled', isreadonly);
+                        newItem.find('td .v-type').val(item.type || null).prop('readonly', isreadonly || issystem).prop('disabled', isreadonly || issystem);
+                        newItem.find('td .v-note').val(item.note || null).prop('readonly', isreadonly).prop('disabled', isreadonly);
+
+                        newItem.find('td .v-key').val(item.key || '').data('readonly', isreadonly);
+                        newItem.find('td .v-key').val(item.key || '').data('system', issystem);
+
+                        //
+                        switch (item.type) {
+                            case 'number': {
+                                newItem.find('td .v-value').show();
+                                newItem.find('td .v-value').attr('type', 'number');
+                                newItem.find('td .v-value').val(formatData(item.value, item.type));
+                                break;
+                            }
+                            case 'string': {
+                                newItem.find('td .v-value').show();
+                                newItem.find('td .v-value').attr('type', 'text');
+                                newItem.find('td .v-value').val(formatData(item.value, item.type));
+                                break;
+                            }
+                            case 'boolean': {
+                                newItem.find('td .v-value').show();
+                                newItem.find('td .v-value').attr('type', 'checkbox');
+                                newItem.find('td .v-value').prop('checked', formatData(item.value, item.type));
+                                break;
+                            }
+                            case 'audio-src': {
+                                newItem.find('td .v-value').hide();
+                                newItem.find('td .v-value').attr('type', 'text');
+                                newItem.find('td .v-value').prop('text', null);
+                                break;
+                            }
+                        }
+                    });
+            }
+            else {
+                data = $('table.table-data tbody tr').map(function (m) {
+                    var id, key, value, type, note, readonly, system;
+
+                    id = $(this).find('td .v-id').val() || Math.floor(Math.random() * 999999999);
+                    key = $(this).find('td .v-key').val().replace(/[^a-zA-Z0-9_]/gm, '');
+                    //value = $(this).find('td .v-value').val() || null;
+                    type = $(this).find('td .v-type').val() || null;
+                    note = $(this).find('td .v-note').val() || null;
+
+                    readonly = $(this).find('td input.v-key').data('readonly');
+                    system = $(this).find('td input.v-key').data('system');
+
+                    switch (type) {
+                        case 'number': {
+                            value = formatData($(this).find('td .v-value').val(), type);
+                            break;
+                        }
+                        case 'string': {
+                            value = formatData($(this).find('td .v-value').val(), type);
+                            break;
+                        }
+                        case 'boolean': {
+                            value = formatData($(this).find('td .v-value').prop('checked'), type);
+                            break;
+                        }
+                        case 'audio-src': {
+                            value = null;
+                            break;
+                        }
+                    }
+
+                    if (readonly && system) {
+                        return { key, value, type, note, readonly, system };
+                    }
+                    else if (readonly) {
+                        return { key, value, type, note, readonly };
+                    }
+                    else if (system) {
+                        return { key, value, type, note, system };
+                    }
+
+                    return { key, value, type, note };
+
+                }).get().filter(function (f) { return f.key ? true : false; });
+
+                if (window.location.hostname === 'localhost') {
+                    console.log('valueEditor', JSON.stringify(data, null, 2));
+                }
+
+                return data;
+            }
+        }
+
+        window.addEventListener('load', function () {
+            $(document).on('change', 'select.v-type', function () {
+                var valueType = this.value;
+
+                var thisInput = $(this).parents('tr').find('input.v-value'),
+                    thisInputValue = null;
+
+                switch (thisInput.attr('type')) {
+                    case 'number': {
+                        thisInputValue = thisInput.val();
+                        break;
+                    }
+                    case 'text': {
+                        thisInputValue = thisInput.val();
+                        break;
+                    }
+                    case 'checkbox': {
+                        thisInputValue = thisInput.prop('checked');
+                        break;
+                    }
+                }
+
+                switch (valueType) {
+                    case 'number': {
+                        thisInput.show();
+                        thisInput.attr('type', 'number');
+                        thisInput.val(formatData(thisInputValue, valueType));
+                        break;
+                    }
+                    case 'string': {
+                        thisInput.show();
+                        thisInput.attr('type', 'text');
+                        thisInput.val(formatData(thisInputValue, valueType));
+                        break;
+                    }
+                    case 'boolean': {
+                        thisInput.show();
+                        thisInput.attr('type', 'checkbox');
+                        thisInput.prop('checked', formatData(thisInputValue, valueType));
+                        break;
+                    }
+                    case 'audio-src': {
+                        thisInput.hide();
+                        thisInput.attr('type', 'checkbox');
+                        thisInput.prop('text', null);
+                        break;
+                    }
+                }
+            });
+        });
+
+        function formatData(data, type) {
+            switch (type) {
+                case 'number': {
+                    if (typeof data == "boolean") {
+                        return data ? 1 : 0;
+                    }
+                    else if (typeof data == "string") {
+                        return data.replace(/[^0-9]+/gm, '');
+                    }
+                    else if (typeof data == "number") {
+                        return data;
+                    }
+                    return 0;
+                }
+                case 'string': {
+                    return (data ?? '').toString();
+                }
+                case 'boolean': {
+                    if (data == 1 || data == "1" || data === true || data == "true" || data == "True") {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

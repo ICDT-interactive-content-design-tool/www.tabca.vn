@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+	<head>
+		<title>OnlyOffice Viewer</title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="onlyoffice-viewer"></div>
+
+		<!-- <script src="https://ai.cloudservices.vn/web-apps/apps/api/documents/api.js"></script> -->
+		<script src="load.js"></script>
+		<script>
+			var docEditor = null;
+
+			function initializeViewer() {
+				var url = getParamByUrl('url');
+				if (url) {
+					docEditor = new DocsAPI.DocEditor('onlyoffice-viewer', {
+						type: 'embedded',
+						document: {
+							fileType: getParamByUrl('ext') || url.split('.').pop() || 'xlsx',
+							key: Math.floor(Math.random() * 999999999).toString(),
+							title: url.split('/').pop(),
+							url: url,
+							permissions: {
+								edit: false,
+								download: false,
+								print: false,
+							},
+						},
+						documentType: 'spreadsheet',
+						editorConfig: {
+							mode: 'embedded',
+							lang: 'vi',
+							region: 'VN',
+							customization: {
+								anonymous: {
+									request: false,
+								},
+								about: false,
+								chat: false,
+								comments: false,
+							},
+							embedded: {
+								toolbarDocked: 'top',
+							},
+						},
+						events: {
+							onDocumentReady: function () {
+								var page = getPageFromHash();
+								if (page && docEditor && docEditor.setPageNumber) {
+									docEditor.setPageNumber(page);
+								} else if (page && docEditor && docEditor.request) {
+									// fallback nếu có API request
+									try {
+										docEditor.request('setPage', [page]);
+									} catch (e) {}
+								}
+
+								console.log('Requested page:', page);
+							},
+						},
+					});
+				}
+			}
+
+			// Lắng nghe thay đổi hash để nhảy trang
+			window.addEventListener('hashchange', function () {
+				var page = getPageFromHash();
+				if (page && docEditor && docEditor.setPageNumber) {
+					docEditor.setPageNumber(page);
+				} else if (page && docEditor && docEditor.request) {
+					try {
+						docEditor.request('setPage', [page]);
+					} catch (e) {}
+				}
+
+				console.log('Hash changed, requested page:', page);
+			});
+
+			// Tải script API của OnlyOffice và khởi tạo viewer
+			loadApiScript()
+				.then(function () {
+					initializeViewer();
+				})
+				.catch(function (error) {
+					console.error('Error loading OnlyOffice API script:', error);
+				});
+		</script>
+	</body>
+</html>

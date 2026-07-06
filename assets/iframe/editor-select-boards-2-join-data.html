@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Editor SelectBoards2JoinData</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <!--fonts-->
+    <link rel="stylesheet" href="fonts/SegoeUI/stylesheet.css?v=HPK2_RwM9Q14JuQPJ5bJ-cSSTg9aYRP4yw0vUPT_5iw" />
+
+    <link rel="stylesheet" href="lib/bootstrap.v3.3.7/dist/css/bootstrap.min.css?v=Wj2MBXhUhdNu5clNRoHlsdnkuUxb6LW9ew8xaP_xvZo" />
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw" />
+
+    <!--library kendoui-->
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.common-bootstrap.min.css?v=BMHtfZwaKdutzzbCqWCvYtaedSdpv4ZvcxruqWXiBjg" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.min.css?v=-w9f10ZdJMYcy5eTxPHRYVxr_mtqYF-BO7WdfPXDU6Y" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.mobile.min.css?v=G-WpoaPpGRYN2EYBEJSVG2y273Df5KNMEp5gsmj0qhs" />
+
+    <!--library font icomoon-->
+    <link rel="stylesheet" href="lib/icomoon/style.css?v=2EIOhFDJXMlwcub3OMcA5b7tav--bDDzKy4EKGvc-wE" />
+    <link rel="stylesheet" href="lib/icomoon/style-ui.css?v=lqyCkwkH4Gm4uYw-pFLeRzJslgb8ysrBbpEQREdtmL4" />
+
+    <!--site-->
+    <link rel="stylesheet" href="dist/css/site.min.css?v=JreJKWcri5J3yWUHNjPEN_sZjuLAyknFoo6yhHxUjC0" />
+
+    <style>
+        .panel {
+            margin: 0;
+        }
+
+        .panel .panel-heading,
+        .panel .panel-body,
+        .panel .panel-footer {
+            padding: 5px 10px;
+        }
+
+        .panel .panel-body {
+            overflow: auto;
+        }
+
+        .panel .panel-footer {
+            text-align: right;
+        }
+
+        .media-item>.media-left {
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .media .media-icon {
+            position: relative;
+            display: inline-block;
+            width: 24px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .media .media-icon.media-icon-move {
+            cursor: move;
+        }
+
+        .media .media-idx {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            min-width: 16px;
+            padding: 1px 0;
+            text-align: center;
+            font-size: 12px;
+            background-color: #FFFF6D;
+        }
+
+        .media a {
+            color: blue;
+        }
+
+        .media .media {
+            border: 1px solid #eee;
+        }
+
+        .media .media .media-body .media-heading {
+            margin-top: 5px;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .media .media .media-body small {
+            display: inline-block;
+            padding: 0 5px;
+            border-radius: 4px;
+            background: #ddd;
+        }
+
+        .media-remove {
+            line-height: 0;
+            margin-right: 5px;
+            padding: 2px;
+            cursor: pointer;
+            visibility: hidden;
+        }
+
+        .media-remove i {
+            font-size: 12px;
+        }
+
+        .media-remove:hover i {
+            color: red;
+        }
+
+        .media:hover .media {
+            background-color: #eee;
+        }
+
+        .media .media:hover .media-remove {
+            visibility: visible;
+        }
+
+        .media-error {
+            background-color: rgba(255, 0, 0, 0.24) !important;
+        }
+
+        .media-error .media-remove {
+            visibility: visible;
+        }
+
+        .list-board-empty {
+            display: none;
+        }
+
+        .list-board-selected:empty+.list-board-empty {
+            display: block;
+        }
+
+        .iconmoon-right {
+            color: green;
+        }
+
+        .iconmoon-wrong {
+            color: red;
+        }
+
+        .iconmoon-loading {
+            display: inline-block;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            animation-timing-function: ease-out;
+            animation-name: animation-rotate;
+        }
+
+        @-webkit-keyframes animation-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .select-board-id {
+            color: rgb(51, 122, 183);
+            cursor: pointer;
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .select-board-id:hover {
+            color: #fff;
+            background-color: rgb(51, 122, 183);
+        }
+
+        .small-tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            margin: 0.1rem 0.2rem;
+            border-radius: 4px;
+            line-height: 1;
+            background-color: #ddd;
+        }
+
+        .ui-sortable {
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ui-sortable-helper {
+            display: block;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.75);
+            height: 50px !important;
+        }
+
+        .ui-state-default {
+            display: block;
+            margin: 0 0 3px 0;
+        }
+
+        .ui-state-highlight {
+            display: block;
+            margin: 0 0 3px 0;
+            padding: 15px;
+            border: 1px solid #dad55e;
+            background: #fffa90;
+            color: #777620;
+            height: 50px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        (function () {
+            var body = document.querySelector('body');
+            body.style.minHeight = document.documentElement.clientHeight + 'px';
+
+            window.addEventListener('resize', function () {
+                body.style.minHeight = document.documentElement.clientHeight + 'px';
+            });
+        })();
+    </script>
+
+    <div style="padding:15px">
+        <div class="row">
+            <div class="col-xs-8">
+                <div id="grid"></div>
+            </div>
+            <div class="col-xs-4" style="padding-left:0">
+                <div id="panel" class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title clearfix">
+                            Bài giảng đã chọn
+                            <div class="pull-right" style="line-height:0;">
+                                <button class="btn btn-primary" style="padding:4px;border:0;line-height:0;" data-toggle="modal" data-target="#addBoardSelectedModal">
+                                    <i class="iconmoon iconmoon-ThemTrangMoi"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-board-selected ui-sortable" id="sortable"></ul>
+                        <div class="list-board-empty">Chưa có bài giảng nào được chọn!</div>
+                        <div style="margin-top:15px;">
+                            <small class="text-muted">
+                                * Lưu ý: Sau khi xác nhận, dữ liệu mới sẽ được kết hợp từ các bài đã chọn và sẽ thay thế dữ liệu bài giảng hiện tại.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="clearfix">
+                            <div class="pull-left" style="padding:5px">
+                                <span id="result-message"></span>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-primary" id="confirm-join-data">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display:none">
+            <ul class="template-item-board-selected">
+                <li class="ui-state-default">
+                    <div class="media media-item">
+                        <div class="media-left">
+                            <span class="media-idx board-idx"></span>
+                            <span class="media-icon">
+                                <i class="iconmoon iconmoon-Change2"></i>
+                            </span>
+                        </div>
+                        <div class="media-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="media-object board-cover" width="48" height="48" style="object-fit:cover;">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading clearfix">
+                                        <span class="pull-right media-remove">
+                                            <i class="iconmoon iconmoon-Close"></i>
+                                        </span>
+                                        <a class="board-title"></a>
+                                    </h4>
+                                    <small class="board-id"></small> <small class="topic-title"></small> <small class="category-title"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="template-item-board-search">
+                <li class="ui-state-default">
+                    <div class="media media-item">
+                        <div class="media-left">
+                            <span class="media-idx board-idx"></span>
+                            <span class="media-icon">
+                                <input type="checkbox" checked />
+                            </span>
+                        </div>
+                        <div class="media-body">
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="media-object board-cover" width="48" height="48" style="object-fit:cover;">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading clearfix">
+                                        <a class="board-title"></a>
+                                    </h4>
+                                    <small class="board-id"></small> <small class="topic-title"></small> <small class="category-title"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="addBoardSelectedModal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Tìm bài giảng</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <textarea rows="5" class="form-control" placeholder="Nhập đường dẫn hoặc mã bài giảng ..." style="width:100%;height:auto;resize:vertical;"></textarea>
+                    </p>
+                    <p class="text-center text-success text-result-search"></p>
+                    <p class="text-center">
+                        <button type="button" class="btn btn-sm btn-primary" style="width:100%">Tìm kiếm</button>
+                    </p>
+                    <div class="alert alert-info">
+                        <strong>Hướng dẫn:</strong>
+                        <small class="text-muted">
+                            Nhập vào mã số bài giảng hoặc đường dẫn Editor, Viewer. Tìm nhiều dữ liệu với các mã cách nhau bởi khoảng trắng hoặc xuống dòng.
+                            <br />VD: 1001 1002 1003 hoặc
+                            <br />https://.../Viewer?b=1001
+                            <br />https://.../Editor?b=1002
+                        </small>
+                    </div>
+                    <p class="list-result"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">Thêm vào danh sách</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!--library default-->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4"></script>
+    <script type="text/javascript" src="lib/bootstrap.v3.3.7/dist/js/bootstrap.min.js?v=NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z_WQ"></script>
+
+    <!--library kendoui-->
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/kendo.all.min.js?v=6orvZm9ksAjHavGnKP6spITdmxbTUNPilImpIFPvr2o"></script>
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/cultures/kendo.culture.vi-VN.min.js?v=oCPoaPBqbnxt6CvDRpIZk8zjRDHaFi-Zd0fvrEQT-g8"></script>
+
+    <!--site js-->
+    <script type="text/javascript" src="dist/js/site.min.js?v=WxsNDRtCDqEFSbu3LYVhi5xUFO9D6bF88L57zgxItLM"></script>
+
+    <script src="lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="js/board/fn/kendo-custom.js"></script>
+
+    <script>
+        var _localizer = { "chuyenmuc": "Chuyên mục", "ngaytao": "Ngày tạo", "tenbaigiang": "Tên bài giảng", "Confirm": "Xác nhận", "linhvuc": "Lĩnh vực", "Empty": "Chưa có bài giảng nào được chọn!", "anhbia": "Ảnh bìa", "Selected": "Bài giảng đã chọn", "taoboi": "Tạo bởi" };
+    </script>
+    <script>
+        var ParentViewerId = null,
+            ElementId = null,
+            _data = { boardId: null, userId: null, coverUrl: null, modal: null },
+            _fns = { Board_Search: null, Board_Detail: null, Board_UpdateFromBoardIds: null };
+
+        function setParentViewerId(id) {
+            ParentViewerId = id;
+        }
+
+        function valueEditor(data, fns) {
+            _data = data;
+            _fns = fns;
+
+            //
+            init();
+        }
+
+        function closeEditor() {
+            _data.modal.dismiss(null, 'confirm');
+        }
+    </script>
+    <script>
+        $(function () {
+            $(function () {
+                $("#sortable").sortable({
+                    placeholder: "ui-state-highlight",
+                    handle: '.media-icon-move',
+                    over: function (event, ui) {
+                        console.log('over');
+                    },
+                    start: function (event, ui) {
+                        console.log('start');
+                    },
+                    stop: function (event, ui) {
+                        console.log('stop');
+
+                        //map, render
+                        mapListBoardSelected();
+                        renderListBoardSelected(true);
+                    },
+                });
+                $("#sortable").disableSelection();
+            });
+        });
+    </script>
+    <script>
+        var _GridID = '#grid';
+        var _ListBoardSelected = [];
+
+        var _ListBoardSelectedPush = function (item) {
+            item = item || {};
+
+            if (!item.board_id || _ListBoardSelected.filter(function (f) { return f.board_id == item.board_id }).length > 0) {
+                return;
+            }
+
+            _ListBoardSelected.push({
+                board_id: item.board_id,
+                board_title: item.board_title || null,
+
+                topic_id: item.topic_id || null,
+                topic_title: item.topic_title || null,
+
+                category_id: item.category_id || null,
+                category_title: item.category_title || null,
+            });
+        }
+
+        function init() {
+
+            (function () {
+                if (!_data.boardId) {
+                    return;
+                }
+
+                _fns.Board_Detail({
+                    params: {
+                        userid: _data.userId,
+                        board_id: _data.boardId,
+                        isfrom: true
+                    },
+                    callback: function (res) {
+                        if (!res || typeof res != "object") {
+                            res = {};
+                        }
+
+                        if (res.from_board_ids && res.from_boards) {
+                            var from_board_ids = res.from_board_ids.split(',').map(function (m) { return parseInt(m); });
+                            var from_boards = typeof res.from_boards == 'object' ? res.from_boards : typeof res.from_boards == 'string' ? JSON.parse(res.from_boards) : [];
+
+                            //sắp xếp lại cho đúng thứ tự
+                            var newArr = [];
+
+                            from_board_ids.forEach(function (id) {
+                                var item = from_boards.filter(function (f) { return f.board_id == id })[0];
+                                if (item) {
+                                    newArr.push(item);
+                                }
+                            });
+
+                            //
+                            _ListBoardSelected = newArr;
+                            renderListBoardSelected(true);
+                        }
+                    }
+                });
+
+                (function () {
+                    function getIdFromUrl(href) {
+                        return decodeURIComponent((new RegExp("[?|&]b=([^&;]+?)(&|#|;|$)").exec(href) || ["", ""])[1].replace(/\+/g, "%20")) || null;
+                    }
+
+                    var listData = [];
+
+                    var regexUrl = /^http(s)?:\/\//;
+                    var regexNumber = /[^0-9]/gm;
+
+                    var thisModal = $('#addBoardSelectedModal');
+
+                    thisModal
+                        .on('hidden.bs.modal', function () {
+                            thisModal.find('.modal-body .alert').fadeOut();
+                            thisModal.find('.list-result').empty();
+                            thisModal.find('.text-result-search').empty();
+                            listData.length = 0;
+                        })
+                        .on('shown.bs.modal', function () {
+                            thisModal.find('.modal-body .alert').fadeIn();
+                            thisModal.find('.list-result').empty();
+                            thisModal.find('.text-result-search').empty();
+                            listData.length = 0;
+                        });
+
+                    thisModal.find('.modal-body .btn-primary').click(function (e) {
+                        e.preventDefault();
+
+                        var text = thisModal.find('.modal-body textarea').val().trim();
+                        if (!text) {
+                            return;
+                        }
+                        //clear
+                        thisModal.find('.modal-body textarea').val(null);
+
+                        var listIds = [];
+
+                        //tách dữ liệu ra từ danh sách có chứa khoảng trắng, tab hoặc xuống dòng
+                        var listChecks = text.replace(/\s+/gm, ' ').split(' ');
+
+                        listChecks.forEach(function (item) {
+                            var id = null;
+                            if (item.match(regexUrl)) {
+                                var res = getIdFromUrl(item);
+                                if (res) {
+                                    id = parseInt(res) || 0;
+                                }
+                            }
+                            else {
+                                var res = item.replace(regexNumber, '');
+                                if (res) {
+                                    id = parseInt(res) || 0;
+                                }
+                            }
+
+                            if (id) {
+                                listIds.push(id);
+                            }
+                        });
+
+                        //xóa trùng
+                        listIds = listIds.filter(function (val, idx, arr) { return arr.indexOf(val) == idx });
+
+                        //load list check
+                        if (listIds.length > 0) {
+                            _fns.Board_Search({
+                                params: {
+                                    userid: _data.userId,
+                                    board_ids: listIds.join(','),
+                                    page: 1,
+                                    limit: -1
+                                },
+                                callback: function (res) {
+                                    var data = res || [];
+
+                                    thisModal.find('.text-result-search').text(data.length > 0 ? `Tìm thấy ${data.length} dữ liệu phù hợp!` : 'Không tìm thấy thông tin');
+                                    if (!data.length) {
+                                        return;
+                                    }
+
+                                    //nhồi dữ liệu vào 1 cục bự chà bá
+                                    listData = listData.concat(data);
+
+                                    //clear hướng dẫn
+                                    thisModal.find('.modal-body .alert').hide();
+
+                                    //tải danh sách
+                                    var template = $('.template-item-board-search').contents();
+                                    $('<hr/>').appendTo(thisModal.find('.list-result'));
+                                    var list = $('<ul/>', { class: 'list-unstyled' }).appendTo(thisModal.find('.list-result'));
+
+                                    data.forEach(function (item, idx) {
+                                        var newItem = template.clone();
+
+                                        newItem.find('.media-icon').attr('data-id', item.board_id);
+                                        newItem.find('.board-idx').attr('data-id', item.board_id).text(idx + 1);
+                                        newItem.find('.board-cover').attr({ src: `${_data.coverUrl + item.board_id}/cover.svg`, onerror: "onBoardCoverError(this)" });
+                                        newItem.find('.board-title').attr({ href: `/viewer?b=${item.board_id}`, target: '_blank', title: item.board_title }).text(item.board_title);
+                                        newItem.find('.board-id').text(`#${item.board_id}`);
+                                        newItem.find('.topic-title').text(item.topic_title || '');
+                                        newItem.find('.category-title').text(item.category_title || '');
+
+                                        list.append(newItem);
+                                    });
+                                }
+                            });
+                        }
+
+                    });
+
+                    thisModal.find('.modal-body .list-result').on('change', 'input[type="checkbox"]', function (e) {
+                        e.preventDefault();
+
+                        var checked = $(this).is(':checked');
+                        var id = $(this).parents('.media-icon').attr('data-id');
+                        if (id) {
+                            id = typeof id == "number" ? id : parseInt(id);
+
+                            //apply
+                            listData
+                                .filter(function (f) { return f.board_id == id })
+                                .forEach(function (item) {
+                                    item.unselected = !checked;
+                                });
+                        }
+                    });
+
+                    thisModal.find('.modal-footer .btn-primary').click(function (e) {
+                        e.preventDefault();
+
+                        //
+                        if (!listData.length) {
+                            thisModal.find('.text-result-search').text('Chưa có dữ liệu được chọn');
+                            return;
+                        }
+
+                        //
+                        listData
+                            .filter(function (f) { return !f.unselected })
+                            .forEach(function (item) {
+                                _ListBoardSelectedPush(item);
+                            });
+
+                        //đóng modal xong thì load lại danh sách chọn
+                        thisModal
+                            .one('hidden.bs.modal', function () {
+                                renderListBoardSelected(true);
+                            })
+                            .modal('hide');
+                    });
+                })();
+            })();
+
+            var window_content_height = window.innerHeight - 32;
+
+            $(_GridID)
+                //.css({
+                //    width: window.innerWidth - document.getElementById('menu-left').offsetWidth
+                //})
+                .kendoGrid_Base({
+                    height: window_content_height,
+                    selectable: false,
+                    columns: [
+                        {
+                            width: 70,
+                            field: "",
+                            title: "#",
+                            template: function (item) {
+                                return `<span class="select-board-id" data-id="${item.board_id}">Thêm vào</br/>danh sách</span>`;
+                            },
+                            attributes: {
+                                style: "padding:2px;text-align:center;line-height:1;font-size:12px;"
+                            },
+                            sortable: false,
+                            filterable: false,
+                        },
+                        {
+                            width: 164,
+                            field: "cover",
+                            title: _localizer.anhbia,
+                            template: function (item) {
+                                return `<img class="cover-board" src="${_data.coverUrl + item.board_id}/cover.svg" onerror="onBoardCoverError(this)" width="160" height="90" style="object-fit:contain;" />`;
+                            },
+                            attributes: {
+                                style: "padding:2px;text-align:center;"
+                            },
+                            sortable: false,
+                            filterable: false,
+                        },
+                        {
+                            width: 250,
+                            field: "board_title",
+                            title: _localizer.tenbaigiang,
+                            template: function (item) {
+                                return `<a class="viewer-board" href="/viewer?b=${item.board_id}" data-ratio="${((item.size_height || 1) / (item.size_width || 1) * 100).toFixed(2)}" target="_blank" style="color:blue" title="${item.board_title}">${item.board_title}</a>`
+                            }
+                        },
+                        {
+                            width: 320,
+                            field: "topic_id",
+                            title: _localizer.linhvuc,
+                            //template: '#:data.topic_title||""#',
+                            template: function (item) {
+                                if (item.topic_titles) {
+                                    return item.topic_titles
+                                        .split(';')
+                                        .reverse()
+                                        .map(function (m) {
+                                            return `<small class="small-tag">${m}</small>`;
+                                        }).join('/');
+                                }
+                                return item.topic_title || '';
+                            },
+                            filterable: {
+                                ui: function (e) {
+                                    $(e).kendoComboBox_Topic({ data: { Level: true } });
+                                }
+                            },
+                        },
+                        {
+                            width: 320,
+                            field: "category_id",
+                            title: _localizer.chuyenmuc,
+                            //template: '#:data.category_title||""#',
+                            template: function (item) {
+                                if (item.category_titles) {
+                                    return item.category_titles
+                                        .split(';')
+                                        .reverse()
+                                        .map(function (m) {
+                                            return `<small class="small-tag">${m}</small>`;
+                                        }).join('/');
+                                }
+                                return item.category_title || '';
+                            },
+                            filterable: {
+                                ui: function (e) {
+                                    $(e).kendoComboBox_Category({ data: { Level: true } });
+                                }
+                            },
+                        },
+                        //{
+                        //    width: 200,
+                        //    field: "tags",
+                        //    title: _localizer.the,
+                        //    template: '#:data.tags||""#',
+                        //    sortable: false,
+                        //},
+                        {
+                            width: 170,
+                            field: "createdby_name",
+                            title: _localizer.taoboi,
+                            sortable: false,
+                            filterable: false,
+                        },
+                        {
+                            width: 150,
+                            field: "createddate",
+                            title: _localizer.ngaytao,
+                            format: '{0:yyyy-MM-dd HH:mm}',
+                            sortable: false,
+                            filterable: false,
+                        },
+                        {}
+                    ],
+                    dataSource: {
+                        serverFiltering: true,
+                        serverSorting: true,
+                        serverPaging: true,
+
+                        batch: true,
+
+                        page: 1,
+                        pageSize: 20,
+
+                        schema: {
+                            data: 'data',
+                            total: 'total',
+                            model: {
+                                fields: {
+                                    createddate: { type: 'date' }
+                                }
+                            }
+                        },
+
+                        transport: {
+                            read: function (options) {
+
+                                //
+                                var filter = GridGetParamFilter(options.data);
+                                var sort = {};//GridGetParamSort(options.data);
+                                var paging = {
+                                    page: options.data.page,
+                                    limit: options.data.pageSize,
+                                };
+
+                                _fns.Board_Search({
+                                    params: Object.assign(filter, sort, paging, { userid: _data.userId }),
+                                    callback: function (res) {
+                                        var data = res || [];
+
+                                        options.success({
+                                            data: data,
+                                            total: data && data.length > 0 ? data[0].total : 0
+                                        });
+                                    }
+                                });
+                            }
+                        },
+                    }
+                });
+
+            //
+            $('#panel .panel-body').css({ maxHeight: window_content_height - $('#panel .panel-heading').outerHeight() - $('#panel .panel-footer').outerHeight() });
+        }
+
+        window.addEventListener('resize', function () {
+            var window_content_height = window.innerHeight - 32;
+
+            $(_GridID).height(window_content_height);
+            $(_GridID).find('.k-grid-content').height(window_content_height - $(_GridID).find('.k-grid-header').outerHeight() - $(_GridID).find('.k-grid-pager').outerHeight());
+
+            $('#panel .panel-body').css({ maxHeight: window_content_height - $('#panel .panel-heading').outerHeight() - $('#panel .panel-footer').outerHeight() });
+        });
+
+        $(document)
+            .on('click', '.select-board-id', function (e) {
+                e.preventDefault();
+
+                var id = $(this).attr('data-id');
+                if (id) {
+                    id = typeof id == "number" ? id : parseInt(id);
+
+                    if (_ListBoardSelected.filter(function (f) { return f.board_id == id }).length > 0) {
+                        alert('Bài giảng này đã được thêm vào!', 'warning', 1000);
+                        return
+                    }
+                    else {
+                        var item = $(_GridID).data('kendoGrid').dataSource._data.filter(function (f) { return f.board_id == id })[0];
+                        if (item) {
+                            //_ListBoardSelected.push({
+                            //    board_id: item.board_id,
+                            //    board_title: item.board_title,
+
+                            //    topic_id: item.topic_id,
+                            //    topic_title: item.topic_title,
+
+                            //    category_id: item.category_id,
+                            //    category_title: item.category_title,
+                            //});
+
+                            _ListBoardSelectedPush(item);
+                            renderListBoardSelected(true);
+                        }
+                    }
+                }
+            })
+            .on('click', '.media .media .media-remove', function (e) {
+                e.preventDefault();
+
+                var id = $(this).attr('data-id');
+                if (id) {
+                    id = typeof id == "number" ? id : parseInt(id);
+
+                    _ListBoardSelected = _ListBoardSelected.filter(function (f) { return f.board_id != id });
+
+                    //
+                    renderListBoardSelected(true);
+                }
+            })
+            .on('click', '#confirm-join-data:not([disabled])', function () {
+                if (!_ListBoardSelected.length) {
+                    alert('Không có bài giảng nào ở danh sách đã chọn!', 'warning');
+                    return
+                }
+
+                var thisBtn = $(this);
+
+                //
+                thisBtn.attr('disabled', true);
+
+                _fns.Board_UpdateFromBoardIds({
+                    params: {
+                        board_id: _data.boardId,
+                        from_board_ids: _ListBoardSelected.map(function (m) { return m.board_id; }).join(','),
+                        userid: _data.userId,
+                    },
+                    callback: function (res) {
+                        if (!res) {
+                            res = {};
+                        }
+
+                        if (res.returncode != 0) {
+                            alert(res.returnmsg || `Không lưu được dữ liệu #${res.returncode}`);
+                            thisBtn.attr('disabled', false);
+                            return;
+                        }
+
+                        //load lại danh sách và bỏ chức năng sửa đổi
+                        renderListBoardSelected(false);
+
+                        //vào việc
+                        _fns.Board_JoinContent(
+                            _ListBoardSelected.map(function (m) { return m.board_id; }),
+                            function (param1, param2, param3) {
+                                if (['loading', 'success', 'error'].indexOf(param1) >= 0) {
+                                    changeIconStatus(param1, param2);
+
+                                    if (param1 == 'error') {
+                                        _ListBoardSelected
+                                            .filter(function (f) { return f.board_id == param2 })
+                                            .forEach(function (item) {
+                                                item.loadError = true;
+                                            });
+
+                                        //lỗi là dừng lại
+                                        thisBtn.attr('disabled', false);
+
+                                        //
+                                        renderListBoardSelected(true);
+                                    }
+                                }
+                                else if (param1 == 'processing') {
+                                    resultMessage('Đang xử lý dữ liệu');
+                                }
+                                else if (param1 == 'init') {
+                                    resultMessage('Đang khởi tạo nội dung');
+                                }
+                                else if (param1 == 'finished') {
+                                    resultMessage('Hoàn tất');
+
+                                    //hoàn tất là dừng lại
+                                    thisBtn.attr('disabled', false);
+
+                                    //
+                                    setTimeout(function () {
+                                        closeEditor();
+                                    }, 2000)
+                                }
+                            }
+                        );
+
+                    }
+                });
+            });
+
+        function renderListBoardSelected(ischange) {
+            var template = $('.template-item-board-selected').contents();
+            var list = $('.list-board-selected');
+
+            list.empty();
+
+            _ListBoardSelected.forEach(function (item, idx) {
+
+                var newItem = template.clone();
+
+                newItem.find('.media-icon').attr('data-id', item.board_id);
+                newItem.find('.board-idx').attr('data-id', item.board_id).text(idx + 1);
+                newItem.find('.board-cover').attr({ src: `${_data.coverUrl + item.board_id}/cover.svg`, onerror: "onBoardCoverError(this)" });
+                newItem.find('.board-title').attr({ href: `/viewer?b=${item.board_id}`, target: '_blank', title: item.board_title }).text(item.board_title);
+                newItem.find('.board-id').text(`#${item.board_id}`);
+                newItem.find('.topic-title').text(item.topic_title || '');
+                newItem.find('.category-title').text(item.category_title || '');
+
+                if (ischange) {
+                    newItem.find('.media-icon').addClass('media-icon-move');
+                    newItem.find('.media-remove').attr('data-id', item.board_id);
+                }
+                else {
+                    newItem.find('.media-icon i').removeAttr('class').addClass('iconmoon iconmoon-LSThanhToan');
+                    newItem.find('.media-remove').remove();
+                }
+
+                if (item.loadError) {
+                    newItem.find('.media .media').addClass('media-error');
+                }
+
+                list.append(newItem);
+
+            });
+        }
+
+        function mapListBoardSelected() {
+            var newArr = [];
+
+            $("#sortable .ui-state-default").each(function () {
+                var id = $(this).find('.board-idx').attr('data-id');
+                if (id) {
+                    id = typeof id == "number" ? id : parseInt(id);
+
+                    var item = _ListBoardSelected.filter(function (f) { return f.board_id == id })[0];
+                    if (item) {
+                        newArr.push(item);
+                    }
+                }
+            });
+
+            //update
+            _ListBoardSelected = newArr;
+        }
+
+        function changeIconStatus(status, board_id) {
+            var thisMediaIcon = $(`.list-board-selected .media .media-icon[data-id="${board_id}"]`);
+            if (!thisMediaIcon.length) {
+                return;
+            }
+
+            switch (status) {
+                case 'loading': {
+                    thisMediaIcon.find('i').removeAttr('class').addClass('iconmoon iconmoon-loading');
+                    resultMessage(`Đang tải dữ liệu mã #${board_id}`, status);
+                    break;
+                }
+                case 'success': {
+                    thisMediaIcon.find('i').removeAttr('class').addClass('iconmoon iconmoon-right');
+                    resultMessage(`Tải dữ liệu mã #${board_id} hoàn tất`, status);
+                    break;
+                }
+                case 'error': {
+                    thisMediaIcon.find('i').removeAttr('class').addClass('iconmoon iconmoon-wrong');
+                    resultMessage(`Không tải được dữ liệu mã #${board_id}`, status);
+                    break;
+                }
+            }
+        }
+
+        function resultMessage(mess, status) {
+            $('#result-message').text(mess);
+
+            switch (status) {
+                case 'loading': {
+                    $('#result-message').css({ color: 'blue' });
+                    break;
+                }
+                case 'success': {
+                    $('#result-message').css({ color: 'green' });
+                    break;
+                }
+                case 'error': {
+                    $('#result-message').css({ color: 'red' });
+                    break;
+                }
+                default: {
+                    $('#result-message').css({ color: '' });
+                    break;
+                }
+            }
+        }
+
+        function onBoardCoverError(obj) {
+            obj.src = '/assets/image/no-image.svg';
+        }
+    </script>
+</body>
+
+</html>

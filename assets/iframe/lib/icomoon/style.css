@@ -1,0 +1,1420 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?v4tmh2');
+  src:  url('fonts/icomoon.eot?v4tmh2#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?v4tmh2') format('truetype'),
+    url('fonts/icomoon.woff?v4tmh2') format('woff'),
+    url('fonts/icomoon.svg?v4tmh2#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.iconmoon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconmoon-Change2:before {
+  content: "\eacd";
+}
+.iconmoon-CheckCircle:before {
+  content: "\eacc";
+}
+.iconmoon-LocvaSapxep:before {
+  content: "\eacb";
+}
+.iconmoon-SachHoanThanh:before {
+  content: "\eac9";
+}
+.iconmoon-SachCanDoc:before {
+  content: "\eaca";
+}
+.iconmoon-Bookmark_1:before {
+  content: "\eac8";
+}
+.iconmoon-Line5:before {
+  content: "\eac7";
+}
+.iconmoon-Bookmark:before {
+  content: "\eac6";
+}
+.iconmoon-TwoPage:before {
+  content: "\eab8";
+}
+.iconmoon-OnePage:before {
+  content: "\eab9";
+}
+.iconmoon-WriteNote:before {
+  content: "\eaba";
+}
+.iconmoon-Logo:before {
+  content: "\eabb";
+}
+.iconmoon-BinhLuan1:before {
+  content: "\eabc";
+}
+.iconmoon-Like:before {
+  content: "\eabd";
+}
+.iconmoon-LamQuiz:before {
+  content: "\eabe";
+}
+.iconmoon-TangDan:before {
+  content: "\eabf";
+}
+.iconmoon-MoiNhat:before {
+  content: "\eac0";
+}
+.iconmoon-GiamDan:before {
+  content: "\eac1";
+}
+.iconmoon-List:before {
+  content: "\eac2";
+}
+.iconmoon-Grid:before {
+  content: "\eac3";
+}
+.iconmoon-LikeNot:before {
+  content: "\eac4";
+}
+.iconmoon-LikeAlready:before {
+  content: "\eac5";
+}
+.iconmoon-QuanLyTuKhoa:before {
+  content: "\eaaf";
+}
+.iconmoon-KhuyenMai:before {
+  content: "\eab0";
+}
+.iconmoon-MaGiamGia:before {
+  content: "\eab1";
+}
+.iconmoon-DanhGia:before {
+  content: "\eab2";
+}
+.iconmoon-LoaiSanPham:before {
+  content: "\eab3";
+}
+.iconmoon-GianHang:before {
+  content: "\eab4";
+}
+.iconmoon-QuanLyDonHang:before {
+  content: "\eab5";
+}
+.iconmoon-QuanLyDoanhThu:before {
+  content: "\eab6";
+}
+.iconmoon-Dashboard:before {
+  content: "\eab7";
+}
+.iconmoon-Change:before {
+  content: "\eaab";
+}
+.iconmoon-FacebookCircle:before {
+  content: "\eaaa";
+}
+.iconmoon-Gift:before {
+  content: "\eaa9";
+}
+.iconmoon-Folder2:before {
+  content: "\eaa8";
+}
+.iconmoon-Crop:before {
+  content: "\eaa6";
+}
+.iconmoon-LSThanhToan:before {
+  content: "\eaa5";
+}
+.iconmoon-NangCapTaiKhoan:before {
+  content: "\eaac";
+}
+.iconmoon-BaiGiangYeuThich:before {
+  content: "\eaad";
+}
+.iconmoon-ThongTinTaiKhoan:before {
+  content: "\eaae";
+}
+.iconmoon-bookmark_solid:before {
+  content: "\eaa3";
+}
+.iconmoon-bookmark_line:before {
+  content: "\eaa4";
+}
+.iconmoon-ngoisao1:before {
+  content: "\eaa2";
+}
+.iconmoon-ngoisao:before {
+  content: "\eaa1";
+}
+.iconmoon-SignOut1:before {
+  content: "\eaa0";
+}
+.iconmoon-Home2:before {
+  content: "\ea9f";
+}
+.iconmoon-Comment1:before {
+  content: "\ea9b";
+}
+.iconmoon-Quiz:before {
+  content: "\ea9c";
+}
+.iconmoon-ChonNgonNgu:before {
+  content: "\ea9d";
+}
+.iconmoon-Lock:before {
+  content: "\ea9e";
+}
+.iconmoon-Lang4V:before {
+  content: "\ea9a";
+}
+.iconmoon-KhaoSatDaHoanThanh:before {
+  content: "\ea99";
+}
+.iconmoon-MonThamKhao:before {
+  content: "\ea96";
+}
+.iconmoon-DangKyHoc:before {
+  content: "\ea97";
+}
+.iconmoon-MonChinh:before {
+  content: "\ea98";
+}
+.iconmoon-KhaoSatCanHoanThanh:before {
+  content: "\eaa7";
+}
+.iconmoon-BaoMatThongTin:before {
+  content: "\ea8b";
+}
+.iconmoon-DauCheck:before {
+  content: "\ea8c";
+}
+.iconmoon-DauNgang:before {
+  content: "\ea8d";
+}
+.iconmoon-DungThoiDiem:before {
+  content: "\ea8e";
+}
+.iconmoon-GanTenMienRieng:before {
+  content: "\ea8f";
+}
+.iconmoon-HieuQuaDaoTao:before {
+  content: "\ea90";
+}
+.iconmoon-HoatDongPRNoiBo:before {
+  content: "\ea91";
+}
+.iconmoon-MoiLucMoiNoi:before {
+  content: "\ea92";
+}
+.iconmoon-NoiDungPhongPhu:before {
+  content: "\ea93";
+}
+.iconmoon-ThanhToanThuanTien:before {
+  content: "\ea94";
+}
+.iconmoon-TietKiemChiPhi:before {
+  content: "\ea95";
+}
+.iconmoon-coursetype:before {
+  content: "\ea7f";
+}
+.iconmoon-easysharable:before {
+  content: "\ea80";
+}
+.iconmoon-effort:before {
+  content: "\ea81";
+}
+.iconmoon-institution_language:before {
+  content: "\ea82";
+}
+.iconmoon-length:before {
+  content: "\ea83";
+}
+.iconmoon-level:before {
+  content: "\ea84";
+}
+.iconmoon-official_verified:before {
+  content: "\ea85";
+}
+.iconmoon-price:before {
+  content: "\ea86";
+}
+.iconmoon-provenmotivator:before {
+  content: "\ea87";
+}
+.iconmoon-subject:before {
+  content: "\ea88";
+}
+.iconmoon-supportmission:before {
+  content: "\ea89";
+}
+.iconmoon-videotranscript:before {
+  content: "\ea8a";
+}
+.iconmoon-password:before {
+  content: "\ea7d";
+}
+.iconmoon-username:before {
+  content: "\ea7e";
+}
+.iconmoon-ThaoLuan:before {
+  content: "\ea7a";
+}
+.iconmoon-TracNghiem:before {
+  content: "\ea7b";
+}
+.iconmoon-TrangHome:before {
+  content: "\ea7c";
+}
+.iconmoon-quanlyminhchung:before {
+  content: "\ea76";
+}
+.iconmoon-quanlydanhgia:before {
+  content: "\ea77";
+}
+.iconmoon-dongnghiepdanhgia:before {
+  content: "\ea78";
+}
+.iconmoon-tudanhgia:before {
+  content: "\ea79";
+}
+.iconmoon-cap_do:before {
+  content: "\ea73";
+}
+.iconmoon-quote:before {
+  content: "\ea74";
+}
+.iconmoon-ngoi_sao:before {
+  content: "\ea75";
+}
+.iconmoon-caret-left:before {
+  content: "\ea6f";
+}
+.iconmoon-caret-right:before {
+  content: "\ea70";
+}
+.iconmoon-caret-up:before {
+  content: "\ea71";
+}
+.iconmoon-caret-down:before {
+  content: "\ea72";
+}
+.iconmoon-Microlearning:before {
+  content: "\ea68";
+}
+.iconmoon-redo:before {
+  content: "\ea66";
+}
+.iconmoon-undo:before {
+  content: "\ea67";
+}
+.iconmoon-slideshow1:before {
+  content: "\e982";
+}
+.iconmoon-vungchon4:before {
+  content: "\ea64";
+}
+.iconmoon-banphim:before {
+  content: "\ea65";
+}
+.iconmoon-slideshow .path1:before {
+  content: "\ea69";  
+}
+.iconmoon-slideshow .path2:before {
+  content: "\ea6a";
+  margin-left: -1em;  
+}
+.iconmoon-slideshow .path3:before {
+  content: "\ea6c";
+  margin-left: -1em;  
+}
+.iconmoon-slideshow .path4:before {
+  content: "\ea6d";
+  margin-left: -1em;  
+}
+.iconmoon-slideshow .path5:before {
+  content: "\ea6e";
+  margin-left: -1em;  
+}
+.iconmoon-MoRong:before {
+  content: "\ea63";
+}
+.iconmoon-spam:before {
+  content: "\ea62";
+}
+.iconmoon-FillTemplate:before {
+  content: "\ea5f";
+}
+.iconmoon-SingleLine:before {
+  content: "\ea60";
+}
+.iconmoon-MultiLine:before {
+  content: "\ea61";
+}
+.iconmoon-MuiTen:before {
+  content: "\ea5e";
+}
+.iconmoon-BoLoc:before {
+  content: "\ea5c";
+}
+.iconmoon-DaXem:before {
+  content: "\ea5d";
+}
+.iconmoon-android:before {
+  content: "\ea59";
+}
+.iconmoon-ios:before {
+  content: "\ea5a";
+}
+.iconmoon-windows:before {
+  content: "\ea5b";
+}
+.iconmoon-SoBai:before {
+  content: "\ea57";
+}
+.iconmoon-ThoiGian:before {
+  content: "\ea58";
+}
+.iconmoon-pdf:before {
+  content: "\ea56";
+}
+.iconmoon-AddFolder:before {
+  content: "\ea51";
+}
+.iconmoon-Folder1:before {
+  content: "\ea52";
+}
+.iconmoon-Photo:before {
+  content: "\ea53";
+}
+.iconmoon-AttachFile:before {
+  content: "\ea54";
+}
+.iconmoon-Comment:before {
+  content: "\ea55";
+}
+.iconmoon-loading:before {
+  content: "\ea50";
+}
+.iconmoon-File:before {
+  content: "\ea4c";
+}
+.iconmoon-View:before {
+  content: "\ea4d";
+}
+.iconmoon-ChungTu:before {
+  content: "\ea4e";
+}
+.iconmoon-AddNote:before {
+  content: "\ea4f";
+}
+.iconmoon-Home1:before {
+  content: "\ea4b";
+}
+.iconmoon-DoubleArrow:before {
+  content: "\ea4a";
+}
+.iconmoon-reply:before {
+  content: "\ea49";
+}
+.iconmoon-ChatForum:before {
+  content: "\ea48";
+}
+.iconmoon-Instagram:before {
+  content: "\ea45";
+}
+.iconmoon-Facebook:before {
+  content: "\ea46";
+}
+.iconmoon-GooglePlus:before {
+  content: "\ea47";
+}
+.iconmoon-DropDown1:before {
+  content: "\ea38";
+}
+.iconmoon-AddSection:before {
+  content: "\ea39";
+}
+.iconmoon-AddVideo:before {
+  content: "\ea3a";
+}
+.iconmoon-AddTitle:before {
+  content: "\ea3b";
+}
+.iconmoon-Date:before {
+  content: "\ea3c";
+}
+.iconmoon-LinearScale:before {
+  content: "\ea3d";
+}
+.iconmoon-FileUpload1:before {
+  content: "\ea3e";
+}
+.iconmoon-CheckBox:before {
+  content: "\ea3f";
+}
+.iconmoon-MultiChoice:before {
+  content: "\ea40";
+}
+.iconmoon-Paragraph:before {
+  content: "\ea41";
+}
+.iconmoon-ShortAnswer:before {
+  content: "\ea42";
+}
+.iconmoon-Move:before {
+  content: "\ea43";
+}
+.iconmoon-Copy:before {
+  content: "\ea44";
+}
+.iconmoon-DuLich:before {
+  content: "\ea34";
+}
+.iconmoon-Luat:before {
+  content: "\ea35";
+}
+.iconmoon-KinhDoanhQly:before {
+  content: "\ea36";
+}
+.iconmoon-YTe:before {
+  content: "\ea37";
+}
+.iconmoon-Conference:before {
+  content: "\ea31";
+}
+.iconmoon-Class:before {
+  content: "\ea32";
+}
+.iconmoon-Meeting:before {
+  content: "\ea33";
+}
+.iconmoon-DonHang:before {
+  content: "\ea2f";
+}
+.iconmoon-DoiTac:before {
+  content: "\ea30";
+}
+.iconmoon-Noviewer:before {
+  content: "\ea2e";
+}
+.iconmoon-DichChuyenNganh:before {
+  content: "\ea2a";
+}
+.iconmoon-PhanTichNguPhap:before {
+  content: "\ea2b";
+}
+.iconmoon-TuDien:before {
+  content: "\ea2c";
+}
+.iconmoon-HocTap1:before {
+  content: "\ea2d";
+}
+.iconmoon-viewer:before {
+  content: "\ea29";
+}
+.iconmoon-ShareVideo:before {
+  content: "\ea28";
+}
+.iconmoon-DangDienRa:before {
+  content: "\ea25";
+}
+.iconmoon-HetHan:before {
+  content: "\ea26";
+}
+.iconmoon-SapDienRa:before {
+  content: "\ea27";
+}
+.iconmoon-KhoaDaHoc:before {
+  content: "\ea23";
+}
+.iconmoon-KhoaDangHoc:before {
+  content: "\ea24";
+}
+.iconmoon-EndRoom:before {
+  content: "\ea22";
+}
+.iconmoon-Rec1:before {
+  content: "\ea21";
+}
+.iconmoon-ThoiGianBieu:before {
+  content: "\ea19";
+}
+.iconmoon-QuanLyPhongHoc:before {
+  content: "\ea1a";
+}
+.iconmoon-XuLyHocVu:before {
+  content: "\ea1b";
+}
+.iconmoon-HocBong:before {
+  content: "\ea1c";
+}
+.iconmoon-GiayXacNhan:before {
+  content: "\ea1d";
+}
+.iconmoon-HocPhan:before {
+  content: "\ea1e";
+}
+.iconmoon-KeHoachDaoTao:before {
+  content: "\ea1f";
+}
+.iconmoon-ChuongTrinhDT:before {
+  content: "\ea20";
+}
+.iconmoon-import:before {
+  content: "\ea17";
+}
+.iconmoon-word:before {
+  content: "\ea18";
+}
+.iconmoon-caret-top-right:before {
+  content: "\ea13";
+}
+.iconmoon-caret-top-left:before {
+  content: "\ea14";
+}
+.iconmoon-caret-bottom-left:before {
+  content: "\ea15";
+}
+.iconmoon-caret-bottom-right:before {
+  content: "\ea16";
+}
+.iconmoon-draw:before {
+  content: "\ea12";
+}
+.iconmoon-ExitFullScreen2:before {
+  content: "\ea0e";
+}
+.iconmoon-FullScreen2:before {
+  content: "\ea0f";
+}
+.iconmoon-Up1:before {
+  content: "\ea10";
+}
+.iconmoon-Down1:before {
+  content: "\ea11";
+}
+.iconmoon-ShoppingCart:before {
+  content: "\e9c1";
+}
+.iconmoon-Logout:before {
+  content: "\e9c2";
+}
+.iconmoon-Bill:before {
+  content: "\e9c3";
+}
+.iconmoon-Infomation:before {
+  content: "\e9c4";
+}
+.iconmoon-FaceRecognize:before {
+  content: "\e9c5";
+}
+.iconmoon-Send:before {
+  content: "\e9bc";
+}
+.iconmoon-NoCamera:before {
+  content: "\e9a5";
+}
+.iconmoon-Camera:before {
+  content: "\e9a6";
+}
+.iconmoon-NoMicrophone:before {
+  content: "\e9a3";
+}
+.iconmoon-Microphone:before {
+  content: "\e9a4";
+}
+.iconmoon-Call:before {
+  content: "\e9a7";
+}
+.iconmoon-Down:before {
+  content: "\e99c";
+}
+.iconmoon-Up:before {
+  content: "\e99d";
+}
+.iconmoon-Expand:before {
+  content: "\e99e";
+}
+.iconmoon-Share:before {
+  content: "\e99f";
+}
+.iconmoon-BinhLuan:before {
+  content: "\e99a";
+}
+.iconmoon-HocTrucTuyen:before {
+  content: "\e99b";
+}
+.iconmoon-SignOut:before {
+  content: "\e999";
+}
+.iconmoon-ThreeDots:before {
+  content: "\e998";
+}
+.iconmoon-Password:before {
+  content: "\e997";
+}
+.iconmoon-PlusCircle:before {
+  content: "\ea0d";
+}
+.iconmoon-NotifyBell:before {
+  content: "\ea0c";
+}
+.iconmoon-NopBai:before {
+  content: "\ea0b";
+}
+.iconmoon-AddMember:before {
+  content: "\ea0a";
+}
+.iconmoon-setting:before {
+  content: "\ea09";
+}
+.iconmoon-Year:before {
+  content: "\ea05";
+}
+.iconmoon-Week:before {
+  content: "\ea06";
+}
+.iconmoon-Month:before {
+  content: "\ea07";
+}
+.iconmoon-Day:before {
+  content: "\ea08";
+}
+.iconmoon-Chat:before {
+  content: "\e9ff";
+}
+.iconmoon-InteractiveBoard:before {
+  content: "\ea00";
+}
+.iconmoon-MenuThemHanhDong:before {
+  content: "\ea01";
+}
+.iconmoon-ShareScreen:before {
+  content: "\ea02";
+}
+.iconmoon-XemDangLuoi:before {
+  content: "\ea03";
+}
+.iconmoon-Hand:before {
+  content: "\ea04";
+}
+.iconmoon-location:before {
+  content: "\e9fd";
+}
+.iconmoon-global:before {
+  content: "\e9fe";
+}
+.iconmoon-RaiseHand:before {
+  content: "\e9fc";
+}
+.iconmoon-RotateLeft:before {
+  content: "\e9f6";
+}
+.iconmoon-RotateRight:before {
+  content: "\e9f7";
+}
+.iconmoon-ZoomOut:before {
+  content: "\e9f8";
+}
+.iconmoon-FlipVertical:before {
+  content: "\e9f9";
+}
+.iconmoon-ZoomIn:before {
+  content: "\e9fa";
+}
+.iconmoon-FlipHorizontal:before {
+  content: "\e9fb";
+}
+.iconmoon-volume_on:before {
+  content: "\e9f4";
+}
+.iconmoon-volume_off:before {
+  content: "\e9f5";
+}
+.iconmoon-user1:before {
+  content: "\e9f3";
+}
+.iconmoon-TraLoi:before {
+  content: "\e9ef";
+}
+.iconmoon-VanBang:before {
+  content: "\e9f0";
+}
+.iconmoon-QRcode:before {
+  content: "\e9f1";
+}
+.iconmoon-Printer:before {
+  content: "\e9f2";
+}
+.iconmoon-TaoBaiKiemTra1:before {
+  content: "\e9ee";
+}
+.iconmoon-pause:before {
+  content: "\e9eb";
+}
+.iconmoon-play:before {
+  content: "\e9ec";
+}
+.iconmoon-stop:before {
+  content: "\e9ed";
+}
+.iconmoon-BringBack:before {
+  content: "\e9e8";
+}
+.iconmoon-download:before {
+  content: "\e9e9";
+}
+.iconmoon-xoa:before {
+  content: "\e9ea";
+}
+.iconmoon-HDistributeCenter:before {
+  content: "\e9e0";
+}
+.iconmoon-VDistributeCenter:before {
+  content: "\e9e1";
+}
+.iconmoon-VAlignBottom:before {
+  content: "\e9e2";
+}
+.iconmoon-VAlignCenter:before {
+  content: "\e9e3";
+}
+.iconmoon-VAlignTop:before {
+  content: "\e9e4";
+}
+.iconmoon-HAlignRight:before {
+  content: "\e9e5";
+}
+.iconmoon-HAlignCenter:before {
+  content: "\e9e6";
+}
+.iconmoon-HAlignLeft:before {
+  content: "\e9e7";
+}
+.iconmoon-AngleRuler:before {
+  content: "\e9db";
+}
+.iconmoon-Oxy1:before {
+  content: "\e9dc";
+}
+.iconmoon-Oxy2:before {
+  content: "\e9dd";
+}
+.iconmoon-LineRuler:before {
+  content: "\e9de";
+}
+.iconmoon-TriangleRuler:before {
+  content: "\e9df";
+}
+.iconmoon-flaggame:before {
+  content: "\e9da";
+}
+.iconmoon-game .path1:before {
+  content: "\e9d7";
+  color: rgb(1, 0, 2);
+}
+.iconmoon-game .path2:before {
+  content: "\e9d9";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-more:before {
+  content: "\e9d8";
+}
+.iconmoon-GiaoDucTrungHoc:before {
+  content: "\e9d3";
+}
+.iconmoon-GiaoDucMamNon:before {
+  content: "\e9d4";
+}
+.iconmoon-GiaoDucTheChat:before {
+  content: "\e9d5";
+}
+.iconmoon-CNTT:before {
+  content: "\e9d6";
+}
+.iconmoon-Minimize:before {
+  content: "\e9d1";
+}
+.iconmoon-Maximize:before {
+  content: "\e9d2";
+}
+.iconmoon-BringTop:before {
+  content: "\e9d0";
+}
+.iconmoon-KhoaHocAdmin:before {
+  content: "\e9ce";
+}
+.iconmoon-Back1:before {
+  content: "\e9cf";
+}
+.iconmoon-export:before {
+  content: "\e9c6";
+}
+.iconmoon-TestTimeOut:before {
+  content: "\e9c7";
+}
+.iconmoon-NotifyDelete:before {
+  content: "\e9c8";
+}
+.iconmoon-NotifyFinish:before {
+  content: "\e9c9";
+}
+.iconmoon-NotifyInfo:before {
+  content: "\e9ca";
+}
+.iconmoon-NoAnswer:before {
+  content: "\e9cb";
+}
+.iconmoon-Timer:before {
+  content: "\e9cc";
+}
+.iconmoon-NoSignIn:before {
+  content: "\e9cd";
+}
+.iconmoon-TaoBaiKiemTra:before {
+  content: "\e9b5";
+}
+.iconmoon-BatDauCauHoi:before {
+  content: "\e9b6";
+}
+.iconmoon-NhapVoucher:before {
+  content: "\e9b7";
+}
+.iconmoon-NapTien:before {
+  content: "\e9b8";
+}
+.iconmoon-photocamera:before {
+  content: "\e9b9";
+}
+.iconmoon-edit1:before {
+  content: "\e9ba";
+}
+.iconmoon-LightCheck:before {
+  content: "\e9b4";
+}
+.iconmoon-User:before {
+  content: "\e9ad";
+}
+.iconmoon-Phone:before {
+  content: "\e9ae";
+}
+.iconmoon-Email:before {
+  content: "\e9af";
+}
+.iconmoon-KyNangMem:before {
+  content: "\e9b0";
+}
+.iconmoon-NgoaiNgu:before {
+  content: "\e9b1";
+}
+.iconmoon-CongNgheThongTinCaoCap:before {
+  content: "\e9b2";
+}
+.iconmoon-CongNgheThongTin:before {
+  content: "\e9b3";
+}
+.iconmoon-edit:before {
+  content: "\e9ac";
+}
+.iconmoon-Fly0:before {
+  content: "\e9ab";
+}
+.iconmoon-right:before {
+  content: "\e9a9";
+}
+.iconmoon-wrong:before {
+  content: "\e9aa";
+}
+.iconmoon-menu2:before {
+  content: "\e9a8";
+}
+.iconmoon-save:before {
+  content: "\e9a2";
+}
+.iconmoon-Upload:before {
+  content: "\e9a1";
+}
+.iconmoon-ThemTrangMoi:before {
+  content: "\e9a0";
+}
+.iconmoon-Image:before {
+  content: "\e996";
+}
+.iconmoon-eye:before {
+  content: "\e993";
+}
+.iconmoon-volumsolid:before {
+  content: "\e994";
+}
+.iconmoon-volumstroke:before {
+  content: "\e995";
+}
+.iconmoon-textmouse:before {
+  content: "\e98f";
+}
+.iconmoon-action:before {
+  content: "\e990";
+}
+.iconmoon-animation:before {
+  content: "\e991";
+}
+.iconmoon-edittext:before {
+  content: "\e992";
+}
+.iconmoon-HDSD:before {
+  content: "\e98d";
+}
+.iconmoon-ChuDe:before {
+  content: "\e98e";
+}
+.iconmoon-ZoomTurn:before {
+  content: "\e983";
+}
+.iconmoon-Zoom:before {
+  content: "\e984";
+}
+.iconmoon-FlyRotate:before {
+  content: "\e985";
+}
+.iconmoon-Fly8:before {
+  content: "\e986";
+}
+.iconmoon-Fly7:before {
+  content: "\e987";
+}
+.iconmoon-Fly6:before {
+  content: "\e988";
+}
+.iconmoon-Fly5:before {
+  content: "\e989";
+}
+.iconmoon-Fly4:before {
+  content: "\e98a";
+}
+.iconmoon-Fly3:before {
+  content: "\e98b";
+}
+.iconmoon-Fly2:before {
+  content: "\e98c";
+}
+.iconmoon-Fly1:before {
+  content: "\e9bb";
+}
+.iconmoon-back:before {
+  content: "\e981";
+}
+.iconmoon-board:before {
+  content: "\e980";
+}
+.iconmoon-bangcam:before {
+  content: "\e97e";
+}
+.iconmoon-information:before {
+  content: "\e97f";
+}
+.iconmoon-Check:before {
+  content: "\e97d";
+}
+.iconmoon-ThuCong:before {
+  content: "\e96e";
+}
+.iconmoon-TheDuc:before {
+  content: "\e96f";
+}
+.iconmoon-TuNhienXaHoi:before {
+  content: "\e970";
+}
+.iconmoon-TinHoc:before {
+  content: "\e971";
+}
+.iconmoon-TiengViet:before {
+  content: "\e972";
+}
+.iconmoon-TiengAnh:before {
+  content: "\e973";
+}
+.iconmoon-TapViet:before {
+  content: "\e974";
+}
+.iconmoon-MyThuat:before {
+  content: "\e975";
+}
+.iconmoon-KhoaHoc:before {
+  content: "\e976";
+}
+.iconmoon-KyThuat:before {
+  content: "\e977";
+}
+.iconmoon-GDQP:before {
+  content: "\e978";
+}
+.iconmoon-DaoDuc:before {
+  content: "\e979";
+}
+.iconmoon-CongNghe:before {
+  content: "\e97a";
+}
+.iconmoon-AmNhac:before {
+  content: "\e97b";
+}
+.iconmoon-Plus:before {
+  content: "\e97c";
+}
+.iconmoon-GDCD:before {
+  content: "\e9bd";
+}
+.iconmoon-DiaLy:before {
+  content: "\e967";
+}
+.iconmoon-LichSu:before {
+  content: "\e968";
+}
+.iconmoon-SinhHoc:before {
+  content: "\e969";
+}
+.iconmoon-VatLy:before {
+  content: "\e96a";
+}
+.iconmoon-Van:before {
+  content: "\e96b";
+}
+.iconmoon-Hoa:before {
+  content: "\e96c";
+}
+.iconmoon-Toan:before {
+  content: "\e96d";
+}
+.iconmoon-NgoaiKhoa:before {
+  content: "\e963";
+}
+.iconmoon-RenLuyen:before {
+  content: "\e964";
+}
+.iconmoon-HocTap:before {
+  content: "\e965";
+}
+.iconmoon-THCS1:before {
+  content: "\e966";
+}
+.iconmoon-DanhGiaGVTT:before {
+  content: "\e937";
+}
+.iconmoon-DanhGiaGVTT1:before {
+  content: "\e9be";
+}
+.iconmoon-AnNinhMang:before {
+  content: "\e938";
+}
+.iconmoon-BaoCaoTongHop:before {
+  content: "\e939";
+}
+.iconmoon-CapNhatNhiemVu:before {
+  content: "\e93a";
+}
+.iconmoon-ChuongTrinhDaoTao:before {
+  content: "\e93b";
+}
+.iconmoon-CongDong1:before {
+  content: "\e93c";
+}
+.iconmoon-CoQuanThuocSo:before {
+  content: "\e93d";
+}
+.iconmoon-CoSoDuLieu:before {
+  content: "\e93e";
+}
+.iconmoon-DanhGiaGVTT2:before {
+  content: "\e9bf";
+}
+.iconmoon-DichVuChoNgDan:before {
+  content: "\e93f";
+}
+.iconmoon-DienDan:before {
+  content: "\e940";
+}
+.iconmoon-DongGopYKien:before {
+  content: "\e941";
+}
+.iconmoon-DonViKhac:before {
+  content: "\e942";
+}
+.iconmoon-DuongDayNong:before {
+  content: "\e943";
+}
+.iconmoon-ELearning:before {
+  content: "\e944";
+}
+.iconmoon-GiaoVien1:before {
+  content: "\e945";
+}
+.iconmoon-HeThongTruongHoc:before {
+  content: "\e946";
+}
+.iconmoon-HocLieuDienTu:before {
+  content: "\e947";
+}
+.iconmoon-HocLieuTangCuong:before {
+  content: "\e948";
+}
+.iconmoon-HocNgoaiNgu:before {
+  content: "\e949";
+}
+.iconmoon-HosSinh:before {
+  content: "\e94a";
+}
+.iconmoon-KetNoi:before {
+  content: "\e94b";
+}
+.iconmoon-KetQuaHocTap:before {
+  content: "\e9c0";
+}
+.iconmoon-KiemTraDanhGia:before {
+  content: "\e94c";
+}
+.iconmoon-LuyenThi:before {
+  content: "\e94d";
+}
+.iconmoon-Mail:before {
+  content: "\e94e";
+}
+.iconmoon-MangXaHoi:before {
+  content: "\e94f";
+}
+.iconmoon-NangCaoTrinhDo:before {
+  content: "\e950";
+}
+.iconmoon-NganhTruongLop:before {
+  content: "\e951";
+}
+.iconmoon-NghienCuuKhoaHoc:before {
+  content: "\e952";
+}
+.iconmoon-NguoiDan:before {
+  content: "\e953";
+}
+.iconmoon-NhaQuanLy:before {
+  content: "\e954";
+}
+.iconmoon-NHCH1:before {
+  content: "\e955";
+}
+.iconmoon-PhanQuyenNhaQuanLy:before {
+  content: "\e956";
+}
+.iconmoon-PhongGDDT:before {
+  content: "\e957";
+}
+.iconmoon-PhuHuynh:before {
+  content: "\e958";
+}
+.iconmoon-QuanLyHSSV:before {
+  content: "\e959";
+}
+.iconmoon-SGKDienTu:before {
+  content: "\e95a";
+}
+.iconmoon-ThanhToanDichVuCong:before {
+  content: "\e95b";
+}
+.iconmoon-ThongTinTruyenThong:before {
+  content: "\e95c";
+}
+.iconmoon-ThuVien:before {
+  content: "\e95d";
+}
+.iconmoon-TinhHuongKhanCap:before {
+  content: "\e95e";
+}
+.iconmoon-TinTuc:before {
+  content: "\e95f";
+}
+.iconmoon-TrucTuyen:before {
+  content: "\e960";
+}
+.iconmoon-TTDHGiaoDuc:before {
+  content: "\e961";
+}
+.iconmoon-TuVanLoTrinhGD:before {
+  content: "\e962";
+}
+.iconmoon-NHCH2:before {
+  content: "\e936";
+}
+.iconmoon-excel:before {
+  content: "\ea6b";
+}
+.iconmoon-QLyThanhToan:before {
+  content: "\e92f";
+}
+.iconmoon-ThongKeBaoCao:before {
+  content: "\e930";
+}
+.iconmoon-QLyTaiKhoan:before {
+  content: "\e931";
+}
+.iconmoon-MauMail:before {
+  content: "\e932";
+}
+.iconmoon-ThietLapGiamSat:before {
+  content: "\e933";
+}
+.iconmoon-BTCoLoiGiai:before {
+  content: "\e934";
+}
+.iconmoon-NHCH:before {
+  content: "\e935";
+}
+.iconmoon-GomNhom:before {
+  content: "\e92d";
+}
+.iconmoon-SapXep:before {
+  content: "\e92e";
+}
+.iconmoon-GridView:before {
+  content: "\e925";
+}
+.iconmoon-ListView:before {
+  content: "\e926";
+}
+.iconmoon-hsNam:before {
+  content: "\e927";
+}
+.iconmoon-hsNu:before {
+  content: "\e928";
+}
+.iconmoon-min:before {
+  content: "\e929";
+}
+.iconmoon-full2:before {
+  content: "\e92a";
+}
+.iconmoon-full1:before {
+  content: "\e92b";
+}
+.iconmoon-Close:before {
+  content: "\e92c";
+}
+.iconmoon-Next:before {
+  content: "\e918";
+}
+.iconmoon-LuuThaoTac:before {
+  content: "\e919";
+}
+.iconmoon-ChamThi1:before {
+  content: "\e91a";
+}
+.iconmoon-QuetPhieuThi:before {
+  content: "\e91b";
+}
+.iconmoon-ChonBaiChamThi:before {
+  content: "\e91c";
+}
+.iconmoon-NhapdsThiSinh:before {
+  content: "\e91d";
+}
+.iconmoon-LichSuThaoTac:before {
+  content: "\e91e";
+}
+.iconmoon-PhieuThi:before {
+  content: "\e91f";
+}
+.iconmoon-DeThi:before {
+  content: "\e920";
+}
+.iconmoon-QuanLyKyThi:before {
+  content: "\e921";
+}
+.iconmoon-ChamThi:before {
+  content: "\e922";
+}
+.iconmoon-TaoDeThi:before {
+  content: "\e923";
+}
+.iconmoon-QuanLyDuLieu:before {
+  content: "\e924";
+}
+.iconmoon-BaiGiang:before {
+  content: "\e900";
+}
+.iconmoon-BaiTapDaGiao:before {
+  content: "\e901";
+}
+.iconmoon-BangDiem:before {
+  content: "\e902";
+}
+.iconmoon-ChiTieu:before {
+  content: "\e903";
+}
+.iconmoon-CongDong:before {
+  content: "\e904";
+}
+.iconmoon-GiaoAn:before {
+  content: "\e905";
+}
+.iconmoon-GiaoVien:before {
+  content: "\e906";
+}
+.iconmoon-HocSinh:before {
+  content: "\e907";
+}
+.iconmoon-KiemTra:before {
+  content: "\e908";
+}
+.iconmoon-LichDay:before {
+  content: "\e909";
+}
+.iconmoon-LichKiemTra:before {
+  content: "\e90a";
+}
+.iconmoon-Lop:before {
+  content: "\e90b";
+}
+.iconmoon-LopActive:before {
+  content: "\e90c";
+}
+.iconmoon-MamNon:before {
+  content: "\e90d";
+}
+.iconmoon-Menu:before {
+  content: "\e90e";
+}
+.iconmoon-NienKhoa:before {
+  content: "\e90f";
+}
+.iconmoon-PhoDiem:before {
+  content: "\e910";
+}
+.iconmoon-THCS:before {
+  content: "\e911";
+}
+.iconmoon-ThiTrucTuyen:before {
+  content: "\e912";
+}
+.iconmoon-ThongCao:before {
+  content: "\e913";
+}
+.iconmoon-THPT:before {
+  content: "\e914";
+}
+.iconmoon-TieuHoc:before {
+  content: "\e915";
+}
+.iconmoon-TimKiem:before {
+  content: "\e916";
+}
+.iconmoon-TrangChu:before {
+  content: "\e917";
+}

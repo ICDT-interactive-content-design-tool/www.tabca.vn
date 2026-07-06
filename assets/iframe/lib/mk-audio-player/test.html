@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--end favicon-->
+    <!-- Bootstrap -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!--icomoon-->
+    <link href="icomoon/style.css" rel="stylesheet" />
+    <!--css-->
+    <link href="player.css" rel="stylesheet" />
+    <style>
+        .wave-container > wave {
+            height: 100% !important;
+            overflow: hidden;
+        }
+    </style>
+
+    <!--lib-->
+    <script src="jquery/jquery.js"></script>
+    <script src="download/download.js"></script>
+
+    <!-- wavesurfer.js -->
+    <script src="wavesurfer.min.js"></script>
+    <script src="wavesurfer.regions.min.js"></script>
+    <script src="wavesurfer.elan.min.js"></script>
+    <script src="wavesurfer.cursor.min.js"></script>
+    <script src="wavesurfer.mediasession.min.js"></script>
+
+    <!--code-->
+    <script src="recoder.js"></script>
+    <script src="player.js"></script>
+    <script src="spectralFlux.js"></script>
+    <script>
+        let getParamUrl = function (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || ["", ""])[1].replace(/\+/g, '%20')) || null;
+        };
+
+        if (!getParamUrl('url')) {
+            location.search = '?url=data/audio.mp3';
+        }
+    </script>
+</head>
+<body>
+    <div style="position:fixed;z-index:1;top:50px;left:50px;right:50px;bottom:50px;">
+        <div id="waveformbox" style="position:relative;height:100%;">
+            <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;">
+                <div id="waveform" class="wave-container" style="height:100%;"></div>
+            </div>
+            <div style="position:absolute;z-index:2;left:0;right:0;bottom:0;width:240px;height:100px;margin:auto;">
+                <div style="display:table;width:100%;height:100%;">
+                    <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;line-height:0;text-align:center;">
+                        <span style="font-size:40px;vertical-align: middle;">
+                            <span class="txt-time">00:00</span>&nbsp;/&nbsp;<span class="txt-duration">00:00</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="position:absolute;z-index:3;left:0;bottom:0;width:100px;height:100px;">
+                <div style="display:table;width:100%;height:100%;">
+                    <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;line-height:0;text-align:center;">
+                        <div>
+                            <span class="btn-play" style="cursor:pointer;display:none;">
+                                <img src="play_black.png" />
+                            </span>
+                            <span class="btn-pause" style="cursor:pointer;display:none;">
+                                <img src="pause_black.png" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="waverecordbox" style="position:relative;height:50%;">
+            <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;">
+                <div id="waverecoder" class="wave-container" style="height:100%;"></div>
+            </div>
+            <div style="position:absolute;z-index:2;left:0;right:0;bottom:0;width:240px;height:100px;margin:auto;">
+                <div style="display:table;width:100%;height:100%;">
+                    <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;line-height:0;text-align:center;">
+                        <span style="font-size:40px;vertical-align: middle;">
+                            <span class="txt-time">00:00</span>&nbsp;/&nbsp;<span class="txt-duration">00:00</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="position:absolute;z-index:3;left:0;bottom:0;width:100px;height:100px;">
+                <div style="display:table;width:100%;height:100%;">
+                    <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;line-height:0;text-align:center;">
+                        <div>
+                            <span class="btn-play" style="cursor:pointer;display:none;">
+                                <img src="play_black.png" />
+                            </span>
+                            <span class="btn-pause" style="cursor:pointer;display:none;">
+                                <img src="pause_black.png" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position:fixed;z-index:2;left:0;right:0;bottom:15px;width:240px;height:20px;margin:auto;">
+        <div style="display:table;width:100%;height:100%;">
+            <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;line-height:0;text-align:center;">
+                <div style="float:left">
+                    <span style="padding-right:10px;">
+                        <i class="glyphicon glyphicon-zoom-out" style="font-size:20px"></i>
+                    </span>
+                </div>
+                <div style="overflow:hidden">
+                    <input id="slider" type="range" min="1" max="100" value="1" style="width:100%;outline:none;cursor:pointer;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position:fixed;z-index:3;right:15px;bottom:15px;">
+        <div id="recoder" class="svg-recorder no-select" style="border-radius:4px;display:none;">
+            <div>
+                <div style="position:relative;width:320px;padding:15px 0;margin:auto;box-sizing:border-box;">
+                    <div style="position:relative;width:100px;height:100px;float:left;">
+                        <div style="display:table;width:100%;height:100%;">
+                            <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                <div class="btn_delete" title="Xóa" style="position:relative;width:40px;height:40px;margin:0 auto;border-radius:50%;cursor:pointer;background-color:#f7f9f9;box-shadow:1px -1px 0px 0px #ddd;">
+                                    <div style="display:table;width:100%;height:100%;">
+                                        <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                            <img src="images/xoa.svg" height="24" />
+                                        </div>
+                                    </div>
+                                    <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position:relative;width:100px;height:100px;padding:20px;margin:auto;box-sizing:border-box;float:left;">
+                        <div class="mark_record" style="position:absolute;z-index:1;top:0;left:0;display:none;">
+                            <div class="lds-ripple-recording"><div></div><div></div></div>
+                        </div>
+                        <div class="btn_record" title="Ghi âm" style="position:relative;z-index:2;line-height:0;text-align:center;cursor:pointer;">
+                            <img src="images/Microphone4.svg" width="60" height="60" />
+                            <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;"></div>
+                        </div>
+                    </div>
+                    <div style="position:relative;width:100px;height:100px;float:left;">
+                        <div style="display:table;width:100%;height:100%;">
+                            <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                <div class="btn_download" title="Tải về" style="position:relative;width:40px;height:40px;margin:0 auto;border-radius:50%;cursor:pointer;background-color:#f7f9f9;box-shadow:1px -1px 0px 0px #ddd;">
+                                    <div style="display:table;width:100%;height:100%;">
+                                        <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                            <img src="images/download.svg" height="22" />
+                                        </div>
+                                    </div>
+                                    <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+            <div class="box_time" style="margin-top:-10px;display:none;">
+                <div style="text-align:center;">
+                    <span class="txt_time" style="font-size:32px;color:#555;">00:00:00</span>
+                </div>
+            </div>
+            <div class="box_action" style="padding:20px 0 30px;display:none;">
+                <ul style="display:block;margin:0;padding:0;text-align:center;">
+                    <li style="display:inline-block;">
+                        <div class="btn_play" title="Chạy" style="position:relative;width:40px;height:40px;margin:0 10px;border-radius:50%;cursor:pointer;background-color:#f7f9f9;box-shadow:1px -1px 0px 0px #ddd;">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <i class="iconmoon iconmoon-play" style="font-size:14px;"></i>
+                                </div>
+                            </div>
+                            <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;"></div>
+                        </div>
+                    </li>
+                    <li style="display:inline-block;">
+                        <div class="btn_pause" title="Tạm dừng" style="position:relative;width:40px;height:40px;margin:0 10px;border-radius:50%;cursor:pointer;background-color:#f7f9f9;box-shadow:1px -1px 0px 0px #ddd;">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <i class="iconmoon iconmoon-pause" style="font-size:14px;"></i>
+                                </div>
+                            </div>
+                            <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;"></div>
+                        </div>
+                    </li>
+                    <li style="display:inline-block;">
+                        <div class="btn_stop" title="Kết thúc" style="position:relative;width:40px;height:40px;margin:0 10px;border-radius:50%;cursor:pointer;background-color:#f7f9f9;box-shadow:1px -1px 0px 0px #ddd;">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <i class="iconmoon iconmoon-stop" style="font-size:14px;"></i>
+                                </div>
+                            </div>
+                            <div style="position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div style="display:none;">
+                <audio controls controlslist="nodownload"></audio>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

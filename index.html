@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi" data-critters-container>
+	<head>
+		<meta charset="utf-8">
+		<title>TABCA - nền tảng thiết kế đơn giản, hữu dụng</title>
+		<meta name="description" content="Tabca là nền tảng thiết kế đơn giản, hữu dụng nhằm phát triển các tài liệu giáo dục trực quan, tương tác, tương ứng (visual, interactive, responsive)">
+
+		<base href="/">
+		<link rel="canonical" href="https://tabca.vn">
+		<meta name="google-adsense-account" content="ca-pub-2258836364448340">
+
+		<meta property="og:locale" content="vi_VN">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content>
+		<meta property="og:description" content>
+		<meta property="og:url" content>
+		<meta property="og:site_name" content>
+		<meta property="og:updated_time" content>
+		<meta property="og:image" content="g">
+		<meta property="og:image:secure_url" content>
+		<meta property="og:image:width" content>
+		<meta property="og:image:height" content>
+		<meta property="og:image:alt" content>
+		<meta property="og:image:type" content>
+		<meta property="article:published_time" content>
+		<meta property="article:modified_time" content>
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content>
+		<meta name="twitter:description" content>
+		<meta name="twitter:site" content>
+		<meta name="twitter:creator" content>
+		<meta name="twitter:image" content>
+		<meta name="twitter:label1" content>
+		<meta name="twitter:data1" content>
+		<meta name="twitter:label2" content>
+		<meta name="twitter:data2" content>
+
+		<meta name="color-scheme" content="light">
+		<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+
+		<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+		<link rel="shortcut icon" type="image/png" href="assets/favicon/favicon.png">
+		<link rel="manifest" href="assets/favicon/manifest.json">
+		<link rel="manifest" href="manifest.webmanifest">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+
+		<!-- add to homescreen for ios -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-title" content="ICDT">
+		<meta name="mobile-web-app-status-bar-style" content="#FFFFFF">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-title" content="ICDT">
+		<meta name="apple-mobile-web-app-status-bar-style" content="#FFFFFF">
+
+		<!--font-->
+		<link rel="stylesheet" href="assets/css/font-Roboto.css" name="Roboto" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/font-Roboto.css"></noscript>
+		<link rel="stylesheet" href="assets/css/font-RobotoCondensed.css" name="Roboto Condensed" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/font-RobotoCondensed.css"></noscript>
+		<link rel="stylesheet" href="assets/css/font-RobotoMono.css" name="Roboto Mono" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/font-RobotoMono.css"></noscript>
+
+		<!--i am ok-->
+		<link rel="stylesheet" href="assets/css/svg.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/svg.css"></noscript>
+		<link rel="stylesheet" href="assets/css/viewer.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/viewer.css"></noscript>
+		<link rel="stylesheet" href="assets/css/drag.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/css/drag.css"></noscript>
+		<style>@-webkit-keyframes appear-top{0%{-webkit-transform:translateY(-100%);transform:translateY(-100%)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes appear-right{0%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes appear-bottom{0%{-webkit-transform:translateY(100%);transform:translateY(100%)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes appear-left{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes appear-top-left{0%{-webkit-transform:translate(-100%, -100%);transform:translate(-100%, -100%)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-top-right{0%{-webkit-transform:translate(100%, -100%);transform:translate(100%, -100%)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-bottom-right{0%{-webkit-transform:translate(100%, 100%);transform:translate(100%, 100%)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-bottom-left{0%{-webkit-transform:translate(-100%, 100%);transform:translate(-100%, 100%)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-round-correct{from{-webkit-transform:rotate(0deg) translate(-768px) rotate(0deg);transform:rotate(0deg) translate(-768px) rotate(0deg)}to{-webkit-transform:rotate(360deg) translate(0) rotate(-360deg);transform:rotate(360deg) translate(0) rotate(-360deg)}}@-webkit-keyframes appear-round-wrong{from{-webkit-transform:rotate(0deg) translate(-768px) rotate(0deg);transform:rotate(0deg) translate(-768px) rotate(0deg)}to{-webkit-transform:rotate(-360deg) translate(0) rotate(360deg);transform:rotate(-360deg) translate(0) rotate(360deg)}}@-webkit-keyframes appear-zigzag-top{0%{-webkit-transform:translate(-800px, -800px);transform:translate(-800px, -800px)}25%{-webkit-transform:translate(600px, -600px);transform:translate(600px, -600px)}50%{-webkit-transform:translate(-400px, -400px);transform:translate(-400px, -400px)}75%{-webkit-transform:translate(200px, -200px);transform:translate(200px, -200px)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-zigzag-right{0%{-webkit-transform:translate(800px, -800px);transform:translate(800px, -800px)}25%{-webkit-transform:translate(600px, 600px);transform:translate(600px, 600px)}50%{-webkit-transform:translate(400px, -400px);transform:translate(400px, -400px)}75%{-webkit-transform:translate(200px, 200px);transform:translate(200px, 200px)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-zigzag-bottom{0%{-webkit-transform:translate(-800px, 800px);transform:translate(-800px, 800px)}25%{-webkit-transform:translate(600px, 600px);transform:translate(600px, 600px)}50%{-webkit-transform:translate(-400px, 400px);transform:translate(-400px, 400px)}75%{-webkit-transform:translate(200px, 200px);transform:translate(200px, 200px)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-zigzag-left{0%{-webkit-transform:translate(-800px, -800px);transform:translate(-800px, -800px)}25%{-webkit-transform:translate(-600px, 600px);transform:translate(-600px, 600px)}50%{-webkit-transform:translate(-400px, -400px);transform:translate(-400px, -400px)}75%{-webkit-transform:translate(-200px, 200px);transform:translate(-200px, 200px)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-vibrate{0%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}20%{-webkit-transform:translate(-5px, -5px);transform:translate(-5px, -5px)}40%{-webkit-transform:translate(5px, 5px);transform:translate(5px, 5px)}60%{-webkit-transform:translate(-5px, 5px);transform:translate(-5px, 5px)}80%{-webkit-transform:translate(5px, -5px);transform:translate(5px, -5px)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-waver{0%{-webkit-transform:translate(-20px, -20px);transform:translate(-20px, -20px)}25%{-webkit-transform:translate(20px, 20px);transform:translate(20px, 20px)}50%{-webkit-transform:translate(-20px, 20px);transform:translate(-20px, 20px)}75%{-webkit-transform:translate(20px, -20px);transform:translate(20px, -20px)}100%{-webkit-transform:translate(0, 0);transform:translate(0, 0)}}@-webkit-keyframes appear-jump{from,to{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}25%,75%{-webkit-transform:translate3d(0, -50px, 0);transform:translate3d(0, -50px, 0)}50%,100%{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}}@-webkit-keyframes appear-move{from,to{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px, 0, 0);transform:translate3d(-10px, 0, 0)}20%,40%,60%,80%,100%{-webkit-transform:translate3d(10px, 0, 0);transform:translate3d(10px, 0, 0)}}@-webkit-keyframes fade-in{from{opacity:0}to{opacity:1}}@-webkit-keyframes fade-out{from{opacity:1}to{opacity:0}}@-webkit-keyframes flicker{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@-webkit-keyframes flicker-limit{0%{opacity:0.75}50%{opacity:0.1}100%{opacity:0.75}}</style><link rel="stylesheet" href="assets/iframe/css/board/animation-prefix.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/iframe/css/board/animation-prefix.css"></noscript>
+
+		<!--pace-->
+		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" async /> -->
+		<!-- <style>
+    /*!
+    * pace.js v1.2.4 | Default theme
+    * https://github.com/CodeByZach/pace/
+    * Licensed MIT © HubSpot, Inc.
+    */
+    .pace {
+      -webkit-pointer-events: none;
+      pointer-events: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none
+    }
+
+    .pace-inactive {
+      display: none
+    }
+
+    .pace .pace-progress {
+      background: #d72630;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 2px
+    }
+
+    .pace {
+      -webkit-pointer-events: none;
+      pointer-events: none;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    .pace-inactive {
+      display: none;
+    }
+
+    .pace .pace-progress {
+      background: #37bc9b;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 2px;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js" async></script> -->
+
+		<!--lib-->
+		<!-- <link rel="stylesheet" href="assets/iframe/lib/font-awesome-4.7.0/css/font-awesome.min.css" async /> -->
+		<!-- <link rel="stylesheet" href="assets/iframe/lib/animate/animate.min.css" async /> -->
+		<!-- <link rel="stylesheet" href="assets/iframe/css/board/animation.css" async /> -->
+		<!-- <link rel="stylesheet" href="assets/iframe/css/board/animation-prefix.css" async /> -->
+
+		<!--swiper-->
+		<style>:root{--swiper-theme-color:#007aff}:root{--swiper-navigation-size:44px}</style><link rel="stylesheet" href="assets/lib/swiper-11.0.5/swiper-bundle.min.css" async media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/lib/swiper-11.0.5/swiper-bundle.min.css"></noscript>
+		<script type="text/javascript" src="assets/lib/swiper-11.0.5/swiper-bundle.min.js" async></script>
+
+		<!-- <script type="text/javascript" src="assets/js/snap.svg/snap.svg.js" async></script> -->
+
+		<!--jquery-ui-->
+		<!-- <link rel="stylesheet" href="assets/iframe/lib/jqueryui/jquery-ui.min.css" async /> -->
+		<!-- <script type="text/javascript" src="assets/iframe/lib/jqueryui/jquery-ui.min.js" async></script> -->
+
+		<!-- <script>
+    window.addEventListener('load', function () {
+      (function (l, a, c, v, i, e, t) {
+        t = new Date().getUTCMilliseconds().toString();
+        c += t;
+        i = l.createElement('script');
+        var ii = l.getElementsByTagName('script')[0];
+        r = false;
+        i.async = 1;
+        i.src = c;
+        i.id = 'lacviet-ai-script';
+        ii.parentNode.insertBefore(i, ii);
+        i.onload = i.onreadystatechange = function () {
+          if (!r && (!this.readyState || this.readyState == 'complete')) {
+            r = true; e();
+          };
+        };
+      })(document, window, 'https://console.trogiupluat.vn/chatbox/js/appsetting.js?v=', 'lacvietai', '', function () { lacvietai.setup('eyJiYXNlVXJsIjoiaHR0cHM6Ly9jb25zb2xlLnRyb2dpdXBsdWF0LnZuIiwidXNlckFnZW50RG9jdW1lbnRJZCI6IjY1ZWU4MzQyMTM0MzliYTdkZjEyYzI2YSIsImx2T3BlbkFwaUtleUlkIjoiNjVmOTAwNzQ1YzYzOGQwMmEwM2QzMzUyIn0=') });
+    });
+  </script> -->
+	<style>:root{--ion-font-family:Roboto;--ion-font-size:16px;--ion-text-color:#333;--ion-text-color-rgb:51, 51, 51;--ion-background-color:#FFFFFF;--ion-color-primary:#5359E6;--ion-color-primary-rgb:56, 128, 255;--ion-color-primary-contrast:#ffffff;--ion-color-primary-contrast-rgb:255, 255, 255;--ion-color-primary-shade:#494eca;--ion-color-primary-tint:#646ae9;--ion-color-secondary:#E7F0FF;--ion-color-secondary-rgb:194, 201, 223;--ion-color-secondary-contrast:#333333;--ion-color-secondary-contrast-rgb:0, 0, 0;--ion-color-secondary-shade:#c2c9df;--ion-color-secondary-tint:#d1d6e7;--ion-color-tertiary:#FF6A61;--ion-color-tertiary-rgb:253, 131, 124;--ion-color-tertiary-contrast:#ffffff;--ion-color-tertiary-contrast-rgb:255, 255, 255;--ion-color-tertiary-shade:#ff5148;--ion-color-tertiary-tint:#fd837c;--ion-color-success:#37bc9b;--ion-color-success-rgb:55, 188, 155;--ion-color-success-contrast:#ffffff;--ion-color-success-contrast-rgb:255, 255, 255;--ion-color-success-shade:#28ba62;--ion-color-success-tint:#42d77d;--ion-color-warning:#f6bb42;--ion-color-warning-rgb:246, 187, 66;--ion-color-warning-contrast:#000000;--ion-color-warning-contrast-rgb:0, 0, 0;--ion-color-warning-shade:#e0ac08;--ion-color-warning-tint:#ffca22;--ion-color-danger:#da4453;--ion-color-danger-rgb:218, 68, 83;--ion-color-danger-contrast:#ffffff;--ion-color-danger-contrast-rgb:255, 255, 255;--ion-color-danger-shade:#e4756f;--ion-color-danger-tint:#ca5f59;--ion-color-info:#1ABDFF;--ion-color-info-rgb:61, 194, 255;--ion-color-info-contrast:#ffffff;--ion-color-info-contrast-rgb:255, 255, 255;--ion-color-info-shade:#36abe0;--ion-color-info-tint:#50c8ff;--ion-color-dark:#4D4F60;--ion-color-dark-rgb:34, 36, 40;--ion-color-dark-contrast:#ffffff;--ion-color-dark-contrast-rgb:255, 255, 255;--ion-color-dark-shade:#4D4F60;--ion-color-dark-tint:#555555;--ion-color-medium:#888888;--ion-color-medium-rgb:146, 148, 156;--ion-color-medium-contrast:#ffffff;--ion-color-medium-contrast-rgb:255, 255, 255;--ion-color-medium-shade:#787878;--ion-color-medium-tint:#D8D8D8;--ion-color-light:#f6f8fc;--ion-color-light-rgb:246, 248, 252;--ion-color-light-contrast:#000000;--ion-color-light-contrast-rgb:0, 0, 0;--ion-color-light-shade:#d8dade;--ion-color-light-tint:#f7f9fc}:root{--ion-color-linear:linear-gradient(to right, #6D42E7, #EA5FC1);--ion-color-linear-2:linear-gradient(to bottom, #6D42E7, #EA5FC1);--ion-color-linear-text:linear-gradient(to top, #6D42E7, #EA5FC1);--ion-color-linear-rgb:105, 187, 123;--ion-color-linear-contrast:#ffffff;--ion-color-linear-contrast-rgb:255, 255, 255;--ion-color-linear-shade:#EA5FC1;--ion-color-linear-tint:#6D42E7}:root{--ion-color-tabca-pro:#e8f8ff;--ion-color-tabca-pro-rgb:232, 248, 255;--ion-color-tabca-pro-contrast:#000000;--ion-color-tabca-pro-contrast-rgb:0, 0, 0;--ion-color-tabca-pro-shade:#93dfff;--ion-color-tabca-pro-tint:#b2e0f3}html{--ion-font-family:var(--ion-default-font)}body{background:var(--ion-background-color)}@supports (padding-top: 20px){html{--ion-safe-area-top:var(--ion-statusbar-padding)}}@supports (padding-top: constant(safe-area-inset-top)){html{--ion-safe-area-top:constant(safe-area-inset-top);--ion-safe-area-bottom:constant(safe-area-inset-bottom);--ion-safe-area-left:constant(safe-area-inset-left);--ion-safe-area-right:constant(safe-area-inset-right)}}@supports (padding-top: env(safe-area-inset-top)){html{--ion-safe-area-top:env(safe-area-inset-top);--ion-safe-area-bottom:env(safe-area-inset-bottom);--ion-safe-area-left:env(safe-area-inset-left);--ion-safe-area-right:env(safe-area-inset-right)}}*{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}html{width:100%;height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}html:not(.hydrated) body{display:none}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin:0;padding:0;position:fixed;width:100%;max-width:100%;height:100%;max-height:100%;transform:translateZ(0);text-rendering:optimizeLegibility;overflow:hidden;touch-action:manipulation;-webkit-user-drag:none;-ms-content-zooming:none;word-wrap:break-word;overscroll-behavior-y:none;-webkit-text-size-adjust:none;text-size-adjust:none}html{font-family:var(--ion-font-family)}:root{--animate-duration:1s;--animate-delay:1s;--animate-repeat:1}@charset "UTF-8";:root{--blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#5F6CE1;--secondary:#c2c9df;--success:#37bc9b;--info:#1ABDFF;--warning:#f6bb42;--danger:#da4453;--light:#f8f9fa;--dark:#343a40;--default:#4D4F60;--tertiary:#FF6A61;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--breakpoint-xxl:1600px;--font-family-sans-serif:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-family-monospace:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}*,*:before,*:after{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{margin:0;font-family:Roboto;font-size:1rem;font-weight:400;line-height:1.5;color:#212529;text-align:left;background-color:#fff}@media print{*,*:before,*:after{text-shadow:none!important;box-shadow:none!important}@page{size:a3}body{min-width:992px!important}}html{--ion-default-font:var(--ion-font-family, "Segoe UI", Arial, Helvetica, Roboto, sans-serif);font-size:var(--ion-font-size, 1rem)}</style><link rel="stylesheet" href="styles.6225a141f308b976.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.6225a141f308b976.css"></noscript></head>
+
+	<body>
+		<app-root></app-root>
+		<noscript>
+			Please enable JavaScript to continue using this application.
+		</noscript>
+	<script src="runtime.89fa90c6c57363eb.js" type="module"></script><script src="polyfills.45b15749fa958a1d.js" type="module"></script><script src="scripts.f98075da1c3ad184.js" defer></script><script src="main.591d6be289da19cc.js" type="module"></script></body>
+</html>

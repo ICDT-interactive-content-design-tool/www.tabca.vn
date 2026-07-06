@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+	<head>
+		<meta charset="utf-8" />
+		<title>Trợ lý AI</title>
+		<meta name="description" content="Trợ lý AI" />
+
+		<base href="/" />
+
+		<meta name="color-scheme" content="light dark" />
+		<meta
+			name="viewport"
+			content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="format-detection" content="telephone=no" />
+
+		<style>
+			html,
+			body {
+				margin: 0;
+			}
+			body {
+				padding: 1rem;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				line-height: 1.5;
+				background: #fff;
+				color: #000;
+			}
+
+			/* Áp dụng cho Light Mode */
+			@media (prefers-color-scheme: light) {
+				body {
+					background-color: white;
+					color: black;
+				}
+			}
+
+			/* Áp dụng cho Dark Mode */
+			@media (prefers-color-scheme: dark) {
+				body {
+					background-color: black;
+					color: white;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			window.addEventListener('load', function () {
+				function getParamUrl(name) {
+					return (
+						decodeURIComponent(
+							(new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(
+								location.search
+							) || ['', ''])[1].replace(/\+/g, '%20')
+						) || null
+					);
+				}
+
+				let url = getParamUrl('file');
+				if (url) {
+					fetch(url)
+						.then((res) => {
+							if (!res.ok) {
+								throw new Error('Network response was not ok');
+							}
+							return res.arrayBuffer();
+						})
+						.then((buffer) => {
+							// Thử các encoding phổ biến cho tiếng Việt
+							let text = '';
+							try {
+								// Thử UTF-8 trước
+								text = new TextDecoder('utf-8').decode(buffer);
+							} catch (e) {
+								try {
+									// Nếu lỗi thì thử Windows-1258 (Vietnamese)
+									text = new TextDecoder('windows-1258').decode(buffer);
+								} catch (e2) {
+									// Cuối cùng thử latin1
+									text = new TextDecoder('latin1').decode(buffer);
+								}
+							}
+
+							// Tạo element pre để hiển thị text đúng format
+							const pre = document.createElement('pre');
+							pre.style.whiteSpace = 'pre-wrap';
+							pre.style.wordWrap = 'break-word';
+							pre.style.fontFamily = 'inherit';
+							pre.style.margin = '0';
+							pre.textContent = text.trim();
+
+							document.body.innerHTML = '';
+							document.body.appendChild(pre);
+						})
+						.catch((error) => {
+							document.body.innerHTML =
+								'<p style="color: red;">Lỗi: ' + error.message + '</p>';
+						});
+				} else {
+					document.body.innerHTML = '<p>Không có file để hiển thị</p>';
+				}
+			});
+		</script>
+	</body>
+</html>

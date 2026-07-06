@@ -1,0 +1,783 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?jpih4o');
+  src:  url('fonts/icomoon.eot?jpih4o#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?jpih4o') format('truetype'),
+    url('fonts/icomoon.woff?jpih4o') format('woff'),
+    url('fonts/icomoon.svg?jpih4o#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.iconmoon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconmoon-TaoBaiKiemTra1:before {
+  content: "\e9ee";
+}
+.iconmoon-pause:before {
+  content: "\e9eb";
+}
+.iconmoon-play:before {
+  content: "\e9ec";
+}
+.iconmoon-stop:before {
+  content: "\e9ed";
+}
+.iconmoon-BringBack:before {
+  content: "\e9e8";
+}
+.iconmoon-download:before {
+  content: "\e9e9";
+}
+.iconmoon-xoa:before {
+  content: "\e9ea";
+}
+.iconmoon-HDistributeCenter:before {
+  content: "\e9e0";
+}
+.iconmoon-VDistributeCenter:before {
+  content: "\e9e1";
+}
+.iconmoon-VAlignBottom:before {
+  content: "\e9e2";
+}
+.iconmoon-VAlignCenter:before {
+  content: "\e9e3";
+}
+.iconmoon-VAlignTop:before {
+  content: "\e9e4";
+}
+.iconmoon-HAlignRight:before {
+  content: "\e9e5";
+}
+.iconmoon-HAlignCenter:before {
+  content: "\e9e6";
+}
+.iconmoon-HAlignLeft:before {
+  content: "\e9e7";
+}
+.iconmoon-AngleRuler:before {
+  content: "\e9db";
+}
+.iconmoon-Oxy1:before {
+  content: "\e9dc";
+}
+.iconmoon-Oxy2:before {
+  content: "\e9dd";
+}
+.iconmoon-LineRuler:before {
+  content: "\e9de";
+}
+.iconmoon-TriangleRuler:before {
+  content: "\e9df";
+}
+.iconmoon-flaggame:before {
+  content: "\e9da";
+}
+.iconmoon-game .path1:before {
+  content: "\e9d7";
+  color: rgb(1, 0, 2);
+}
+.iconmoon-game .path2:before {
+  content: "\e9d9";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-more:before {
+  content: "\e9d8";
+}
+.iconmoon-GiaoDucTrungHoc:before {
+  content: "\e9d3";
+}
+.iconmoon-GiaoDucMamNon:before {
+  content: "\e9d4";
+}
+.iconmoon-GiaoDucTheChat:before {
+  content: "\e9d5";
+}
+.iconmoon-CNTT:before {
+  content: "\e9d6";
+}
+.iconmoon-Minimize:before {
+  content: "\e9d1";
+}
+.iconmoon-Maximize:before {
+  content: "\e9d2";
+}
+.iconmoon-BringTop:before {
+  content: "\e9d0";
+}
+.iconmoon-KhoaHocAdmin:before {
+  content: "\e9ce";
+}
+.iconmoon-Back1:before {
+  content: "\e9cf";
+}
+.iconmoon-export:before {
+  content: "\e9c6";
+}
+.iconmoon-TestTimeOut:before {
+  content: "\e9c7";
+}
+.iconmoon-NotifyDelete:before {
+  content: "\e9c8";
+}
+.iconmoon-NotifyFinish:before {
+  content: "\e9c9";
+}
+.iconmoon-NotifyInfo:before {
+  content: "\e9ca";
+}
+.iconmoon-NoAnswer:before {
+  content: "\e9cb";
+}
+.iconmoon-Timer:before {
+  content: "\e9cc";
+}
+.iconmoon-NoSignIn:before {
+  content: "\e9cd";
+}
+.iconmoon-TaoBaiKiemTra:before {
+  content: "\e9b5";
+}
+.iconmoon-BatDauCauHoi:before {
+  content: "\e9b6";
+}
+.iconmoon-NhapVoucher:before {
+  content: "\e9b7";
+}
+.iconmoon-NapTien:before {
+  content: "\e9b8";
+}
+.iconmoon-photocamera:before {
+  content: "\e9b9";
+}
+.iconmoon-edit1:before {
+  content: "\e9ba";
+}
+.iconmoon-LightCheck:before {
+  content: "\e9b4";
+}
+.iconmoon-User:before {
+  content: "\e9ad";
+}
+.iconmoon-Phone:before {
+  content: "\e9ae";
+}
+.iconmoon-Email:before {
+  content: "\e9af";
+}
+.iconmoon-KyNangMem:before {
+  content: "\e9b0";
+}
+.iconmoon-NgoaiNgu:before {
+  content: "\e9b1";
+}
+.iconmoon-CongNgheThongTinCaoCap:before {
+  content: "\e9b2";
+}
+.iconmoon-CongNgheThongTin:before {
+  content: "\e9b3";
+}
+.iconmoon-edit:before {
+  content: "\e9ac";
+}
+.iconmoon-Fly0:before {
+  content: "\e9ab";
+}
+.iconmoon-right:before {
+  content: "\e9a9";
+}
+.iconmoon-wrong:before {
+  content: "\e9aa";
+}
+.iconmoon-menu2:before {
+  content: "\e9a8";
+}
+.iconmoon-delete .path1:before {
+  content: "\e9a3";
+  color: ;
+}
+.iconmoon-delete .path2:before {
+  content: "\e9a4";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-delete .path3:before {
+  content: "\e9a5";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-delete .path4:before {
+  content: "\e9a6";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-delete .path5:before {
+  content: "\e9a7";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-save:before {
+  content: "\e9a2";
+}
+.iconmoon-Upload:before {
+  content: "\e9a1";
+}
+.iconmoon-ThemTrangMoi:before {
+  content: "\e9a0";
+}
+.iconmoon-Image:before {
+  content: "\e996";
+}
+.iconmoon-ThemMoiCauHoi .path1:before {
+  content: "\e997";
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path2:before {
+  content: "\e998";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path3:before {
+  content: "\e999";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path4:before {
+  content: "\e99a";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path5:before {
+  content: "\e99b";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path6:before {
+  content: "\e99c";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path7:before {
+  content: "\e99d";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-ThemMoiCauHoi .path8:before {
+  content: "\e99e";
+  margin-left: -1em;
+  color: rgb(1, 0, 2);
+}
+.iconmoon-ThemMoiCauHoi .path9:before {
+  content: "\e99f";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.iconmoon-eye:before {
+  content: "\e993";
+}
+.iconmoon-volumsolid:before {
+  content: "\e994";
+}
+.iconmoon-volumstroke:before {
+  content: "\e995";
+}
+.iconmoon-textmouse:before {
+  content: "\e98f";
+}
+.iconmoon-action:before {
+  content: "\e990";
+}
+.iconmoon-animation:before {
+  content: "\e991";
+}
+.iconmoon-edittext:before {
+  content: "\e992";
+}
+.iconmoon-HDSD:before {
+  content: "\e98d";
+}
+.iconmoon-ChuDe:before {
+  content: "\e98e";
+}
+.iconmoon-ZoomTurn:before {
+  content: "\e982";
+}
+.iconmoon-Zoom:before {
+  content: "\e983";
+}
+.iconmoon-FlyRotate:before {
+  content: "\e984";
+}
+.iconmoon-Fly8:before {
+  content: "\e985";
+}
+.iconmoon-Fly7:before {
+  content: "\e986";
+}
+.iconmoon-Fly6:before {
+  content: "\e987";
+}
+.iconmoon-Fly5:before {
+  content: "\e988";
+}
+.iconmoon-Fly4:before {
+  content: "\e989";
+}
+.iconmoon-Fly3:before {
+  content: "\e98a";
+}
+.iconmoon-Fly2:before {
+  content: "\e98b";
+}
+.iconmoon-Fly1:before {
+  content: "\e98c";
+}
+.iconmoon-back:before {
+  content: "\e981";
+}
+.iconmoon-board:before {
+  content: "\e980";
+}
+.iconmoon-bangcam:before {
+  content: "\e97e";
+}
+.iconmoon-information:before {
+  content: "\e97f";
+}
+.iconmoon-Check:before {
+  content: "\e97d";
+}
+.iconmoon-ThuCong:before {
+  content: "\e96e";
+}
+.iconmoon-TheDuc:before {
+  content: "\e96f";
+}
+.iconmoon-TuNhienXaHoi:before {
+  content: "\e970";
+}
+.iconmoon-TinHoc:before {
+  content: "\e971";
+}
+.iconmoon-TiengViet:before {
+  content: "\e972";
+}
+.iconmoon-TiengAnh:before {
+  content: "\e973";
+}
+.iconmoon-TapViet:before {
+  content: "\e974";
+}
+.iconmoon-MyThuat:before {
+  content: "\e975";
+}
+.iconmoon-KhoaHoc:before {
+  content: "\e976";
+}
+.iconmoon-KyThuat:before {
+  content: "\e977";
+}
+.iconmoon-GDQP:before {
+  content: "\e978";
+}
+.iconmoon-DaoDuc:before {
+  content: "\e979";
+}
+.iconmoon-CongNghe:before {
+  content: "\e97a";
+}
+.iconmoon-AmNhac:before {
+  content: "\e97b";
+}
+.iconmoon-Plus:before {
+  content: "\e97c";
+}
+.iconmoon-GDCD:before {
+  content: "\e9bd";
+}
+.iconmoon-DiaLy:before {
+  content: "\e967";
+}
+.iconmoon-LichSu:before {
+  content: "\e968";
+}
+.iconmoon-SinhHoc:before {
+  content: "\e969";
+}
+.iconmoon-VatLy:before {
+  content: "\e96a";
+}
+.iconmoon-Van:before {
+  content: "\e96b";
+}
+.iconmoon-Hoa:before {
+  content: "\e96c";
+}
+.iconmoon-Toan:before {
+  content: "\e96d";
+}
+.iconmoon-NgoaiKhoa:before {
+  content: "\e963";
+}
+.iconmoon-RenLuyen:before {
+  content: "\e964";
+}
+.iconmoon-HocTap:before {
+  content: "\e965";
+}
+.iconmoon-THCS1:before {
+  content: "\e966";
+}
+.iconmoon-DanhGiaGVTT:before {
+  content: "\e937";
+}
+.iconmoon-DanhGiaGVTT1:before {
+  content: "\e9be";
+}
+.iconmoon-AnNinhMang:before {
+  content: "\e938";
+}
+.iconmoon-BaoCaoTongHop:before {
+  content: "\e939";
+}
+.iconmoon-CapNhatNhiemVu:before {
+  content: "\e93a";
+}
+.iconmoon-ChuongTrinhDaoTao:before {
+  content: "\e93b";
+}
+.iconmoon-CongDong1:before {
+  content: "\e93c";
+}
+.iconmoon-CoQuanThuocSo:before {
+  content: "\e93d";
+}
+.iconmoon-CoSoDuLieu:before {
+  content: "\e93e";
+}
+.iconmoon-DanhGiaGVTT2:before {
+  content: "\e9bf";
+}
+.iconmoon-DichVuChoNgDan:before {
+  content: "\e93f";
+}
+.iconmoon-DienDan:before {
+  content: "\e940";
+}
+.iconmoon-DongGopYKien:before {
+  content: "\e941";
+}
+.iconmoon-DonViKhac:before {
+  content: "\e942";
+}
+.iconmoon-DuongDayNong:before {
+  content: "\e943";
+}
+.iconmoon-ELearning:before {
+  content: "\e944";
+}
+.iconmoon-GiaoVien1:before {
+  content: "\e945";
+}
+.iconmoon-HeThongTruongHoc:before {
+  content: "\e946";
+}
+.iconmoon-HocLieuDienTu:before {
+  content: "\e947";
+}
+.iconmoon-HocLieuTangCuong:before {
+  content: "\e948";
+}
+.iconmoon-HocNgoaiNgu:before {
+  content: "\e949";
+}
+.iconmoon-HosSinh:before {
+  content: "\e94a";
+}
+.iconmoon-KetNoi:before {
+  content: "\e94b";
+}
+.iconmoon-KetQuaHocTap:before {
+  content: "\e9c0";
+}
+.iconmoon-KiemTraDanhGia:before {
+  content: "\e94c";
+}
+.iconmoon-LuyenThi:before {
+  content: "\e94d";
+}
+.iconmoon-Mail:before {
+  content: "\e94e";
+}
+.iconmoon-MangXaHoi:before {
+  content: "\e94f";
+}
+.iconmoon-NangCaoTrinhDo:before {
+  content: "\e950";
+}
+.iconmoon-NganhTruongLop:before {
+  content: "\e951";
+}
+.iconmoon-NghienCuuKhoaHoc:before {
+  content: "\e952";
+}
+.iconmoon-NguoiDan:before {
+  content: "\e953";
+}
+.iconmoon-NhaQuanLy:before {
+  content: "\e954";
+}
+.iconmoon-NHCH1:before {
+  content: "\e955";
+}
+.iconmoon-PhanQuyenNhaQuanLy:before {
+  content: "\e956";
+}
+.iconmoon-PhongGDDT:before {
+  content: "\e957";
+}
+.iconmoon-PhuHuynh:before {
+  content: "\e958";
+}
+.iconmoon-QuanLyHSSV:before {
+  content: "\e959";
+}
+.iconmoon-SGKDienTu:before {
+  content: "\e95a";
+}
+.iconmoon-ThanhToanDichVuCong:before {
+  content: "\e95b";
+}
+.iconmoon-ThongTinTruyenThong:before {
+  content: "\e95c";
+}
+.iconmoon-ThuVien:before {
+  content: "\e95d";
+}
+.iconmoon-TinhHuongKhanCap:before {
+  content: "\e95e";
+}
+.iconmoon-TinTuc:before {
+  content: "\e95f";
+}
+.iconmoon-TrucTuyen:before {
+  content: "\e960";
+}
+.iconmoon-TTDHGiaoDuc:before {
+  content: "\e961";
+}
+.iconmoon-TuVanLoTrinhGD:before {
+  content: "\e962";
+}
+.iconmoon-NHCH2:before {
+  content: "\e936";
+}
+.iconmoon-excel:before {
+  content: "\e9bb";
+}
+.iconmoon-NHCH11 .path1:before {
+  content: "\e9bc";
+  color: ;
+}
+.iconmoon-NHCH11 .path2:before {
+  content: "\e9c1";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-NHCH11 .path3:before {
+  content: "\e9c2";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-NHCH11 .path4:before {
+  content: "\e9c3";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-NHCH11 .path5:before {
+  content: "\e9c4";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-NHCH11 .path6:before {
+  content: "\e9c5";
+  margin-left: -1em;
+  color: ;
+}
+.iconmoon-QLyThanhToan:before {
+  content: "\e92f";
+}
+.iconmoon-ThongKeBaoCao:before {
+  content: "\e930";
+}
+.iconmoon-QLyTaiKhoan:before {
+  content: "\e931";
+}
+.iconmoon-MauMail:before {
+  content: "\e932";
+}
+.iconmoon-ThietLapGiamSat:before {
+  content: "\e933";
+}
+.iconmoon-BTCoLoiGiai:before {
+  content: "\e934";
+}
+.iconmoon-NHCH:before {
+  content: "\e935";
+}
+.iconmoon-GomNhom:before {
+  content: "\e92d";
+}
+.iconmoon-SapXep:before {
+  content: "\e92e";
+}
+.iconmoon-GridView:before {
+  content: "\e925";
+}
+.iconmoon-ListView:before {
+  content: "\e926";
+}
+.iconmoon-hsNam:before {
+  content: "\e927";
+}
+.iconmoon-hsNu:before {
+  content: "\e928";
+}
+.iconmoon-min:before {
+  content: "\e929";
+}
+.iconmoon-full2:before {
+  content: "\e92a";
+}
+.iconmoon-full1:before {
+  content: "\e92b";
+}
+.iconmoon-Close:before {
+  content: "\e92c";
+}
+.iconmoon-Next:before {
+  content: "\e918";
+}
+.iconmoon-LuuThaoTac:before {
+  content: "\e919";
+}
+.iconmoon-ChamThi1:before {
+  content: "\e91a";
+}
+.iconmoon-QuetPhieuThi:before {
+  content: "\e91b";
+}
+.iconmoon-ChonBaiChamThi:before {
+  content: "\e91c";
+}
+.iconmoon-NhapdsThiSinh:before {
+  content: "\e91d";
+}
+.iconmoon-LichSuThaoTac:before {
+  content: "\e91e";
+}
+.iconmoon-PhieuThi:before {
+  content: "\e91f";
+}
+.iconmoon-DeThi:before {
+  content: "\e920";
+}
+.iconmoon-QuanLyKyThi:before {
+  content: "\e921";
+}
+.iconmoon-ChamThi:before {
+  content: "\e922";
+}
+.iconmoon-TaoDeThi:before {
+  content: "\e923";
+}
+.iconmoon-QuanLyDuLieu:before {
+  content: "\e924";
+}
+.iconmoon-BaiGiang:before {
+  content: "\e900";
+}
+.iconmoon-BaiTapDaGiao:before {
+  content: "\e901";
+}
+.iconmoon-BangDiem:before {
+  content: "\e902";
+}
+.iconmoon-ChiTieu:before {
+  content: "\e903";
+}
+.iconmoon-CongDong:before {
+  content: "\e904";
+}
+.iconmoon-GiaoAn:before {
+  content: "\e905";
+}
+.iconmoon-GiaoVien:before {
+  content: "\e906";
+}
+.iconmoon-HocSinh:before {
+  content: "\e907";
+}
+.iconmoon-KiemTra:before {
+  content: "\e908";
+}
+.iconmoon-LichDay:before {
+  content: "\e909";
+}
+.iconmoon-LichKiemTra:before {
+  content: "\e90a";
+}
+.iconmoon-Lop:before {
+  content: "\e90b";
+}
+.iconmoon-LopActive:before {
+  content: "\e90c";
+}
+.iconmoon-MamNon:before {
+  content: "\e90d";
+}
+.iconmoon-Menu:before {
+  content: "\e90e";
+}
+.iconmoon-NienKhoa:before {
+  content: "\e90f";
+}
+.iconmoon-PhoDiem:before {
+  content: "\e910";
+}
+.iconmoon-THCS:before {
+  content: "\e911";
+}
+.iconmoon-ThiTrucTuyen:before {
+  content: "\e912";
+}
+.iconmoon-ThongCao:before {
+  content: "\e913";
+}
+.iconmoon-THPT:before {
+  content: "\e914";
+}
+.iconmoon-TieuHoc:before {
+  content: "\e915";
+}
+.iconmoon-TimKiem:before {
+  content: "\e916";
+}
+.iconmoon-TrangChu:before {
+  content: "\e917";
+}

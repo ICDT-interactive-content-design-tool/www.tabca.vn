@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Editor HTML</title>
+
+    <!--Khóa chức năng phóng của trình duyệt mobile android-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <!--fonts-->
+    <link rel="stylesheet" href="fonts/SegoeUI/stylesheet.css?v=HPK2_RwM9Q14JuQPJ5bJ-cSSTg9aYRP4yw0vUPT_5iw" />
+
+    <link rel="stylesheet" href="lib/bootstrap.v3.3.7/dist/css/bootstrap.min.css?v=Wj2MBXhUhdNu5clNRoHlsdnkuUxb6LW9ew8xaP_xvZo" />
+    <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css?v=gg4WnOJIJAZtmXP9S2Vhqunc1tvvZDXakF1aHWSCmXw" />
+
+    <!--library kendoui-->
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.common-bootstrap.min.css?v=BMHtfZwaKdutzzbCqWCvYtaedSdpv4ZvcxruqWXiBjg" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.min.css?v=-w9f10ZdJMYcy5eTxPHRYVxr_mtqYF-BO7WdfPXDU6Y" />
+    <link rel="stylesheet" href="lib/kendoui.2022.1.301/styles/kendo.bootstrap.mobile.min.css?v=G-WpoaPpGRYN2EYBEJSVG2y273Df5KNMEp5gsmj0qhs" />
+
+    <!--library font icomoon-->
+    <link rel="stylesheet" href="lib/icomoon/style.css?v=2EIOhFDJXMlwcub3OMcA5b7tav--bDDzKy4EKGvc-wE" />
+    <link rel="stylesheet" href="lib/icomoon/style-ui.css?v=lqyCkwkH4Gm4uYw-pFLeRzJslgb8ysrBbpEQREdtmL4" />
+
+    <!--site-->
+    <link rel="stylesheet" href="dist/css/site.min.css?v=JreJKWcri5J3yWUHNjPEN_sZjuLAyknFoo6yhHxUjC0" />
+</head>
+
+<body>
+    <script>
+        (function () {
+            var body = document.querySelector('body');
+            body.style.minHeight = document.documentElement.clientHeight + 'px';
+
+            window.addEventListener('resize', function () {
+                body.style.minHeight = document.documentElement.clientHeight + 'px';
+            });
+        })();
+    </script>
+
+    <style>
+        /*.k-editor .k-editor-toolbar {
+        position: relative;
+        padding-right: 120px;
+    }
+
+        .k-editor .k-editor-toolbar > .k-tool-group:first-child {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+        }*/
+        .k-editor {
+            box-sizing: border-box;
+            border: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        .k-editor .k-tool-group .k-combobox {
+            width: 150px;
+        }
+
+        .k-overflow-container .k-item.k-overflow-tool-group {
+            display: block;
+        }
+
+        .k-i-removehtml:before {
+            content: "\e66d";
+        }
+
+        .k-i-magichtml:before {
+            content: "\e66e";
+        }
+
+        /*https://docs.telerik.com/kendo-ui/styles-and-layout/icons-web*/
+    </style>
+
+    <style id="text-to-speak">
+        span[data-event="text-to-speak"] {
+            border-bottom: 3px dotted #15a500;
+        }
+
+        /*span[data-event="text-to-speak"]:before {
+            content: '\269E';
+        }*/
+
+        span[data-event="text-to-speak"]:after {
+            content: '\2691';
+            color: #15a500;
+            font-size: 64%;
+            vertical-align: top;
+        }
+    </style>
+
+    <div class="ondrop-box ondrop-image">
+        <img style="display:none;" />
+        <div class="ondrop-here">
+            <textarea id="editor" style="width:100%;height:100%;"></textarea>
+        </div>
+    </div>
+
+    <div id="template" style="display:none;">
+        <div tabindex="0" onclick="saveClick()" role="button" class="k-tool k-group-start remove-k-button-group tool-save" style="display: inline-block; width: 110px; height: 30px; border: 1px solid rgb(201, 201, 201); padding: 4px 0; text-decoration: none; box-sizing: border-box;" unselectable="on" title="Lưu dữ liệu" aria-pressed="false"><i unselectable="on" class="fa fa-check" style="color: rgb(123, 146, 254);"></i>&nbsp;&nbsp;<span>Áp dụng</span></div>
+
+        <div class="sizing-border-box editor-math" style="position: fixed; top:0; right: 0; bottom:0; z-index:2; width: 720px; height:387px; margin:auto 0;">
+            <div class="editor-iframe-box ondrop-iframe" style="display:block;position:relative;z-index:2;width:100%;height:100%;padding-top:45px;padding-bottom:45px;line-height:0;box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+                <div class="clearfix" style="position:absolute;top:0;left:0;right:0;height:45px;background-color:#7b92fe;color:#fff;">
+                    <h4 class="pull-left" style="padding:10px 15px;margin:0;font-weight:normal;line-height:1.42857143;">
+                        <i class="iconmoon iconmoon-Toan"></i>&nbsp;&nbsp;<span>Nhập công thức toán học</span>
+                    </h4>
+                    <div class="pull-right" style="position:absolute;top:0;right:0;">
+                        <div class="iconmoon-btn iconmoon-btn-44 iconmoon-btn-hover btn-close" title="Đóng">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <i class="iconmoon iconmoon-Close iconmoon-hover-danger"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position:relative;width:100%;height:100%;">
+                    <iframe frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen allowtransparency="true" style="display:block;width:100%;height:100%;padding:0;margin:0;border:0;outline:none;background-color:#fff;"></iframe>
+                    <div class="moveable-active" style="display:none;position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;">
+                    </div>
+                    <div class="loading" style="position: absolute; z-index: 2; top: 0; left: 0; bottom: 0; right: 0;">
+                    </div>
+                    <div class="ondrop-iframe-box" style="position:absolute;left:0;right:0;top:0;bottom:0;display:none;"></div>
+                </div>
+                <div class="clearfix" style="position:absolute;bottom:0;left:0;right:0;height:45px;background-color:#fff;">
+                    <div class="text-center" style="position:relative;width:100%;height:100%;border:2px solid #fff;">
+                        <div class="btn-save" style="width:100%;height:100%;background-color:#eee;cursor:pointer;">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <div style="display:inline-block;width:24px;height:24px;cursor:pointer;border-radius:50%;vertical-align:middle;background-color:#3db39e;color:#fff;">
+                                        <div style="display:table;width:100%;height:100%;">
+                                            <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                                <i class="iconmoon iconmoon-LightCheck"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="display:inline-block;margin-left:5px;line-height:24px;vertical-align:middle;">
+                                        <a style="color:inherit">Áp dụng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sizing-border-box editor-chemistry" style="position: fixed; top:0; right: 0; bottom:0; z-index:2; width: 720px; height:387px; margin:auto 0;">
+            <div class="editor-iframe-box ondrop-iframe" style="display:block;position:relative;z-index:2;width:100%;height:100%;padding-top:45px;padding-bottom:45px;line-height:0;box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+                <div class="clearfix" style="position:absolute;top:0;left:0;right:0;height:45px;background-color:#7b92fe;color:#fff;">
+                    <h4 class="pull-left" style="padding:10px 15px;margin:0;font-weight:normal;line-height:1.42857143;">
+                        <i class="iconmoon iconmoon-Hoa"></i>&nbsp;&nbsp;<span>Nhập công thức hóa học</span>
+                    </h4>
+                    <div class="pull-right" style="position:absolute;top:0;right:0;">
+                        <div class="iconmoon-btn iconmoon-btn-44 iconmoon-btn-hover btn-close" title="Đóng">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <i class="iconmoon iconmoon-Close iconmoon-hover-danger"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position:relative;width:100%;height:100%;">
+                    <iframe frameborder="0" scrolling="no" allowfullscreen webkitallowfullscreen allowtransparency="true" style="display:block;width:100%;height:100%;padding:0;margin:0;border:0;outline:none;background-color:#fff;"></iframe>
+                    <div class="moveable-active" style="display:none;position:absolute;z-index:1;top:0;left:0;right:0;bottom:0;background-color:transparent;">
+                    </div>
+                    <div class="loading" style="position: absolute; z-index: 2; top: 0; left: 0; bottom: 0; right: 0;">
+                    </div>
+                    <div class="ondrop-iframe-box" style="position:absolute;left:0;right:0;top:0;bottom:0;display:none;"></div>
+                </div>
+                <div class="clearfix" style="position:absolute;bottom:0;left:0;right:0;height:45px;background-color:#fff;">
+                    <div class="text-center" style="position:relative;width:100%;height:100%;border:2px solid #fff;">
+                        <div class="btn-save" style="width:100%;height:100%;background-color:#eee;cursor:pointer;">
+                            <div style="display:table;width:100%;height:100%;">
+                                <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                    <div style="display:inline-block;width:24px;height:24px;cursor:pointer;border-radius:50%;vertical-align:middle;background-color:#3db39e;color:#fff;">
+                                        <div style="display:table;width:100%;height:100%;">
+                                            <div style="display:table-cell;width:100%;height:100%;vertical-align:middle;text-align:center;line-height:0;">
+                                                <i class="iconmoon iconmoon-LightCheck"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="display:inline-block;margin-left:5px;line-height:24px;vertical-align:middle;">
+                                        <a style="color:inherit">Áp dụng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--library default-->
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js?v=T-aPohYXbm0fRYDpJLr-zJ9RmYTswGsahAoIsNiMld4"></script>
+    <script type="text/javascript" src="lib/bootstrap.v3.3.7/dist/js/bootstrap.min.js?v=NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z_WQ"></script>
+
+    <!--library kendoui-->
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/kendo.all.min.js?v=6orvZm9ksAjHavGnKP6spITdmxbTUNPilImpIFPvr2o"></script>
+    <script type="text/javascript" src="lib/kendoui.2022.1.301/js/cultures/kendo.culture.vi-VN.min.js?v=oCPoaPBqbnxt6CvDRpIZk8zjRDHaFi-Zd0fvrEQT-g8"></script>
+
+    <!--site js-->
+    <script type="text/javascript" src="dist/js/site.min.js?v=WxsNDRtCDqEFSbu3LYVhi5xUFO9D6bF88L57zgxItLM"></script>
+
+    <script>
+        var ParentViewerId = null,
+            EditorContent = null;
+
+        function setParentViewerId(id) {
+            ParentViewerId = id;
+        }
+
+        function saveClick() {
+            parent.$('#' + ParentViewerId).parents('.editor-iframe-box').find('.btn-save').click();
+        }
+
+        function valueEditor(text) {
+            if (text != undefined) {
+                EditorContent = text || '<p style="font-family:Roboto;font-size:24px;"></p>';
+                if ($('#editor').data('kendoEditor')) {
+                    $('#editor').data('kendoEditor').value(EditorContent);
+                }
+            }
+            else {
+                return $('#editor').data('kendoEditor').value().trim();
+            }
+        }
+
+        $(window).on('load', async function () {
+            var fonts = [];
+
+            /*fonts = (('queryLocalFonts' in window) ? await window.queryLocalFonts() : [])
+                .reduce((previousValue, currentValue, currentIndex, array) => {
+                    let temp = previousValue.find(f => f.family == currentValue.family);
+                    if (temp) {
+                        //temp.child.push(Object.assign(currentValue, { text: currentValue.family, value: currentValue.family }));
+                    }
+                    else {
+                        previousValue.push(Object.assign(currentValue, { text: currentValue.family, value: currentValue.family, child: [] }));
+                    }
+                    return previousValue;
+                }, []);*/
+
+            //
+            var editor = $('#editor').kendoEditor({
+                value: EditorContent,
+                messages: {
+                    fontSizeInherit: "",
+                    fontNameInherit: ""
+                },
+                pasteCleanup: {
+                    all: false,
+                    msAllFormatting: true,
+                    msConvertLists: true,
+                    msTags: true,
+                    css: false,
+                    keepNewLines: false,
+                    none: true,
+                    span: false,
+                    custom: function (html) {
+                        return html
+                            .replace(/<script[^>]*>/g, "")
+                            .replace(/<input[^>]*>/g, "")
+                            .replace(/<textarea[^>]*>/g, "")
+                            //.replace(/<img[^>]*>/, "")
+                            .replace(/<video[^>]*>*<\/video>/g, "")
+                            .replace(/<video[^>]*>/g, "")
+                            .replace(/<audio[^>]*>*<\/audio>/g, "")
+                            .replace(/<audio[^>]*>/g, "")
+                            .replace(/<iframe[^>]*>*<\/iframe>/g, "")
+                            .replace(/class="[a-zA-Z0-9-_ ]+"\s?/g, '') //xóa class
+                            .replace(/line-height:\s?[0-9]+px;?/g, '') //xóa css line-height
+                            .replace(/\s+/gm, " ").trim();
+                    }
+                },
+                encoded: false,
+                resizable: {
+                    toolbar: false,
+                    content: false
+                },
+                tools: [
+                    //{ name: "insertParagraph", shift: true },   // giữ Shift để có khoảng trống Enter rộng hơn  //xuống dòng bằng chèn thẻ <p></p>.
+                    //{ name: "insertLineBreak", shift: false },   // ngược lại                                    //dùng <br/>
+                    //
+                    //{
+                    //    name: "custom-tool",
+                    //    template: $('#template .tool-save').clone()[0].outerHTML
+                    //},
+
+                    //
+                    "bold",
+                    "italic",
+                    "underline",
+                    "strikethrough",
+
+                    //
+                    "subscript",
+                    "superscript",
+
+                    //
+                    "justifyLeft",
+                    "justifyCenter",
+                    "justifyRight",
+                    "justifyFull",
+
+                    //"fontName",
+                    {
+                        name: "fontName",
+                        items: fonts.length ? fonts : [
+                            //
+                            { text: "Segoe UI", value: "Segoe UI" },
+                            { text: "Segoe UI Light", value: "Segoe UI Light" },
+
+                            //
+                            //{ text: "Myriad Pro", value: "Myriad Pro" },
+                            { text: "Mali", value: "Mali" },
+                            { text: "Quicksand", value: "Quicksand" },
+                            { text: "MS-Mincho", value: "MS-Mincho" },
+                            { text: "Pangolin", value: "Pangolin" },
+
+                            //
+                            { text: "MS PGothic", value: "MS PGothic" },
+                            { text: "UD Digi Kyokasho NK-B", value: "UD Digi Kyokasho NK-B" },
+
+                            //
+                            { text: "Tahoma", value: "Tahoma" },
+                            { text: "Arial", value: "Arial" },
+                            { text: "Arial Black", value: "Arial Black" },
+                            { text: "Comic Sans MS", value: "Comic Sans MS" },
+                            { text: "Courier New", value: "Courier New" },
+                            { text: "Helvetica", value: "Helvetica" },
+                            { text: "Symbol", value: "Symbol" },
+                            { text: "Times New Roman", value: "Times New Roman" },
+                            { text: "Roboto Slab", value: "Roboto Slab" },
+                            { text: "Noto Sans", value: "Noto Sans" },
+                            { text: "Anton", value: "Anton" },
+                            { text: "Open Sans Condensed", value: "Open Sans Condensed" },
+                            { text: "Playfair Display", value: "Playfair Display" },
+                            { text: "Lora", value: "Lora" },
+                            { text: "Kodchasan", value: "Kodchasan" },
+                            { text: "Muli", value: "Muli" },
+                            { text: "Nunito", value: "Nunito" },
+                            { text: "Arimo", value: "Arimo" },
+                            { text: "Fira Sans", value: "Fira Sans" },
+                            { text: "Noto Serif", value: "Noto Serif" },
+                            //{ text: "Quicksand", value: "Quicksand" },
+                            { text: "Inconsolata", value: "Inconsolata" },
+                            { text: "Nunito Sans", value: "Nunito Sans" },
+                            { text: "Cabin", value: "Cabin" },
+                            { text: "Josefin Sans", value: "Josefin Sans" },
+                            { text: "Lobster", value: "Lobster" },
+                            { text: "Asap", value: "Asap" },
+                            { text: "Varela Round", value: "Varela Round" },
+                            { text: "Pacifico", value: "Pacifico" },
+                            { text: "Dancing Script", value: "Dancing Script" },
+                            { text: "Kanit", value: "Kanit" },
+                            { text: "Yanone Kaffeesatz", value: "Yanone Kaffeesatz" },
+                            { text: "Exo", value: "Exo" },
+                            { text: "EB Garamond", value: "EB Garamond" },
+                            { text: "Maven Pro", value: "Maven Pro" },
+                            { text: "Play", value: "Play" },
+                            { text: "Amatic SC", value: "Amatic SC" },
+                            { text: "Barlow", value: "Barlow" },
+                            { text: "Francois One", value: "Francois One" },
+                            { text: "Fira Sans Condensed", value: "Fira Sans Condensed" },
+                            { text: "Comfortaa", value: "Comfortaa" },
+                            { text: "Vollkorn", value: "Vollkorn" },
+                            { text: "Noticia Text", value: "Noticia Text" },
+                            { text: "Rokkitt", value: "Rokkitt" },
+                            { text: "Cuprum", value: "Cuprum" },
+                            { text: "Alegreya", value: "Alegreya" },
+                            { text: "Prompt", value: "Prompt" },
+                            { text: "Barlow Condensed", value: "Barlow Condensed" },
+                            { text: "Alegreya Sans", value: "Alegreya Sans" },
+                            { text: "Old Standard TT", value: "Old Standard TT" },
+                            { text: "Alfa Slab One", value: "Alfa Slab One" },
+                            { text: "Noto Sans SC", value: "Noto Sans SC" },
+                            { text: "Tinos", value: "Tinos" },
+                            { text: "Encode Sans Semi Expanded", value: "Encode Sans Semi Expanded" },
+                            { text: "Playfair Display SC", value: "Playfair Display SC" },
+                            { text: "Lalezar", value: "Lalezar" },
+                            { text: "Barlow Semi Condensed", value: "Barlow Semi Condensed" },
+                            { text: "Encode Sans Expanded", value: "Encode Sans Expanded" },
+                            { text: "Asap Condensed", value: "Asap Condensed" },
+                            { text: "M PLUS 1p", value: "M PLUS 1p" },
+                            { text: "Patrick Hand", value: "Patrick Hand" },
+                            { text: "Cabin Condensed", value: "Cabin Condensed" },
+                            { text: "IBM Plex Serif", value: "IBM Plex Serif" },
+                            { text: "Bangers", value: "Bangers" },
+                            { text: "Philosopher", value: "Philosopher" },
+                            { text: "Saira", value: "Saira" },
+                            { text: "Montserrat Alternates", value: "Montserrat Alternates" },
+                            { text: "Prata", value: "Prata" },
+                            { text: "Saira Extra Condensed", value: "Saira Extra Condensed" },
+                            { text: "Pridi", value: "Pridi" },
+                            { text: "Taviraj", value: "Taviraj" },
+                            { text: "Mitr", value: "Mitr" },
+                            { text: "Archivo", value: "Archivo" },
+                            { text: "Alegreya Sans SC", value: "Alegreya Sans SC" },
+                            { text: "Cousine", value: "Cousine" },
+                            { text: "Cormorant", value: "Cormorant" },
+                            { text: "Niramit", value: "Niramit" },
+                            { text: "Sawarabi Gothic", value: "Sawarabi Gothic" },
+                            { text: "Encode Sans Condensed", value: "Encode Sans Condensed" },
+                            { text: "Jura", value: "Jura" },
+                            { text: "IBM Plex Mono", value: "IBM Plex Mono" },
+                            { text: "Baloo", value: "Baloo" },
+                            { text: "Baloo 2", value: "Baloo 2" },
+                            { text: "Bevan", value: "Bevan" },
+                            { text: "Itim", value: "Itim" },
+                            { text: "Saira Semi Condensed", value: "Saira Semi Condensed" },
+                            { text: "Space Mono", value: "Space Mono" },
+                            { text: "Spectral", value: "Spectral" },
+                            { text: "Baloo Paaji", value: "Baloo Paaji" },
+                            { text: "Baloo Paaji 2", value: "Baloo Paaji 2" },
+                            { text: "VT323", value: "VT323" },
+                            { text: "Encode Sans", value: "Encode Sans" },
+                            { text: "Saira Condensed", value: "Saira Condensed" },
+                            { text: "Yeseva One", value: "Yeseva One" },
+                            { text: "Markazi Text", value: "Markazi Text" },
+                            { text: "M PLUS Rounded 1c", value: "M PLUS Rounded 1c" },
+                            { text: "Bungee", value: "Bungee" },
+                            { text: "Arsenal", value: "Arsenal" },
+                            { text: "Alegreya SC", value: "Alegreya SC" },
+                            { text: "Trirong", value: "Trirong" },
+                            { text: "Bungee Inline", value: "Bungee Inline" },
+                            { text: "Arima Madurai", value: "Arima Madurai" },
+                            { text: "Sarabun", value: "Sarabun" },
+                            { text: "Pattaya", value: "Pattaya" },
+                            { text: "Noto Serif SC", value: "Noto Serif SC" },
+                            { text: "Athiti", value: "Athiti" },
+                            { text: "Charm", value: "Charm" },
+                            { text: "Noto Serif TC", value: "Noto Serif TC" },
+                            { text: "Major Mono Display", value: "Major Mono Display" },
+                            { text: "Baloo Bhaijaan", value: "Baloo Bhaijaan" },
+                            { text: "KoHo", value: "KoHo" },
+                            { text: "Baloo Bhaina", value: "Baloo Bhaina" },
+                            { text: "Maitree", value: "Maitree" },
+                            { text: "Judson", value: "Judson" },
+                            { text: "Sriracha", value: "Sriracha" },
+                            { text: "Andika", value: "Andika" },
+                            { text: "Faustina", value: "Faustina" },
+                            { text: "Podkova", value: "Podkova" },
+                            { text: "Bai Jamjuree", value: "Bai Jamjuree" },
+                            { text: "Cormorant Infant", value: "Cormorant Infant" },
+                            { text: "Cormorant SC", value: "Cormorant SC" },
+                            { text: "K2D", value: "K2D" },
+                            { text: "Chonburi", value: "Chonburi" },
+                            { text: "David Libre", value: "David Libre" },
+                            { text: "IBM Plex Sans Condensed", value: "IBM Plex Sans Condensed" },
+                            { text: "Patrick Hand SC", value: "Patrick Hand SC" },
+                            { text: "Bungee Hairline", value: "Bungee Hairline" },
+                            { text: "Vollkorn SC", value: "Vollkorn SC" },
+                            { text: "Sedgwick Ave Display", value: "Sedgwick Ave Display" },
+                            { text: "Bungee Outline", value: "Bungee Outline" },
+                            { text: "Farsan", value: "Farsan" },
+                            { text: "Cormorant Unicase", value: "Cormorant Unicase" },
+                            { text: "Baloo Tamma", value: "Baloo Tamma" },
+                            { text: "Baloo Thambi", value: "Baloo Thambi" },
+                            { text: "Encode Sans Semi Condensed", value: "Encode Sans Semi Condensed" },
+                            { text: "Cormorant Upright", value: "Cormorant Upright" },
+                            { text: "Bungee Shade", value: "Bungee Shade" },
+                            //{ text: "Mali", value: "Mali" },
+                            { text: "Krub", value: "Krub" }
+                        ]
+                    },
+
+                    //"fontSize",
+                    /*{
+                        name: "fontSize",
+                        items: [
+                            { text: "8px", value: "8px" },  //8x1
+                            { text: "10px", value: "10px" },
+                            { text: "12px", value: "12px" },
+                            { text: "14px", value: "14px" },
+                            { text: "16px", value: "16px" },//8x2
+                            { text: "18px", value: "18px" },
+                            { text: "24px", value: "24px" },//8x3
+                            { text: "32px", value: "32px" },//8x4
+                            { text: "40px", value: "40px" },//8x5
+                            { text: "48px", value: "48px" },//8x6
+                            { text: "56px", value: "56px" },//8x7
+                            { text: "64px", value: "64px" },//8x8
+                            { text: "72px", value: "72px" } //8x9
+                        ]
+                    },*/
+
+                    {
+                        name: "fontSize",
+                        items: (function () {
+                            var res = [];
+                            for (var i = 8; i <= 108; i++) {
+                                res.push({ text: `${i}px`, value: `${i}px` });
+                            }
+                            return res;
+                        })()
+                    },
+
+                    "foreColor",
+                    "backColor",
+
+                    //
+                    //"insertUnorderedList",
+                    //"insertOrderedList",
+                    //"indent",
+                    //"outdent",
+
+                    //
+                    "createLink",
+                    "unlink",
+
+                    //
+                    //"insertImage",
+                    //"insertFile",
+
+                    //
+                    "tableWizard",
+                    "createTable",
+                    "addRowAbove",
+                    "addRowBelow",
+                    "addColumnLeft",
+                    "addColumnRight",
+                    "deleteRow",
+                    "deleteColumn",
+
+                    //
+
+                    "viewHtml",
+
+                    {
+                        name: "removehtml",
+                        tooltip: "Loại bỏ định dạng word, html",
+                        exec: function (e) {
+                            var w = 500;
+                            if ($(window).width() < 767) {
+                                w = $(window).width() * 0.8;
+                            }
+
+                            var editor = $(this).data("kendoEditor");
+                            var content = '<textarea id="c-copy-paste" style="width: ' + w + 'px; height: 200px" placeholder="Sao chép và dán dữ liệu vào đây (tối đa 5000 ký tự)" maxlength="5000"></textarea>';
+
+                            var newDialog = $('<div/>').appendTo(document.body).kendoDialog({
+                                minWidth: 280,
+                                minHeight: 210,
+                                width: 'auto',
+                                height: 'auto',
+                                modal: true,
+                                title: "Loại bỏ định dạng WORD | HTML",
+                                content: content,
+                                actions: [
+                                    {
+                                        text: 'Đồng ý', primary: true, action: function (e) {
+                                            var valc = (htmlEscape($('#c-copy-paste').val() + '').replace(/(\r?\n|\r\n?)/ig, "<br/>"));
+
+                                            //editor.value(valc);
+                                            editor.paste(valc);
+                                            if (valc != '') {
+                                                $(editor.body).parent().find('.placeholderkd').hide();
+                                            }
+
+                                            setTimeout(function () { newDialog.wrapper.remove(); });
+                                            return true;
+                                        }
+                                    },
+                                    {
+                                        text: 'Đóng', action: function () {
+                                            setTimeout(function () { newDialog.wrapper.remove(); });
+                                            return true;
+                                        },
+                                    }
+                                ],
+                                show: function () {
+                                    $('#c-copy-paste').focus();
+                                }
+                            }).data('kendoDialog');
+                        }
+                    },
+
+                    {
+                        name: "magichtml",
+                        tooltip: "Xóa các thẻ trống trong nội dung HTML",
+                        exec: function (e) {
+                            var editor = $(this).data("kendoEditor");
+
+                            let el = $('<div/>').html(editor.value());
+
+                            let checkTags = 'div,h1,h2,h3,h4,h5,h6,p,span,strong,b,i';
+
+                            //dọn rác
+                            let recursiveClearEmpty = (els) => {
+                                els?.forEach(el => {
+                                    let childs = el.querySelectorAll(`:scope > ${checkTags}`);
+                                    if (childs.length) {
+                                        recursiveClearEmpty(childs);
+                                    }
+
+                                    if (!el.querySelectorAll(':scope > *').length && el.textContent == '') {
+                                        el.remove();
+                                    }
+                                });
+                            }
+
+                            //clear enter :last
+                            let recursiveClearBr = (el) => {
+
+                                let childs = el?.querySelectorAll(`:scope > div,h1,h2,h3,h4,h5,h6,p,strong,span`);
+                                if (childs?.length) {
+                                    let lastChild = childs[childs.length - 1];
+
+                                    //tìm thẻ br ở cuối tag tận cùng
+                                    if (lastChild.textContent?.trim() == '') {
+                                        let childs_2 = lastChild.querySelectorAll(':scope > *');
+                                        if (childs_2.length) {
+                                            let lastChild_2 = childs_2[childs_2.length - 1];
+
+                                            if (['br', 'BR'].includes(lastChild_2?.nodeName)) {
+                                                lastChild_2.remove();
+
+                                                //
+                                                recursiveClearBr(el);
+                                            }
+                                        }
+                                        //xóa tag cuối bị rỗng sau khi xóa br
+                                        else {
+                                            lastChild.remove();
+
+                                            //
+                                            recursiveClearBr(el);
+                                        }
+                                    }
+                                }
+                            }
+
+                            recursiveClearEmpty(el.get(0)?.querySelectorAll(`:scope > ${checkTags}`));
+                            recursiveClearBr(el.get(0));
+
+                            //
+                            editor.value(el.html());
+                        }
+                    },
+
+                    "cleanFormatting",
+
+                    /*{
+                        name: "insert-math",
+                        tooltip: "Chèn công thức toán học",
+                        exec: function (e) {
+                            var editor = $(this).data("kendoEditor");
+
+                            //wiris
+                            initEditorWiris({
+                                url: $('#UrlEditorMath').attr('href'),
+                                template: $('#template .editor-math'),
+                                onsave: function (iframe) {
+                                    if (iframe && typeof iframe.contentWindow.valueEditor === 'function') {
+                                        iframe.contentWindow.valueEditor(function (base64, latex) {
+                                            editor.exec("inserthtml", {
+                                                value: $('<img/>', {
+                                                    src: base64,
+                                                    latex: latex
+                                                })[0].outerHTML
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    },*/
+                    /*{
+                        name: "insert-chemistry",
+                        tooltip: "Chèn công thức hóa học",
+                        exec: function (e) {
+                            var editor = $(this).data("kendoEditor");
+                            //editor.exec("inserthtml", { value: "<h1>Hóa đầy</h1>" });
+
+                            //wiris
+                            initEditorWiris({
+                                url: $('#UrlEditorChemistry').attr('href'),
+                                template: $('#template .editor-chemistry'),
+                                onsave: function (iframe) {
+                                    if (iframe && typeof iframe.contentWindow.valueEditor === 'function') {
+                                        iframe.contentWindow.valueEditor(function (base64, latex) {
+                                            editor.exec("inserthtml", {
+                                                value: $('<img/>', {
+                                                    src: base64,
+                                                    latex: latex
+                                                })[0].outerHTML
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    },*/
+
+                    /*{
+                        name: "insert-readtext",
+                        tooltip: "Chèn tự động đọc văn bản [text to speak]",
+                        exec: function (e) {
+                            var editor = $(this).data("kendoEditor"),
+                                selection = editor.getSelection(),
+                                text = selection.toString();
+
+                            if (text) {
+                                let style = null;
+                                if (selection.anchorNode && selection.anchorNode.parentElement) {
+                                    style = ($(selection.anchorNode.parentElement).attr('style') || '').replace(/\"/g, '\'');
+                                }
+                                editor.exec("inserthtml", { value: '<span data-event="text-to-speak" style="' + style + '">' + text + '</span>' });
+                            }
+
+                            $(editor.document).find('[data-event="text-to-speak"]').each(function (idx, e) {
+                                if (!$(e).text()) {
+                                    e.remove();
+                                }
+                            });
+                        }
+                    },*/
+
+                    //"formatting",
+                    // {
+                    //     name: "formatting",
+                    //     items: [
+                    //         { text: "Paragraph", value: "p" },
+                    //         { text: "Heading 1", value: "h1" },
+                    //         { text: "Heading 2", value: "h2" },
+                    //         { text: "Heading 3", value: "h3" },
+                    //         { text: "Heading 4", value: "h4" },
+                    //         { text: "Heading 5", value: "h5" },
+                    //     ]
+                    // },
+                ],
+                /*imageBrowser: {
+                    messages: {
+                        dropFilesHere: "Kéo tập tin từ máy tính và thả vào đây!"
+                    },
+                    transport: {
+                        read: 'http://172.16.0.75/demo/sureboard/fileapi/FileBrowsers/Read',
+                        destroy: {
+                            url: 'http://172.16.0.75/demo/sureboard/fileapi/FileBrowsers/Destroy',
+                            type: "POST"
+                        },
+                        create: {
+                            url: 'http://172.16.0.75/demo/sureboard/fileapi/FileBrowsers/Create',
+                            type: "POST"
+                        },
+                        uploadUrl: 'http://172.16.0.75/demo/sureboard/fileapi/FileBrowsers/Upload',
+                        thumbnailUrl: 'http://172.16.0.75/demo/sureboard/fileapi/FileBrowsers/Thumbnail',
+                        imageUrl: 'http://172.16.0.75/demo/sureboard/fileapi/FileBrowsers/Image?path={0}'
+                    },
+                    path: "/"
+                }*/
+            }).data('kendoEditor');
+
+            var cb = $("select.k-fontName").data("kendoComboBox");
+            cb?.setOptions({
+                template: "<span style='font-family: #: text #'>#: text #</span>"
+            });
+
+            //background color
+            let style = document.createElement('style');
+            style.textContent = 'html,body{background-color:#EEE;}' + $('style#text-to-speak')[0].innerHTML.replace(/\s+/g, ' ');
+            $('#editor').data('kendoEditor').document.head.appendChild(style);
+
+            if (!fonts.length) {
+                //Google fonts
+                let linkGoogleFont = document.createElement('link');
+                linkGoogleFont.href = 'css/googlefont.css';
+                linkGoogleFont.rel = "stylesheet";
+                $('#editor').data('kendoEditor').document.head.appendChild(linkGoogleFont);
+
+                //Site Font
+                let linkSiteFont = document.createElement('link');
+                linkSiteFont.href = 'dist/css/font.min.css';
+                linkSiteFont.rel = "stylesheet";
+                $('#editor').data('kendoEditor').document.head.appendChild(linkSiteFont);
+            }
+
+            //Site
+            let linkStyleSheet = document.createElement('link');
+            linkStyleSheet.href = 'dist/css/site.min.css';
+            linkStyleSheet.rel = "stylesheet";
+            $('#editor').data('kendoEditor').document.head.appendChild(linkStyleSheet);
+
+            $('.ondrop-box.ondrop-image > img').on('load', function () {
+                let src = this.src,
+                    path = this.getAttribute('path') || '';
+
+                editor.exec("inserthtml", {
+                    value: $('<img/>', {
+                        src: src,
+                        path: path,
+                        style: 'max-width:100%;max-height:100%;'
+                    })[0].outerHTML
+                });
+            });
+
+            //
+            // $('.remove-k-button-group').parents('.k-button-group').removeClass('k-button-group');
+
+            //
+            $('.k-i-insert-math').addClass('iconmoon iconmoon-Toan').css('color', '#8c3689');
+            $('.k-i-insert-chemistry').addClass('iconmoon iconmoon-Hoa').css('color', '#fd9f00');
+            $('.k-i-insert-readtext').addClass('iconmoon iconmoon-volumstroke').css('color', 'green');
+
+            //
+            $('.k-editor iframe.k-content').height(document.documentElement.clientHeight - $('.k-editor .k-editor-toolbar').height() - 7);
+            $(window)
+                .resize(function () {
+                    $('.k-editor iframe.k-content').height(document.documentElement.clientHeight - $('.k-editor .k-editor-toolbar').height() - 7);
+                })
+                .on('load', function () {
+                    editor.focus();
+                })
+                .keydown(function (event) {
+                    if (!event) return false;
+                    //KEY
+                    var key = event.keyCode || event.charCode || event.which;
+
+                    //CTRL + S
+                    if (event.ctrlKey === true && key === 83) {
+                        //chặn sự kiện save page của trình duyệt
+                        event.stopPropagation();
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+        });
+    </script>
+
+    <script>
+        /*
+         * options = {
+         *      url: null,
+         *      template: $(),
+         *      onload:function(iframe){}
+         *      onsave: function(iframe){}
+         * }
+         *
+         */
+        function initEditorWiris(options) {
+            options = options || {};
+
+            let mark = $('<div/>')
+                .css({
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    'z-index': 99998,
+                    background: 'rgba(0, 0, 0, 0.1)'
+                })
+                .on('touchmove', function (e) { e.preventDefault(); })
+                .appendTo('body');
+
+            let tile = (options.template || $('<div/>')).clone().appendTo('body');
+
+            tile
+                .css({
+                    'z-index': 99999,
+                    right: -tile.width()
+                })
+                .animate({
+                    right: 0
+                }, function () {
+                    //set source
+                    tile.find('iframe')
+                        .on('load', function () {
+                            tile.find('.loading').remove();
+                        })
+                        .attr('src', options.url);
+                });
+
+            tile.find('iframe')
+                .attr('id', parseInt(Math.random() * 999999999))
+                .on('load', function () {
+                    if (typeof this.contentWindow.setParentViewerId === 'function') {
+                        this.contentWindow.setParentViewerId(this.getAttribute('id'));
+                    }
+
+                    if (typeof options.onload === 'function') {
+                        options.onload(this);
+                    }
+                });
+
+            tile.find('.btn-save').click(function () {
+                //save
+                if (typeof options.onsave === 'function') {
+                    options.onsave(tile.find('iframe')[0]);
+                }
+
+                //xóa viewer
+                setTimeout(function () {
+                    mark.remove();
+                    tile.remove();
+                }, 500);
+            });
+
+            tile.find('.btn-close').click(function () {
+                //xóa viewer
+                mark.remove();
+                tile.remove();
+            });
+        }
+
+        function removeHTML(txt) {
+            var rex = /(<([^>]+)>)/ig;      // < ... >
+            var rexEnter = /(\r?\n|\r\n?)/ig;
+            return (txt.replace(rex, "").replace('<', '').replace('>', '').replace(rexEnter, ""));
+        }
+
+        function htmlEscape(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        // I needed the opposite function today, so adding here too:
+        function htmlUnescape(value) {
+            return String(value)
+                .replace(/&quot;/g, '"')
+                .replace(/&#39;/g, "'")
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&');
+        }
+
+        function htmlDecode(value) {
+            return $('<div/>').html(value).text();
+        }
+
+        function htmlEncode(value) {
+            return $('<div/>').text(value).html();
+        }
+    </script>
+
+</body>
+
+</html>
